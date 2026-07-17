@@ -285,6 +285,114 @@ if (calcBtn) {
 }
 
 /* ==============================
+   HEART RISK CALCULATOR (Part 36)
+   ============================== */
+const riskBtn = document.getElementById('calcRisk');
+if (riskBtn) {
+  riskBtn.addEventListener('click', () => {
+    const gender = document.getElementById('riskGender').value;
+    const age = parseInt(document.getElementById('riskAge').value);
+    const weight = parseFloat(document.getElementById('riskWeight').value);
+    const height = parseFloat(document.getElementById('riskHeight').value);
+    const smoker = document.getElementById('riskSmoker').value;
+    const diabetes = document.getElementById('riskDiabetes').value;
+    const sbp = parseInt(document.getElementById('riskBP').value);
+    const chol = parseInt(document.getElementById('riskChol').value);
+
+    // Validate
+    if (!age || age < 30 || age > 74) { alert('Enter age between 30-74'); return; }
+    if (!weight || weight < 20) { alert('Enter valid weight'); return; }
+    if (!height || height < 50) { alert('Enter valid height'); return; }
+    if (!sbp || sbp < 80) { alert('Enter valid systolic BP'); return; }
+    if (!chol || chol < 50) { alert('Enter valid cholesterol'); return; }
+
+    // Simplified risk scoring (Framingham-based approximation)
+    let points = 0;
+    const bmi = weight / ((height / 100) ** 2);
+
+    // Age points
+    if (gender === 'male') {
+      if (age >= 30 && age <= 34) points += 0;
+      else if (age <= 39) points += 2;
+      else if (age <= 44) points += 5;
+      else if (age <= 49) points += 7;
+      else if (age <= 54) points += 10;
+      else if (age <= 59) points += 13;
+      else if (age <= 64) points += 16;
+      else points += 18;
+    } else {
+      if (age >= 30 && age <= 34) points += 0;
+      else if (age <= 39) points += 2;
+      else if (age <= 44) points += 4;
+      else if (age <= 49) points += 6;
+      else if (age <= 54) points += 9;
+      else if (age <= 59) points += 12;
+      else if (age <= 64) points += 15;
+      else points += 17;
+    }
+
+    // BMI points
+    if (bmi >= 30) points += 2;
+    else if (bmi >= 25) points += 1;
+
+    // Smoker
+    if (smoker === 'yes') points += (gender === 'male' ? 4 : 3);
+
+    // Diabetes
+    if (diabetes === 'yes') points += (gender === 'male' ? 3 : 4);
+
+    // BP points
+    if (sbp >= 160) points += (gender === 'male' ? 3 : 5);
+    else if (sbp >= 140) points += (gender === 'male' ? 2 : 3);
+    else if (sbp >= 130) points += 1;
+
+    // Cholesterol
+    if (chol >= 240) points += (gender === 'male' ? 2 : 3);
+    else if (chol >= 200) points += (gender === 'male' ? 1 : 2);
+
+    // Convert points to risk percentage
+    let risk = Math.min(points * 2.5, 45);
+    risk = Math.round(risk * 10) / 10;
+
+    // Category
+    let level, color, message;
+    if (risk < 10) {
+      level = 'Low Risk';
+      color = '#10b981';
+      message = 'Your heart risk is low. Maintain a healthy lifestyle with regular exercise and a balanced diet.';
+    } else if (risk < 20) {
+      level = 'Moderate Risk';
+      color = '#f59e0b';
+      message = 'Your risk is moderate. Consider lifestyle changes and schedule a checkup with Dr G S Gill.';
+    } else {
+      level = 'High Risk';
+      color = '#ef4444';
+      message = 'Your risk is high. Please consult Dr G S Gill immediately for a complete cardiac evaluation.';
+    }
+
+    // Show results
+    const placeholder = document.querySelector('.risk-placeholder');
+    const data = document.querySelector('.risk-data');
+    if (placeholder) placeholder.style.display = 'none';
+    if (data) data.style.display = 'block';
+
+    // Gauge
+    const gauge = document.getElementById('riskGauge');
+    const percent = document.getElementById('riskPercent');
+    const levelEl = document.getElementById('riskLevel');
+    const barFill = document.getElementById('riskBarFill');
+    const msgEl = document.getElementById('riskMessage');
+
+    const angle = (risk / 45) * 360;
+    if (gauge) gauge.style.background = `conic-gradient(${color} 0deg, ${color} ${angle}deg, #e5e7eb ${angle}deg)`;
+    if (percent) percent.textContent = risk + '%';
+    if (levelEl) { levelEl.textContent = level; levelEl.className = 'risk-level ' + level.split(' ')[0].toLowerCase(); }
+    if (barFill) barFill.style.width = Math.min((risk / 30) * 100, 100) + '%';
+    if (msgEl) msgEl.textContent = message;
+  });
+}
+
+/* ==============================
    APPOINTMENT FORM HANDLER
    ============================== */
 const appointmentForm = document.getElementById('appointmentForm');

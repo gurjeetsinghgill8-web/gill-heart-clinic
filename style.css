@@ -1054,6 +1054,162 @@ img {
 }
 
 /* ==============================
+   HEART RISK CALCULATOR (Part 36)
+   ============================== */
+.heart-risk {
+  background: var(--white);
+}
+
+.risk-card {
+  background: var(--light);
+  border-radius: var(--radius);
+  padding: 45px;
+  box-shadow: var(--shadow);
+}
+
+.risk-form .risk-label {
+  display: block;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+
+.risk-form .risk-label i {
+  color: var(--primary);
+  margin-right: 5px;
+}
+
+.risk-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  transition: var(--transition);
+  background: white;
+}
+
+.risk-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(217,4,41,.08);
+}
+
+.risk-result {
+  background: white;
+  border-radius: var(--radius-sm);
+  padding: 30px 25px;
+  text-align: center;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.risk-placeholder i {
+  font-size: 52px;
+  color: var(--primary);
+  opacity: .35;
+  margin-bottom: 15px;
+}
+
+.risk-placeholder p {
+  color: var(--gray);
+  font-size: 14px;
+  margin: 0;
+}
+
+.risk-gauge {
+  margin-bottom: 15px;
+}
+
+.risk-gauge-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: conic-gradient(#10b981 0deg, #10b981 0deg, #e5e7eb 0deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  position: relative;
+}
+
+.risk-gauge-circle::before {
+  content: '';
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: white;
+}
+
+.risk-percent {
+  position: relative;
+  z-index: 1;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--dark);
+}
+
+.risk-level {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.risk-level.low { color: #065f46; }
+.risk-level.moderate { color: #92400e; }
+.risk-level.high { color: #991b1b; }
+
+.risk-bar {
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(to right, #10b981, #f59e0b, #ef4444);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.risk-bar-fill {
+  height: 100%;
+  background: transparent;
+  border-right: 4px solid white;
+  transition: width 1s ease;
+}
+
+.risk-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--gray);
+  margin-bottom: 15px;
+}
+
+.risk-message {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.risk-disclaimer {
+  font-size: 11px;
+  color: var(--gray);
+  font-style: italic;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.risk-disclaimer i {
+  color: var(--primary);
+  margin-right: 4px;
+}
+
+/* ==============================
    EMERGENCY SECTION
    ============================== */
 .emergency {
@@ -1738,6 +1894,29 @@ img {
 
   .bmi-result {
     min-height: 250px;
+    padding: 20px;
+  }
+
+  .risk-card {
+    padding: 25px;
+  }
+
+  .risk-gauge-circle {
+    width: 110px;
+    height: 110px;
+  }
+
+  .risk-gauge-circle::before {
+    width: 85px;
+    height: 85px;
+  }
+
+  .risk-percent {
+    font-size: 22px;
+  }
+
+  .risk-result {
+    min-height: 300px;
     padding: 20px;
   }
 

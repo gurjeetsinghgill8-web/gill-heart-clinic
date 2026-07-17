@@ -1093,6 +1093,162 @@ img {
 }
 
 /* ==============================
+   HEART RISK CALCULATOR (Part 36)
+   ============================== */
+.heart-risk {
+  background: var(--white);
+}
+
+.risk-card {
+  background: var(--light);
+  border-radius: var(--radius);
+  padding: 45px;
+  box-shadow: var(--shadow);
+}
+
+.risk-form .risk-label {
+  display: block;
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--dark);
+  margin-bottom: 6px;
+}
+
+.risk-form .risk-label i {
+  color: var(--primary);
+  margin-right: 5px;
+}
+
+.risk-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-family: 'Poppins', sans-serif;
+  transition: var(--transition);
+  background: white;
+}
+
+.risk-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(217,4,41,.08);
+}
+
+.risk-result {
+  background: white;
+  border-radius: var(--radius-sm);
+  padding: 30px 25px;
+  text-align: center;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.risk-placeholder i {
+  font-size: 52px;
+  color: var(--primary);
+  opacity: .35;
+  margin-bottom: 15px;
+}
+
+.risk-placeholder p {
+  color: var(--gray);
+  font-size: 14px;
+  margin: 0;
+}
+
+.risk-gauge {
+  margin-bottom: 15px;
+}
+
+.risk-gauge-circle {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: conic-gradient(#10b981 0deg, #10b981 0deg, #e5e7eb 0deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  position: relative;
+}
+
+.risk-gauge-circle::before {
+  content: '';
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: white;
+}
+
+.risk-percent {
+  position: relative;
+  z-index: 1;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--dark);
+}
+
+.risk-level {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.risk-level.low { color: #065f46; }
+.risk-level.moderate { color: #92400e; }
+.risk-level.high { color: #991b1b; }
+
+.risk-bar {
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(to right, #10b981, #f59e0b, #ef4444);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.risk-bar-fill {
+  height: 100%;
+  background: transparent;
+  border-right: 4px solid white;
+  transition: width 1s ease;
+}
+
+.risk-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--gray);
+  margin-bottom: 15px;
+}
+
+.risk-message {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.risk-disclaimer {
+  font-size: 11px;
+  color: var(--gray);
+  font-style: italic;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.risk-disclaimer i {
+  color: var(--primary);
+  margin-right: 4px;
+}
+
+/* ==============================
    EMERGENCY SECTION
    ============================== */
 .emergency {
@@ -1780,6 +1936,29 @@ img {
     padding: 20px;
   }
 
+  .risk-card {
+    padding: 25px;
+  }
+
+  .risk-gauge-circle {
+    width: 110px;
+    height: 110px;
+  }
+
+  .risk-gauge-circle::before {
+    width: 85px;
+    height: 85px;
+  }
+
+  .risk-percent {
+    font-size: 22px;
+  }
+
+  .risk-result {
+    min-height: 300px;
+    padding: 20px;
+  }
+
   .bmi-ranges span {
     font-size: 8px;
   }
@@ -2335,6 +2514,105 @@ img {
   </section>
 
   <!-- ================================ -->
+  <!-- HEART RISK CALCULATOR (Part 36)  -->
+  <!-- ================================ -->
+  <section id="heart-risk" class="heart-risk section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-heartbeat"></i> Health Tool</span>
+        <h2 class="heading">Heart Risk Calculator</h2>
+        <p class="section-sub">Check your 10-year risk of heart disease. Know your score, take control.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="risk-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="row g-4">
+              <div class="col-md-7">
+                <div class="risk-form">
+                  <div class="row g-3">
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-venus-mars"></i> Gender</label>
+                      <select id="riskGender" class="risk-input">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-birthday-cake"></i> Age</label>
+                      <input type="number" id="riskAge" class="risk-input" placeholder="30-74" min="30" max="74">
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-weight"></i> Weight (kg)</label>
+                      <input type="number" id="riskWeight" class="risk-input" placeholder="e.g. 70" min="20" max="300">
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-ruler-vertical"></i> Height (cm)</label>
+                      <input type="number" id="riskHeight" class="risk-input" placeholder="e.g. 170" min="50" max="250">
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-smoking"></i> Smoker?</label>
+                      <select id="riskSmoker" class="risk-input">
+                        <option value="no">Non-Smoker</option>
+                        <option value="yes">Smoker</option>
+                      </select>
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-tint"></i> Diabetic?</label>
+                      <select id="riskDiabetes" class="risk-input">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                      </select>
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-heart"></i> Systolic BP</label>
+                      <input type="number" id="riskBP" class="risk-input" placeholder="120 mmHg" min="80" max="250">
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-oil-can"></i> Cholesterol (mg/dL)</label>
+                      <input type="number" id="riskChol" class="risk-input" placeholder="e.g. 200" min="50" max="500">
+                    </div>
+                  </div>
+                  <button class="submit-btn mt-3" id="calcRisk">
+                    <i class="fas fa-heartbeat"></i> Calculate My Risk
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="risk-result" id="riskResult">
+                  <div class="risk-placeholder">
+                    <i class="fas fa-heartbeat"></i>
+                    <p>Fill your details to see your 10-year heart risk score.</p>
+                  </div>
+                  <div class="risk-data" style="display:none;">
+                    <div class="risk-gauge">
+                      <div class="risk-gauge-circle" id="riskGauge">
+                        <span class="risk-percent" id="riskPercent">0%</span>
+                      </div>
+                    </div>
+                    <div class="risk-level" id="riskLevel">Low Risk</div>
+                    <div class="risk-bar">
+                      <div class="risk-bar-fill" id="riskBarFill"></div>
+                    </div>
+                    <div class="risk-bar-labels">
+                      <span>0%</span>
+                      <span style="color:#10b981;">Low</span>
+                      <span style="color:#f59e0b;">Mod</span>
+                      <span style="color:#ef4444;">High</span>
+                      <span>30%+</span>
+                    </div>
+                    <p class="risk-message" id="riskMessage">Your risk is low. Keep up the healthy lifestyle!</p>
+                    <p class="risk-disclaimer"><i class="fas fa-info-circle"></i> This is an estimate based on standard risk factors. Consult Dr G S Gill for a complete assessment.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
   <!-- GOOGLE MAPS + CONTACT           -->
   <!-- ================================ -->
   <section id="location" class="location section-padding">
@@ -2730,6 +3008,114 @@ if (calcBtn) {
     input.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') calcBtn.click();
     });
+  });
+}
+
+/* ==============================
+   HEART RISK CALCULATOR (Part 36)
+   ============================== */
+const riskBtn = document.getElementById('calcRisk');
+if (riskBtn) {
+  riskBtn.addEventListener('click', () => {
+    const gender = document.getElementById('riskGender').value;
+    const age = parseInt(document.getElementById('riskAge').value);
+    const weight = parseFloat(document.getElementById('riskWeight').value);
+    const height = parseFloat(document.getElementById('riskHeight').value);
+    const smoker = document.getElementById('riskSmoker').value;
+    const diabetes = document.getElementById('riskDiabetes').value;
+    const sbp = parseInt(document.getElementById('riskBP').value);
+    const chol = parseInt(document.getElementById('riskChol').value);
+
+    // Validate
+    if (!age || age < 30 || age > 74) { alert('Enter age between 30-74'); return; }
+    if (!weight || weight < 20) { alert('Enter valid weight'); return; }
+    if (!height || height < 50) { alert('Enter valid height'); return; }
+    if (!sbp || sbp < 80) { alert('Enter valid systolic BP'); return; }
+    if (!chol || chol < 50) { alert('Enter valid cholesterol'); return; }
+
+    // Simplified risk scoring (Framingham-based approximation)
+    let points = 0;
+    const bmi = weight / ((height / 100) ** 2);
+
+    // Age points
+    if (gender === 'male') {
+      if (age >= 30 && age <= 34) points += 0;
+      else if (age <= 39) points += 2;
+      else if (age <= 44) points += 5;
+      else if (age <= 49) points += 7;
+      else if (age <= 54) points += 10;
+      else if (age <= 59) points += 13;
+      else if (age <= 64) points += 16;
+      else points += 18;
+    } else {
+      if (age >= 30 && age <= 34) points += 0;
+      else if (age <= 39) points += 2;
+      else if (age <= 44) points += 4;
+      else if (age <= 49) points += 6;
+      else if (age <= 54) points += 9;
+      else if (age <= 59) points += 12;
+      else if (age <= 64) points += 15;
+      else points += 17;
+    }
+
+    // BMI points
+    if (bmi >= 30) points += 2;
+    else if (bmi >= 25) points += 1;
+
+    // Smoker
+    if (smoker === 'yes') points += (gender === 'male' ? 4 : 3);
+
+    // Diabetes
+    if (diabetes === 'yes') points += (gender === 'male' ? 3 : 4);
+
+    // BP points
+    if (sbp >= 160) points += (gender === 'male' ? 3 : 5);
+    else if (sbp >= 140) points += (gender === 'male' ? 2 : 3);
+    else if (sbp >= 130) points += 1;
+
+    // Cholesterol
+    if (chol >= 240) points += (gender === 'male' ? 2 : 3);
+    else if (chol >= 200) points += (gender === 'male' ? 1 : 2);
+
+    // Convert points to risk percentage
+    let risk = Math.min(points * 2.5, 45);
+    risk = Math.round(risk * 10) / 10;
+
+    // Category
+    let level, color, message;
+    if (risk < 10) {
+      level = 'Low Risk';
+      color = '#10b981';
+      message = 'Your heart risk is low. Maintain a healthy lifestyle with regular exercise and a balanced diet.';
+    } else if (risk < 20) {
+      level = 'Moderate Risk';
+      color = '#f59e0b';
+      message = 'Your risk is moderate. Consider lifestyle changes and schedule a checkup with Dr G S Gill.';
+    } else {
+      level = 'High Risk';
+      color = '#ef4444';
+      message = 'Your risk is high. Please consult Dr G S Gill immediately for a complete cardiac evaluation.';
+    }
+
+    // Show results
+    const placeholder = document.querySelector('.risk-placeholder');
+    const data = document.querySelector('.risk-data');
+    if (placeholder) placeholder.style.display = 'none';
+    if (data) data.style.display = 'block';
+
+    // Gauge
+    const gauge = document.getElementById('riskGauge');
+    const percent = document.getElementById('riskPercent');
+    const levelEl = document.getElementById('riskLevel');
+    const barFill = document.getElementById('riskBarFill');
+    const msgEl = document.getElementById('riskMessage');
+
+    const angle = (risk / 45) * 360;
+    if (gauge) gauge.style.background = `conic-gradient(${color} 0deg, ${color} ${angle}deg, #e5e7eb ${angle}deg)`;
+    if (percent) percent.textContent = risk + '%';
+    if (levelEl) { levelEl.textContent = level; levelEl.className = 'risk-level ' + level.split(' ')[0].toLowerCase(); }
+    if (barFill) barFill.style.width = Math.min((risk / 30) * 100, 100) + '%';
+    if (msgEl) msgEl.textContent = message;
   });
 }
 

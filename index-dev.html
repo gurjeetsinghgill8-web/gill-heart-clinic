@@ -572,6 +572,105 @@
   </section>
 
   <!-- ================================ -->
+  <!-- HEART RISK CALCULATOR (Part 36)  -->
+  <!-- ================================ -->
+  <section id="heart-risk" class="heart-risk section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-heartbeat"></i> Health Tool</span>
+        <h2 class="heading">Heart Risk Calculator</h2>
+        <p class="section-sub">Check your 10-year risk of heart disease. Know your score, take control.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="risk-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="row g-4">
+              <div class="col-md-7">
+                <div class="risk-form">
+                  <div class="row g-3">
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-venus-mars"></i> Gender</label>
+                      <select id="riskGender" class="risk-input">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-birthday-cake"></i> Age</label>
+                      <input type="number" id="riskAge" class="risk-input" placeholder="30-74" min="30" max="74">
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-weight"></i> Weight (kg)</label>
+                      <input type="number" id="riskWeight" class="risk-input" placeholder="e.g. 70" min="20" max="300">
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-ruler-vertical"></i> Height (cm)</label>
+                      <input type="number" id="riskHeight" class="risk-input" placeholder="e.g. 170" min="50" max="250">
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-smoking"></i> Smoker?</label>
+                      <select id="riskSmoker" class="risk-input">
+                        <option value="no">Non-Smoker</option>
+                        <option value="yes">Smoker</option>
+                      </select>
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-tint"></i> Diabetic?</label>
+                      <select id="riskDiabetes" class="risk-input">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                      </select>
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-heart"></i> Systolic BP</label>
+                      <input type="number" id="riskBP" class="risk-input" placeholder="120 mmHg" min="80" max="250">
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-oil-can"></i> Cholesterol (mg/dL)</label>
+                      <input type="number" id="riskChol" class="risk-input" placeholder="e.g. 200" min="50" max="500">
+                    </div>
+                  </div>
+                  <button class="submit-btn mt-3" id="calcRisk">
+                    <i class="fas fa-heartbeat"></i> Calculate My Risk
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="risk-result" id="riskResult">
+                  <div class="risk-placeholder">
+                    <i class="fas fa-heartbeat"></i>
+                    <p>Fill your details to see your 10-year heart risk score.</p>
+                  </div>
+                  <div class="risk-data" style="display:none;">
+                    <div class="risk-gauge">
+                      <div class="risk-gauge-circle" id="riskGauge">
+                        <span class="risk-percent" id="riskPercent">0%</span>
+                      </div>
+                    </div>
+                    <div class="risk-level" id="riskLevel">Low Risk</div>
+                    <div class="risk-bar">
+                      <div class="risk-bar-fill" id="riskBarFill"></div>
+                    </div>
+                    <div class="risk-bar-labels">
+                      <span>0%</span>
+                      <span style="color:#10b981;">Low</span>
+                      <span style="color:#f59e0b;">Mod</span>
+                      <span style="color:#ef4444;">High</span>
+                      <span>30%+</span>
+                    </div>
+                    <p class="risk-message" id="riskMessage">Your risk is low. Keep up the healthy lifestyle!</p>
+                    <p class="risk-disclaimer"><i class="fas fa-info-circle"></i> This is an estimate based on standard risk factors. Consult Dr G S Gill for a complete assessment.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
   <!-- GOOGLE MAPS + CONTACT           -->
   <!-- ================================ -->
   <section id="location" class="location section-padding">
