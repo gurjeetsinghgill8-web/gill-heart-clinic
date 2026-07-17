@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<title>User Manual - Google Search Setup | Gill Heart Clinic</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', 'Noto Sans Devanagari', sans-serif;
+  background: #0f172a;
+  color: #1e293b;
+}
+
+/* ===== COVER PAGE ===== */
+.cover {
+  width: 210mm;
+  height: 297mm;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #0c4a6e 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 50%, rgba(2, 132, 199, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 70% 30%, rgba(217, 4, 41, 0.1) 0%, transparent 40%);
+  animation: none;
+}
+
+.cover .heart-icon {
+  font-size: 64px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.cover h1 {
+  font-size: 52px;
+  font-weight: 800;
+  color: #ffffff;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.cover h1 span {
+  display: block;
+  font-size: 24px;
+  font-weight: 400;
+  color: #94a3b8;
+  margin-top: 12px;
+  letter-spacing: 0;
+}
+
+.cover .subtitle {
+  font-size: 20px;
+  font-weight: 300;
+  color: #60a5fa;
+  margin-top: 30px;
+  position: relative;
+  z-index: 1;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.cover .divider {
+  width: 80px;
+  height: 3px;
+  background: #d90429;
+  margin: 30px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.cover .meta {
+  position: absolute;
+  bottom: 60px;
+  text-align: center;
+  color: #475569;
+  font-size: 13px;
+  z-index: 1;
+}
+
+.cover .meta strong {
+  color: #94a3b8;
+}
+
+/* ===== CONTENT PAGES ===== */
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  padding: 50px 55px;
+  background: #ffffff;
+  page-break-after: always;
+  position: relative;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e2e8f0;
+  margin-bottom: 35px;
+}
+
+.page-header .brand {
+  font-weight: 700;
+  font-size: 14px;
+  color: #0f172a;
+  letter-spacing: 0.5px;
+}
+
+.page-header .brand span {
+  color: #d90429;
+}
+
+.page-header .page-num {
+  font-size: 12px;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+h2 .step-badge {
+  display: inline-block;
+  background: #d90429;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 3px 14px;
+  border-radius: 20px;
+  margin-right: 12px;
+  vertical-align: middle;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e3a5f;
+  margin-top: 28px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 12px;
+}
+
+ul, ol {
+  padding-left: 22px;
+  margin-bottom: 16px;
+}
+
+li {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+li strong {
+  color: #0f172a;
+}
+
+.highlight-box {
+  background: #f0f9ff;
+  border-left: 4px solid #0284c7;
+  padding: 16px 20px;
+  margin: 18px 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.highlight-box p {
+  margin-bottom: 4px;
+  color: #0c4a6e;
+}
+
+.highlight-box.warning {
+  background: #fff7ed;
+  border-left-color: #ea580c;
+}
+
+.highlight-box.warning p {
+  color: #9a3412;
+}
+
+.highlight-box.success {
+  background: #f0fdf4;
+  border-left-color: #16a34a;
+}
+
+.highlight-box.success p {
+  color: #166534;
+}
+
+.step-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 16px 0;
+}
+
+.step-card .step-title {
+  font-weight: 600;
+  font-size: 15px;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.step-card .step-title .num {
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  background: #d90429;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 26px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.code-block {
+  background: #1e293b;
+  color: #e2e8f0;
+  font-family: 'SF Mono', 'Consolas', monospace;
+  font-size: 12px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  margin: 12px 0;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
+.code-block .comment {
+  color: #64748b;
+}
+
+.footer-note {
+  position: absolute;
+  bottom: 35px;
+  left: 55px;
+  right: 55px;
+  font-size: 11px;
+  color: #94a3b8;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 15px;
+  text-align: center;
+}
+
+/* Checklist */
+.checklist {
+  list-style: none;
+  padding-left: 0;
+}
+
+.checklist li {
+  padding: 8px 0 8px 32px;
+  position: relative;
+}
+
+.checklist li::before {
+  content: '☐';
+  position: absolute;
+  left: 0;
+  font-size: 18px;
+  color: #64748b;
+}
+
+/* Hindi text */
+.hi {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+}
+
+/* Screenshot placeholder */
+.screenshot-placeholder {
+  background: #f1f5f9;
+  border: 2px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  margin: 16px 0;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.screenshot-placeholder .icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 13px;
+}
+
+table th {
+  background: #1e3a5f;
+  color: #fff;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+}
+
+table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #475569;
+}
+
+table tr:nth-child(even) td {
+  background: #f8fafc;
+}
+
+/* Numbered steps big */
+.big-step {
+  display: flex;
+  gap: 16px;
+  margin: 20px 0;
+  align-items: flex-start;
+}
+
+.big-step .big-num {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #d90429, #ef4444);
+  color: #fff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 18px;
+}
+
+.big-step .big-content {
+  flex: 1;
+}
+
+.big-step .big-content h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+/* Two column */
+.two-col {
+  display: flex;
+  gap: 30px;
+  margin: 16px 0;
+}
+
+.two-col > div {
+  flex: 1;
+}
+
+@media print {
+  .cover { page-break-after: always; }
+  .page { page-break-after: always; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div class="heart-icon">❤️</div>
+  <div class="divider"></div>
+  <h1>
+    User Manual
+    <span>अपनी वेबसाइट को Google पर कैसे लाएं</span>
+  </h1>
+  <div class="subtitle">Google Search Setup Guide</div>
+  <div class="meta">
+    <strong>Gill Heart Clinic</strong> — Dr G S Gill, Cardio-Physician, Meerut<br>
+    Website: gurjeetsinghgill8-web.github.io/gill-heart-clinic<br>
+    Version 1.0 — July 2026
+  </div>
+</div>
+
+<!-- ===== PAGE 1: INTRODUCTION ===== -->
+<div class="page">
+  <div class="page-header">
+    <div class="brand">❤️‍🩹 <span>Gill</span> Heart Clinic</div>
+    <div class="page-num">Page 01</div>
+  </div>
+
+  <h2>📋 परिचय — Introduction</h2>
+  <p>आपकी वेबसाइट <strong>Gill Heart Clinic</strong> अब लाइव है और दुनिया भर से एक्सेस की जा सकती है। लेकिन जब तक Google इसे इंडेक्स नहीं करता, लोग इसे सर्च करके नहीं ढूंढ पाएंगे।</p>
+  <p>यह मैन्युअल आपको <strong>स्टेप-बाय-स्टेप</strong> बताएगा कि कैसे अपनी वेबसाइट को Google पर दिखाया जाए — बिना किसी तकनीकी ज्ञान के।</p>
+
+  <div class="highlight-box success">
+    <p><strong>✅ आपकी वेबसाइट का पता:</strong></p>
+    <p style="font-size:16px;font-weight:600;">https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/</p>
+  </div>
+
+  <h3>📌 इस मैन्युअल में क्या है?</h3>
+  <table>
+    <tr><th>Step</th><th>क्या करना है</th><th>समय</th></tr>
+    <tr><td>1</td><td>Google Search Console में वेबसाइट वेरिफाई करें</td><td>10 मिनट</td></tr>
+    <tr><td>2</td><td>Google से इंडेक्सिंग रिक्वेस्ट करें</td><td>5 मिनट</td></tr>
+    <tr><td>3</td><td>Google Business Profile बनाएं</td><td>20 मिनट</td></tr>
+    <tr><td>4</td><td>Social Signals और Backlinks बढ़ाएं</td><td>15 मिनट</td></tr>
+    <tr><td>5</td><td>Google Reviews प्राप्त करें</td><td>10 मिनट</td></tr>
+    <tr><td>6</td><td>मॉनिटरिंग और मेंटेनेंस</td><td>5 मिनट/सप्ताह</td></tr>
+  </table>
+
+  <div class="highlight-box warning">
+    <p><strong>⚠️ जरूरी:</strong> आपके पास एक <strong>Google अकाउंट</strong> (Gmail) होना चाहिए। अगर नहीं है, तो पहले Gmail बनाएं — gmail.com पर जाएं और "Create Account" पर क्लिक करें। यह बिल्कुल फ्री है।</p>
+  </div>
+
+  <div class="footer-note">Gill Heart Clinic — Google Search Setup Guide</div>
+</div>
+
+<!-- ===== PAGE 2: STEP 1 - GOOGLE SEARCH CONSOLE ===== -->
+<div class="page">
+  <div class="page-header">
+    <div class="brand">❤️‍🩹 <span>Gill</span> Heart Clinic</div>
+    <div class="page-num">Page 02</div>
+  </div>
+
+  <h2><span class="step-badge">Step 1</span> Google Search Console</h2>
+  <p class="hi">Google Search Console एक फ्री टूल है जो Google को बताता है कि आपकी वेबसाइट मौजूद है। इसके बिना Google आपकी साइट को इंडेक्स नहीं करेगा।</p>
+
+  <div class="big-step">
+    <div class="big-num">1</div>
+    <div class="big-content">
+      <h4>Search Console पर जाएं</h4>
+      <p>अपने फोन या कंप्यूटर के ब्राउज़र में यह लिंक खोलें:</p>
+      <div class="code-block">https://search.google.com/search-console</div>
+    </div>
+  </div>
+
+  <div class="big-step">
+    <div class="big-num">2</div>
+    <div class="big-content">
+      <h4>Google अकाउंट से Login करें</h4>
+      <p>अपना Gmail ID और पासवर्ड डालकर साइन इन करें।</p>
+    </div>
+  </div>
+
+  <div class="big-step">
+    <div class="big-num">3</div>
+    <div class="big-content">
+      <h4>URL prefix डालें</h4>
+      <p>"URL prefix" वाले टैब में यह लिंक डालें:</p>
+      <div class="code-block">https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/</div>
+    </div>
+  </div>
+
+  <div class="big-step">
+    <div class="big-num">4</div>
+    <div class="big-content">
+      <h4>Verification (वेरिफिकेशन)</h4>
+      <p>अब Google पूछेगा कि क्या यह आपकी वेबसाइट है। इसे वेरिफाई करने के कई तरीके हैं। <strong>सबसे आसान तरीका:</strong></p>
+      <div class="step-card">
+        <div class="step-title"><span class="num">A</span> HTML Tag Method</div>
+        <p>Google आपको एक मेटा टैग देगा जो कुछ इस तरह दिखेगा:</p>
+        <div class="code-block">&lt;meta name="google-site-verification"<br>&nbsp;&nbsp;content="xxxxxxxxxxxxxxxxxxxx"&gt;</div>
+        <p>यह मेटा टैग <strong>पहले से ही</strong> आपकी वेबसाइट में लगा हुआ है! बस <strong>"Verify" बटन</strong> पर क्लिक करें।</p>
+      </div>
+      <div class="highlight-box success">
+        <p><strong>✅ हो गया!</strong> अगर Verify सक्सेसफुल हो गया तो आपको कंफर्मेशन मिलेगा।</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">Gill Heart Clinic — Google Search Setup Guide | Step 1</div>
+</div>
+
+<!-- ===== PAGE 3: STEP 2 - INDEXING REQUEST ===== -->
+<div class="page">
+  <div class="page-header">
+    <div class="brand">❤️‍🩹 <span>Gill</span> Heart Clinic</div>
+    <div class="page-num">Page 03</div>
+  </div>
+
+  <h2><span class="step-badge">Step 2</span> Indexing Request</h2>
+  <p class="hi">वेरिफिकेशन के बाद, अब आप Google को बोलेंगे कि "मेरी वेबसाइट को अपने सर्च रिजल्ट्स में शामिल करो"।</p>
+
+  <div class="big-step">
+    <div class="big-num">1</div>
+    <div class="big-content">
+      <h4>URL Inspection Tool</h4>
+      <p>Search Console के ऊपर एक सर्च बार है। वहां अपनी वेबसाइट का पूरा URL डालें:</p>
+      <div class="code-block">https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/</div>
+    </div>
+  </div>
+
+  <div class="big-step">
+    <div class="big-num">2</div>
+    <div class="big-content">
+      <h4>"Request Indexing" पर क्लिक करें</h4>
+      <p>Google आपकी वेबसाइट को स्कैन करेगा। नीले <strong>"Request Indexing"</strong> बटन पर क्लिक करें।</p>
+      <div class="highlight-box">
+        <p><strong>💡 नोट:</strong> अगर "URL is not on Google" लिखा है, तो चिंता न करें — यही नॉर्मल है। बस Request Indexing दबाएं।</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="big-step">
+    <div class="big-num">3</div>
+    <div class="big-content">
+      <h4>इंतजार करें (Wait)</h4>
+      <p>Google को आपकी साइट को इंडेक्स करने में <strong>24 घंटे से 1 सप्ताह</strong> लग सकता है। धैर्य रखें।</p>
+      <div class="step-card">
+        <div class="step-title">⏱️ सामान्य टाइमलाइन</div>
+        <table>
+          <tr><td>🕐 Indexing Request</td><td>तुरंत</td></tr>
+          <tr><td>🕑 Google Crawl</td><td>1-3 दिन</td></tr>
+          <tr><td>🕓 Search Results में दिखना</td><td>3-7 दिन</td></tr>
+          <tr><td>🕗 पूरी तरह रैंक होना</td><td>2-4 सप्ताह</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="big-step">
+    <div class="big-num">4</div>
+    <div class="big-content">
+      <h4>कैसे चेक करें कि इंडेक्स हुई या नहीं?</h4>
+      <p>Google पर जाकर यह सर्च करें:</p>
+      <div class="code-block">site:gurjeetsinghgill8-web.github.io/gill-heart-clinic</div>
+      <p>अगर आपकी साइट दिखती है, तो इंडेक्स हो गई! 🎉</p>
+    </div>
+  </div>
+
+  <div class="footer-note">Gill Heart Clinic — Google Search Setup Guide | Step 2</div>
+</div>
+
+<!-- ===== PAGE 4: STEP 3 - GOOGLE BUSINESS PROFILE ===== -->
+<div class="page">
+  <div class="page-header">
+    <div class="brand">❤️‍🩹 <span>Gill</span> Heart Clinic</div>
+    <div class="page-num">Page 04</div>
+  </div>
+
+  <h2><span class="step-badge">Step 3</span> Google Business Profile</h2>
+  <p class="hi">जब मरीज़ "Meerut में heart doctor" या "best cardiologist near me" सर्च करते हैं, तो Google Business Profile सबसे ऊपर दिखता है। यह आपकी <strong>लोकल SEO</strong> के लिए सबसे जरूरी चीज़ है।</p>
+
+  <div class="big-step">
+    <div class="big-num">1</div>
+    <div class="big-content">
+      <h4>Google Business Profile पर जाएं</h4>
+      <div class="code-block">https://www.google.com/business/</div>
+      <p>"Manage Now" बटन पर क्लिक करें और अपने Gmail से लॉगिन करें।</p>
+    </div>
+  </div>
+
+  <div class="big-step">
+    <div class="big-num">2</div>
+    <div class="big-content">
+      <h4>बिज़नेस की जानकारी भरें</h4>
+      <div class="two-col">
+        <div>
+          <div class="step-card">
+            <div class="step-title">📝 यह जानकारी भरें:</div>
+            <ul>
+              <li><strong>Business Name:</strong> Gill Heart Clinic</li>
+              <li><strong>Category:</strong> Cardiologist / Heart Clinic</li>
+              <li><strong>Address:</strong> Sugar Mill, Mohiuddinpur, Meerut, UP 250205</li>
+              <li><strong>Phone:</strong> 9258879884</li>
+              <li><strong>Website:</strong> (अपनी वेबसाइट का लिंक डालें)</li>
+              <li><strong>Hours:</strong> 9 AM – 7 PM</li>
+            </ul>
+          </div>
+        </div>
+        <div>
+          <div class="highlight-box success">
+            <p><strong>✅ Website लिंक डालना न भूलें!</strong></p>
+            <p>https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="big-step">
+    <div class="big-num">3</div>
+    <div class="big-content">
+      <h4>Verification (पोस्टकार्ड से)</h4>
+      <p>Google आपके क्लिनिक के पते पर एक <strong>पोस्टकार्ड</strong> भेजेगा जिसमें एक कोड होगा। यह कोड डालकर वेरिफाई करें।</p>
+      <div class="highlight-box warning">
+        <p><strong>⏱️ पोस्टकार्ड आने में 5-12 दिन लग सकते हैं।</strong> यह नॉर्मल है। कोड मिलने पर तुरंत डालें।</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="big-step">
+    <div class="big-num">4</div>
+    <div class="big-content">
+      <h4>फोटो डालें</h4>
+      <p>क्लिनिक की 3-5 अच्छी फोटो डालें। फोटो वाले बिज़नेस ज़्यादा दिखते हैं।</p>
+      <ul>
+        <li>क्लिनिक का बाहर से फोटो</li>
+        <li>अपनी एक प्रोफेशनल फोटो</li>
+        <li>वेटिंग एरिया या रिसेप्शन</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-note">Gill Heart Clinic — Google Search Setup Guide | Step 3</div>
+</div>
+
+<!-- ===== PAGE 5: STEP 4 - SOCIAL SIGNALS ===== -->
+<div class="page">
+  <div class="page-header">
+    <div class="brand">❤️‍🩹 <span>Gill</span> Heart Clinic</div>
+    <div class="page-num">Page 05</div>
+  </div>
+
+  <h2><span class="step-badge">Step 4</span> Social Signals & Backlinks</h2>
+  <p class="hi">Google यह देखता है कि आपकी वेबसाइट को कितने लोग शेयर कर रहे हैं और कितनी दूसरी वेबसाइटें आपको लिंक कर रही हैं। जितना ज़्यादा शेयर, उतनी जल्दी इंडेक्स।</p>
+
+  <div class="step-card">
+    <div class="step-title">📱 WhatsApp पर शेयर करें</div>
+    <p>अपने मरीज़ों और दोस्तों को WhatsApp पर यह लिंक भेजें:</p>
+    <div class="code-block">https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/</div>
+    <p>उनसे कहें कि वे <strong>लिंक पर क्लिक करें</strong> और कम से कम 10 सेकंड तक वेबसाइट देखें। इससे Google को सिग्नल मिलता है कि यह साइट एक्टिव है।</p>
+  </div>
+
+  <div class="step-card">
+    <div class="step-title">📱 Facebook / Instagram पर Share करें</div>
+    <p>अपने सोशल मीडिया अकाउंट पर पोस्ट करें:</p>
+    <div class="highlight-box">
+      <p><strong>📝 पोस्ट टेम्पलेट (कॉपी करें):</strong></p>
+      <p>नमस्ते! 🙏 हमारे क्लिनिक <strong>Gill Heart Clinic</strong> की नई वेबसाइट लाइव हो गई है। अब आप ऑनलाइन अपॉइंटमेंट बुक कर सकते हैं, BMI और हार्ट रिस्क कैलकुलेटर इस्तेमाल कर सकते हैं, और heart health टिप्स पढ़ सकते हैं।<br><br>🩺 <strong>Website:</strong> https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/<br><br>#GillHeartClinic #Cardiologist #Meerut #HeartHealth</p>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-title">🔗 Eka.Care से Backlink</div>
+    <p>आपका पुराना Eka.Care प्रोफाइल (जो आपने पहले बनवाया था) पहले से ही आपकी वेबसाइट को लिंक कर रहा है। यह Google को बताता है कि कोई और वेबसाइट आपको रेफर कर रही है।</p>
+    <p>Eka.Care प्रोफाइल: <strong>https://www.eka.care/doctor/dr-gurjeet-singh-gill-general-physician-meerut</strong></p>
+  </div>
+
+  <div class="highlight-box success">
+    <p><strong>💡 5-5 लोगों को लिंक भेजें और उनसे कहें:</strong> "प्लीज इस लिंक को खोलकर 10 सेकंड देख लीजिए।" — इससे Google को तुरंत पता चल जाएगा कि साइट एक्टिव है।</p>
+  </div>
+
+  <div class="footer-note">Gill Heart Clinic — Google Search Setup Guide | Step 4</div>
+</div>
+
+<!-- ===== PAGE 6: STEP 5 - GOOGLE REVIEWS ===== -->
+<div class="page">
+  <div class="page-header">
+    <div class="brand">❤️‍🩹 <span>Gill</span> Heart Clinic</div>
+    <div class="page-num">Page 06</div>
+  </div>
+
+  <h2><span class="step-badge">Step 5</span> Google Reviews</h2>
+  <p class="hi">Google Reviews (समीक्षाएं) आपकी लोकल रैंकिंग के लिए बहुत जरूरी हैं। जितने ज़्यादा पॉज़िटिव रिव्यू, उतना ऊपर आपकी साइट दिखेगी।</p>
+
+  <div class="big-step">
+    <div class="big-num">1</div>
+    <div class="big-content">
+      <h4>Review Link बनाएं</h4>
+      <p>Google Business Profile बनने के बाद, Google आपको एक रिव्यू लिंक देगा। वह लिंक कुछ इस तरह होगा:</p>
+      <div class="code-block" style="font-size:11px;">https://search.google.com/local/writereview?cid=YOUR_CID_NUMBER</div>
+      <p>इस लिंक को अपने फोन में सेव कर लें।</p>
+    </div>
+  </div>
+
+  <div class="big-step">
+    <div class="big-num">2</div>
+    <div class="big-content">
+      <h4>मरीज़ों से Review मांगें</h4>
+      <p>जो मरीज़ आपसे खुश हैं, उनसे रिव्यू डालने का रिक्वेस्ट करें। उन्हें WhatsApp पर यह मैसेज भेजें:</p>
+      <div class="highlight-box">
+        <p><strong>📱 WhatsApp टेम्पलेट:</strong></p>
+        <p>नमस्ते! 🙏 मैं Dr G S Gill, Gill Heart Clinic, Meerut से बात कर रहा हूं। अगर आप हमारी सेवा से संतुष्ट हैं, तो कृपया Google पर हमें 5-स्टार रेटिंग दें। इससे हमें और मरीज़ों तक पहुंचने में मदद मिलेगी।<br><br>⭐ समीक्षा देने के लिए यहां क्लिक करें:<br>[आपका Review Link]<br><br>धन्यवाद! 🙏</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="big-step">
+    <div class="big-num">3</div>
+    <div class="big-content">
+      <h4>कम से कम 10 Reviews का लक्ष्य रखें</h4>
+      <p>Google के अल्गोरिद्म में 10+ रिव्यू वाले बिज़नेस को प्राथमिकता मिलती है। 4.0+ स्टार रेटिंग बहुत अच्छी मानी जाती है।</p>
+    </div>
+  </div>
+
+  <div class="highlight-box warning">
+    <p><strong>⚠️ ध्यान दें:</strong> कभी भी फेक रिव्यू न डालें और न ही पैसे देकर रिव्यू खरीदें। Google ऐसा करने पर पेनल्टी लगा सकता है। हमेशा <strong>असली मरीज़ों</strong> से ही रिव्यू मांगें।</p>
+  </div>
+
+  <div class="footer-note">Gill Heart Clinic — Google Search Setup Guide | Step 5</div>
+</div>
+
+<!-- ===== PAGE 7: STEP 6 - MONITORING ===== -->
+<div class="page">
+  <div class="page-header">
+    <div class="brand">❤️‍🩹 <span>Gill</span> Heart Clinic</div>
+    <div class="page-num">Page 07</div>
+  </div>
+
+  <h2><span class="step-badge">Step 6</span> Monitoring & Maintenance</h2>
+  <p class="hi">एक बार इंडेक्स हो जाने के बाद भी आपको कुछ चीज़ें नियमित रूप से करनी होंगी ताकि आपकी रैंकिंग बनी रहे।</p>
+
+  <div class="step-card">
+    <div class="step-title">📊 हर हफ्ते करें:</div>
+    <ul class="checklist">
+      <li><strong>Search Console खोलें</strong> — देखें कि कोई नई इंडेक्सिंग इश्यू तो नहीं है</li>
+      <li><strong>Website चेक करें</strong> — अपनी वेबसाइट खोलकर देखें कि वह सही से काम कर रही है</li>
+      <li><strong>नया कंटेंट डालें</strong> — हफ्ते में एक नया हार्ट टिप्स या ब्लॉग पोस्ट डालें</li>
+    </ul>
+  </div>
+
+  <div class="step-card">
+    <div class="step-title">📊 हर महीने करें:</div>
+    <ul class="checklist">
+      <li><strong>Google Business Profile अपडेट करें</strong> — नई फोटो या पोस्ट डालें</li>
+      <li><strong>नए रिव्यू का जवाब दें</strong> — हर रिव्यू को धन्यवाद बोलें</li>
+      <li><strong>वेबसाइट का नया कंटेंट पब्लिश करें</strong> — ब्लॉग, टिप्स, या कोई नया फीचर</li>
+    </ul>
+  </div>
+
+  <h3>🚀 Indexing Speed-Up Tips (एक्स्ट्रा टिप्स)</h3>
+  <table>
+    <tr><th>Tip</th><th>क्या करें</th></tr>
+    <tr><td>1</td><td>अपनी वेबसाइट का लिंक <strong>Twitter/X</strong> पर पोस्ट करें — Google Twitter को जल्दी क्रॉल करता है</td></tr>
+    <tr><td>2</td><td>लिंक को <strong>LinkedIn</strong> पर शेयर करें</td></tr>
+    <tr><td>3</td><td>अपने दोस्तों से कहें कि वे अपनी वेबसाइट या ब्लॉग से आपको लिंक करें</td></tr>
+    <tr><td>4</td><td>अपने Eka.Care प्रोफाइल पर अपॉइंटमेंट अपडेट करें — इससे भी लिंक वैल्यू मिलती है</td></tr>
+    <tr><td>5</td><td>Google Search Console में हर नए पेज के लिए फिर से "Request Indexing" करें</td></tr>
+  </table>
+
+  <div class="footer-note">Gill Heart Clinic — Google Search Setup Guide | Step 6</div>
+</div>
+
+<!-- ===== PAGE 8: TROUBLESHOOTING ===== -->
+<div class="page">
+  <div class="page-header">
+    <div class="brand">❤️‍🩹 <span>Gill</span> Heart Clinic</div>
+    <div class="page-num">Page 08</div>
+  </div>
+
+  <h2>🔧 Troubleshooting — समस्या और समाधान</h2>
+  <p class="hi">अगर कोई दिक्कत आए तो यहां देखें:</p>
+
+  <div class="step-card">
+    <div class="step-title">❓ "क्या मैं अपने फोन से यह सब कर सकता हूं?"</div>
+    <p><strong>हां!</strong> — आप <strong>पूरी प्रक्रिया अपने मोबाइल से कर सकते हैं</strong>। Google Search Console, Google Business Profile, और WhatsApp शेयरिंग — सब मोबाइल पर चलता है। आपको कंप्यूटर की जरूरत नहीं है।</p>
+  </div>
+
+  <div class="step-card">
+    <div class="step-title">❓ "Verify करने पर error आ रहा है"</div>
+    <p>अगर Verify करने पर एरर आए, तो <strong>HTML टैग मेथड</strong> चुनें। Google जो मेटा टैग देगा, उसे हम आपकी वेबसाइट में लगा सकते हैं। बस मुझे वह टैग भेज दें — मैं 5 मिनट में लगा दूंगा।</p>
+  </div>
+
+  <div class="step-card">
+    <div class="step-title">❓ "Google Business Profile में पता नहीं मिल रहा"</div>
+    <p>"Add your business manually" पर क्लिक करें और खुद से जानकारी भरें। यह आसान है।</p>
+  </div>
+
+  <div class="step-card">
+    <div class="step-title">❓ "कितने दिन में Google पर दिखने लगेगा?"</div>
+    <p>आमतौर पर <strong>3-7 दिन</strong> में इंडेक्स हो जाता है। अगर 2 हफ्ते से ज़्यादा लग रहा है, तो मुझसे दोबारा संपर्क करें — हम और कदम उठाएंगे।</p>
+  </div>
+
+  <div class="step-card">
+    <div class="step-title">❓ "मेरे पास पुरानी वेबसाइट का पासवर्ड/ईमेल नहीं है"</div>
+    <p>कोई बात नहीं। नई वेबसाइट पूरी तरह नई है और नए GitHub अकाउंट पर है। पुरानी वेबसाइट की जरूरत नहीं है। बस ऊपर दिए गए स्टेप्स फॉलो करें।</p>
+  </div>
+
+  <div class="highlight-box success">
+    <p><strong>📞 मदद चाहिए?</strong></p>
+    <p>अगर किसी भी स्टेप में अटक जाएं, तो मुझसे दोबारा संपर्क करें। स्क्रीनशॉट भेजें और बताएं कि कहां अटके हैं — मैं आपको गाइड करूंगा।</p>
+  </div>
+
+  <div class="footer-note">Gill Heart Clinic — Google Search Setup Guide | Troubleshooting</div>
+</div>
+
+<!-- ===== PAGE 9: CHECKLIST ===== -->
+<div class="page">
+  <div class="page-header">
+    <div class="brand">❤️‍🩹 <span>Gill</span> Heart Clinic</div>
+    <div class="page-num">Page 09</div>
+  </div>
+
+  <h2>✅ Complete Checklist</h2>
+  <p>हर काम पूरा होने पर ☐ में ✓ लगाएं:</p>
+
+  <div class="step-card">
+    <div class="step-title">🟢 Step 1: Google Search Console</div>
+    <ul class="checklist">
+      <li>Search Console पर अकाउंट बनाया</li>
+      <li>URL डाला: https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/</li>
+      <li>HTML टैग से वेरिफाई किया</li>
+      <li>"Verify" बटन दबाया और सक्सेस मिला</li>
+    </ul>
+  </div>
+
+  <div class="step-card">
+    <div class="step-title">🟢 Step 2: Indexing Request</div>
+    <ul class="checklist">
+      <li>URL Inspection Tool में वेबसाइट URL डाला</li>
+      <li>"Request Indexing" पर क्लिक किया</li>
+      <li>site: सर्च करके चेक किया</li>
+    </ul>
+  </div>
+
+  <div class="step-card">
+    <div class="step-title">🟢 Step 3: Google Business Profile</div>
+    <ul class="checklist">
+      <li>Google Business Profile पर अकाउंट बनाया</li>
+      <li>सारी जानकारी भरी (नाम, पता, फोन, website)</li>
+      <li>पोस्टकार्ड वेरिफिकेशन का इंतजार है</li>
+      <li>क्लिनिक की फोटो डाली</li>
+    </ul>
+  </div>
+
+  <div class="step-card">
+    <div class="step-title">🟢 Step 4: Social Signals</div>
+    <ul class="checklist">
+      <li>WhatsApp पर 5+ लोगों को लिंक भेजा</li>
+      <li>Facebook/Instagram पर पोस्ट किया</li>
+      <li>Eka.Care प्रोफाइल चेक किया</li>
+    </ul>
+  </div>
+
+  <div class="step-card">
+    <div class="step-title">🟢 Step 5: Reviews</div>
+    <ul class="checklist">
+      <li>Review Link सेव किया</li>
+      <li>3-5 खुश मरीज़ों को Review के लिए कहा</li>
+    </ul>
+  </div>
+
+  <div class="step-card">
+    <div class="step-title">🟢 Step 6: Maintenance</div>
+    <ul class="checklist">
+      <li>हर हफ्ते Search Console चेक करना याद है</li>
+      <li>हर महीने नया कंटेंट डालना याद है</li>
+    </ul>
+  </div>
+
+  <div class="highlight-box success" style="margin-top:30px;">
+    <p><strong>🎉 बस इतना करना है!</strong> इन सभी स्टेप्स को फॉलो करने के बाद आपकी वेबसाइट Google पर दिखनी शुरू हो जाएगी। कोई प्रोब्लम हो तो मुझसे ज़रूर पूछें।</p>
+  </div>
+
+  <div class="footer-note">Gill Heart Clinic — Google Search Setup Guide | Checklist</div>
+</div>
+
+</body>
+</html>
