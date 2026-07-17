@@ -2690,3 +2690,31 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ==========================================
+   CLINIC GALLERY
+   ========================================== */
+.gallery-section {
+  background: #f8fafc;
+}
+
+.gallery-item {
+  display: block;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  transition: all 0.4s ease;
+}
+
+.gallery-item img {
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
