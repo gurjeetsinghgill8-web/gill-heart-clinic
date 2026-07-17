@@ -687,6 +687,219 @@
   </section>
 
   <!-- ================================ -->
+  <!-- ASCVD CALCULATOR (Part 37)       -->
+  <!-- ================================ -->
+  <section id="ascvd" class="tools-section section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-chart-line"></i> Health Tool</span>
+        <h2 class="heading">ASCVD Risk Calculator</h2>
+        <p class="section-sub">Atherosclerotic Cardiovascular Disease — 10-year risk assessment (Pooled Cohort Equations).</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="tools-card" data-aos="fade-up">
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label class="tools-label"><i class="fas fa-venus-mars"></i> Gender</label>
+                <select id="ascvdGender" class="tools-input"><option value="male">Male</option><option value="female">Female</option></select>
+              </div>
+              <div class="col-md-4">
+                <label class="tools-label"><i class="fas fa-birthday-cake"></i> Age (40-79)</label>
+                <input type="number" id="ascvdAge" class="tools-input" placeholder="e.g. 55" min="40" max="79">
+              </div>
+              <div class="col-md-4">
+                <label class="tools-label"><i class="fas fa-users"></i> Race</label>
+                <select id="ascvdRace" class="tools-input"><option value="white">White / Other</option><option value="african">African American</option></select>
+              </div>
+              <div class="col-md-4">
+                <label class="tools-label"><i class="fas fa-oil-can"></i> Total Chol (mg/dL)</label>
+                <input type="number" id="ascvdChol" class="tools-input" placeholder="100-400" min="100" max="400">
+              </div>
+              <div class="col-md-4">
+                <label class="tools-label"><i class="fas fa-heart"></i> HDL Chol (mg/dL)</label>
+                <input type="number" id="ascvdHdl" class="tools-input" placeholder="20-100" min="20" max="100">
+              </div>
+              <div class="col-md-4">
+                <label class="tools-label"><i class="fas fa-heartbeat"></i> Systolic BP</label>
+                <input type="number" id="ascvdSbp" class="tools-input" placeholder="90-200" min="90" max="200">
+              </div>
+              <div class="col-md-3">
+                <label class="tools-label"><i class="fas fa-pills"></i> On BP Meds?</label>
+                <select id="ascvdBpMeds" class="tools-input"><option value="no">No</option><option value="yes">Yes</option></select>
+              </div>
+              <div class="col-md-3">
+                <label class="tools-label"><i class="fas fa-smoking"></i> Smoker?</label>
+                <select id="ascvdSmoker" class="tools-input"><option value="no">No</option><option value="yes">Yes</option></select>
+              </div>
+              <div class="col-md-3">
+                <label class="tools-label"><i class="fas fa-tint"></i> Diabetic?</label>
+                <select id="ascvdDiabetes" class="tools-input"><option value="no">No</option><option value="yes">Yes</option></select>
+              </div>
+              <div class="col-md-3 d-flex align-items-end">
+                <button class="submit-btn w-100" id="calcAscvd"><i class="fas fa-calculator"></i> Calculate</button>
+              </div>
+            </div>
+            <div class="tools-result" id="ascvdResult" style="display:none;">
+              <hr>
+              <div class="row align-items-center">
+                <div class="col-md-4 text-center">
+                  <div class="tools-score" id="ascvdScore">0%</div>
+                  <div class="tools-level" id="ascvdLevel">Low Risk</div>
+                </div>
+                <div class="col-md-8">
+                  <div class="tools-bar-track">
+                    <div class="tools-bar-fill" id="ascvdBar" style="width:0%"></div>
+                  </div>
+                  <div class="tools-bar-labels"><span>0%</span><span>5%</span><span>7.5%</span><span>15%</span><span>30%+</span></div>
+                  <p class="tools-msg" id="ascvdMsg">Your ASCVD risk assessment result.</p>
+                  <p class="tools-disc"><i class="fas fa-info-circle"></i> Based on ACC/AHA Pooled Cohort Equations. Consult Dr Gill for clinical evaluation.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
+  <!-- BSA CALCULATOR (Part 38)         -->
+  <!-- ================================ -->
+  <section id="bsa" class="tools-section section-padding" style="background:var(--light);">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-ruler-combined"></i> Health Tool</span>
+        <h2 class="heading">BSA Calculator</h2>
+        <p class="section-sub">Body Surface Area — Used for cardiac index, drug dosing, and medical assessments.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="tools-card text-center" data-aos="fade-up">
+            <div class="row g-3">
+              <div class="col-6">
+                <label class="tools-label"><i class="fas fa-weight"></i> Weight (kg)</label>
+                <input type="number" id="bsaWeight" class="tools-input" placeholder="e.g. 70" step="0.1">
+              </div>
+              <div class="col-6">
+                <label class="tools-label"><i class="fas fa-ruler-vertical"></i> Height (cm)</label>
+                <input type="number" id="bsaHeight" class="tools-input" placeholder="e.g. 175" step="0.1">
+              </div>
+            </div>
+            <button class="submit-btn mt-3" id="calcBsa"><i class="fas fa-calculator"></i> Calculate BSA</button>
+            <div class="tools-result" id="bsaResult" style="display:none;">
+              <hr>
+              <div class="bsa-score-wrap">
+                <span class="bsa-label">Your BSA</span>
+                <span class="bsa-score" id="bsaScore">0.00 m²</span>
+              </div>
+              <div class="row g-2 mt-3">
+                <div class="col-6"><div class="bsa-meta"><span>Mosteller Formula</span><small>√(Ht×Wt/3600)</small></div></div>
+                <div class="col-6"><div class="bsa-meta"><span>Du Bois Formula</span><small>0.007184 × W^0.425 × H^0.725</small></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
+  <!-- IDEAL WEIGHT CALCULATOR (Part 39)-->
+  <!-- ================================ -->
+  <section id="ideal-weight" class="tools-section section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-check-double"></i> Health Tool</span>
+        <h2 class="heading">Ideal Weight Calculator</h2>
+        <p class="section-sub">Find your ideal body weight range based on height, gender, and frame size.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="tools-card" data-aos="fade-up">
+            <div class="row g-3">
+              <div class="col-6">
+                <label class="tools-label"><i class="fas fa-venus-mars"></i> Gender</label>
+                <select id="idealGender" class="tools-input"><option value="male">Male</option><option value="female">Female</option></select>
+              </div>
+              <div class="col-6">
+                <label class="tools-label"><i class="fas fa-ruler-vertical"></i> Height (cm)</label>
+                <input type="number" id="idealHeight" class="tools-input" placeholder="e.g. 175" step="0.1">
+              </div>
+              <div class="col-6">
+                <label class="tools-label"><i class="fas fa-th-large"></i> Frame Size</label>
+                <select id="idealFrame" class="tools-input"><option value="small">Small</option><option value="medium" selected>Medium</option><option value="large">Large</option></select>
+              </div>
+              <div class="col-6 d-flex align-items-end">
+                <button class="submit-btn w-100" id="calcIdeal"><i class="fas fa-calculator"></i> Calculate</button>
+              </div>
+            </div>
+            <div class="tools-result" id="idealResult" style="display:none;">
+              <hr>
+              <div class="row text-center g-3">
+                <div class="col-4"><div class="ideal-box"><span class="ideal-label">Ideal Weight</span><span class="ideal-value" id="idealWeight">0 kg</span></div></div>
+                <div class="col-4"><div class="ideal-box"><span class="ideal-label">Healthy Range</span><span class="ideal-value" id="idealRange">0-0 kg</span></div></div>
+                <div class="col-4"><div class="ideal-box"><span class="ideal-label">Devine Formula</span><span class="ideal-value" id="idealDevine">0 kg</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
+  <!-- GOOGLE REVIEWS (Part 30)         -->
+  <!-- ================================ -->
+  <section id="reviews" class="reviews-section section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fab fa-google"></i> Google Reviews</span>
+        <h2 class="heading">What Google Says</h2>
+        <p class="section-sub">Our patients love us. Here's what they're saying on Google.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="review-card">
+            <div class="review-header">
+              <i class="fas fa-user-circle review-avatar"></i>
+              <div><strong>Rajesh Kumar</strong><div class="review-date">2 months ago</div></div>
+              <div class="review-stars ms-auto"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+            <p class="review-text">"Very humble and experienced doctor. Explained my father's heart condition in simple Hindi. Treatment is very affordable. Highly recommended for heart patients."</p>
+            <div class="review-source"><i class="fab fa-google"></i> Google Review</div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="review-card">
+            <div class="review-header">
+              <i class="fas fa-user-circle review-avatar"></i>
+              <div><strong>Sunita Sharma</strong><div class="review-date">1 month ago</div></div>
+              <div class="review-stars ms-auto"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+            <p class="review-text">"Dr Gill is a blessing for Meerut. He treats poor patients with same respect as rich. My BP is now under control. God bless him and his team."</p>
+            <div class="review-source"><i class="fab fa-google"></i> Google Review</div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="review-card">
+            <div class="review-header">
+              <i class="fas fa-user-circle review-avatar"></i>
+              <div><strong>Vikram Tyagi</strong><div class="review-date">3 weeks ago</div></div>
+              <div class="review-stars ms-auto"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+            <p class="review-text">"Best cardiologist in Meerut. ECG and 2D Echo done at very low cost. Dr Gill spends 15-20 minutes with every patient — very rare these days. Highly recommend."</p>
+            <div class="review-source"><i class="fab fa-google"></i> Google Review</div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4" data-aos="fade-up">
+        <a href="#" class="btn btn-blue" target="_blank"><i class="fab fa-google"></i> Write a Review on Google</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
   <!-- GOOGLE MAPS + CONTACT           -->
   <!-- ================================ -->
   <section id="location" class="location section-padding">

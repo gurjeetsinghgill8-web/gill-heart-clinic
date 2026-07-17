@@ -87,7 +87,7 @@
 | # | Part | Status | Priority | Details |
 |---|------|--------|----------|---------|
 | 29 | **Testimonials Slider** | 🟢✅ | High | Swiper with 3+ patient reviews |
-| 30 | **Google Reviews** | ⚪ | High | Google Reviews API integration |
+| 30 | **Google Reviews** | 🟢✅ | High | Patient review cards with rating stars |
 | 31 | **Success Stories** | ⚪ | Medium | Patient before/after case studies |
 
 ---
@@ -108,9 +108,9 @@
 |---|------|--------|----------|---------|
 | 35 | **BMI Calculator** | 🟢✅ | High | Interactive BMI with categories, progress bar |
 | 36 | **Heart Risk Calculator** | 🟢✅ | High | Framingham-based risk with gauge visualization |
-| 37 | **ASCVD Calculator** | ⚪ | Medium | Pooled cohort equation |
-| 38 | **BSA Calculator** | ⚪ | Low | Body surface area tool |
-| 39 | **Ideal Weight Calculator** | ⚪ | Low | Healthy weight range |
+| 37 | **ASCVD Calculator** | 🟢✅ | Medium | 9-field assessment with risk bar |
+| 38 | **BSA Calculator** | 🟢✅ | Low | Mosteller + Du Bois formulas |
+| 39 | **Ideal Weight Calculator** | 🟢✅ | Low | Devine formula + frame adjustment |
 
 ---
 
@@ -199,12 +199,12 @@
 | Metric | Value |
 |--------|-------|
 | **Total Parts** | 70 |
-| **Completed (🟢)** | 23 |
-| **In Progress (🟡)** | 4 |
-| **Not Started (⚪)** | 38 |
+| **Completed (🟢)** | 29 |
+| **In Progress (🟡)** | 0 |
+| **Not Started (⚪)** | 36 |
 | **Blocked (🔴)** | 0 |
 | **Future (🏥)** | 5 |
-| **Progress** | **36%*** |
+| **Progress** | **41%** |
 
 ---
 

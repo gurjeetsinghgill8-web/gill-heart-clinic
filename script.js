@@ -569,3 +569,99 @@ const fadeObserver = new IntersectionObserver((entries) => {
 }, { threshold: .15 });
 
 document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+/* ==============================
+   ASCVD CALCULATOR (Part 37)
+   ============================== */
+document.getElementById('calcAscvd')?.addEventListener('click', () => {
+  const gender = document.getElementById('ascvdGender').value;
+  const age = parseInt(document.getElementById('ascvdAge').value);
+  const race = document.getElementById('ascvdRace').value;
+  const chol = parseInt(document.getElementById('ascvdChol').value);
+  const hdl = parseInt(document.getElementById('ascvdHdl').value);
+  const sbp = parseInt(document.getElementById('ascvdSbp').value);
+  const bpMeds = document.getElementById('ascvdBpMeds').value;
+  const smoker = document.getElementById('ascvdSmoker').value;
+  const diabetes = document.getElementById('ascvdDiabetes').value;
+
+  const err = [];
+  if (!age || age < 40 || age > 79) err.push('Age (40-79)');
+  if (!chol || chol < 100) err.push('Total Cholesterol');
+  if (!hdl || hdl < 20) err.push('HDL Cholesterol');
+  if (!sbp || sbp < 90) err.push('Systolic BP');
+  if (err.length) { alert('Please fill: ' + err.join(', ')); return; }
+
+  // Simplified ASCVD scoring
+  let score = 0;
+  score += (age - 40) * (gender === 'male' ? 0.4 : 0.3);
+  if (smoker === 'yes') score += (gender === 'male' ? 4 : 5);
+  if (diabetes === 'yes') score += (gender === 'male' ? 3 : 4);
+  if (bpMeds === 'yes') score += 2;
+  score += (chol - 150) * 0.01;
+  score += (200 - hdl) * 0.02;
+  if (race === 'african') score += (gender === 'male' ? 2 : 3);
+  score = Math.round(Math.min(Math.max(score, 1), 45) * 10) / 10;
+
+  let level, color, msg;
+  if (score < 5) { level = 'low'; color = '#10b981'; msg = 'Low risk — keep up the healthy lifestyle!'; }
+  else if (score < 7.5) { level = 'borderline'; color = '#f59e0b'; msg = 'Borderline risk — consider lifestyle changes.'; }
+  else if (score < 20) { level = 'elevated'; color = '#f97316'; msg = 'Elevated risk — please consult Dr G S Gill.'; }
+  else { level = 'high'; color = '#ef4444'; msg = 'High risk — schedule a cardiac evaluation immediately!'; }
+
+  const result = document.getElementById('ascvdResult');
+  result.style.display = 'block';
+  document.getElementById('ascvdScore').textContent = score + '%';
+  document.getElementById('ascvdScore').style.color = color;
+  const lvl = document.getElementById('ascvdLevel');
+  lvl.textContent = level.charAt(0).toUpperCase() + level.slice(1) + ' Risk';
+  lvl.className = 'tools-level ' + level;
+  document.getElementById('ascvdBar').style.width = Math.min((score / 30) * 100, 100) + '%';
+  document.getElementById('ascvdMsg').textContent = msg;
+  result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+});
+
+/* ==============================
+   BSA CALCULATOR (Part 38)
+   ============================== */
+document.getElementById('calcBsa')?.addEventListener('click', () => {
+  const w = parseFloat(document.getElementById('bsaWeight').value);
+  const h = parseFloat(document.getElementById('bsaHeight').value);
+  if (!w || !h) { alert('Enter valid weight and height.'); return; }
+
+  const mosteller = Math.sqrt((h * w) / 3600);
+  const duBois = 0.007184 * Math.pow(w, 0.425) * Math.pow(h, 0.725);
+
+  document.getElementById('bsaResult').style.display = 'block';
+  document.getElementById('bsaScore').textContent = mosteller.toFixed(2) + ' m²';
+  document.querySelector('#bsaResult .bsa-meta:first-child small').textContent = '= ' + mosteller.toFixed(2) + ' m²';
+  document.querySelector('#bsaResult .bsa-meta:last-child small').textContent = '= ' + duBois.toFixed(2) + ' m²';
+});
+
+/* ==============================
+   IDEAL WEIGHT CALCULATOR (Part 39)
+   ============================== */
+document.getElementById('calcIdeal')?.addEventListener('click', () => {
+  const gender = document.getElementById('idealGender').value;
+  const height = parseFloat(document.getElementById('idealHeight').value);
+  const frame = document.getElementById('idealFrame').value;
+
+  if (!height || height < 50) { alert('Enter valid height.'); return; }
+
+  const heightInInches = height / 2.54;
+  let devine;
+  if (gender === 'male') {
+    devine = 50 + 2.3 * (heightInInches - 60);
+  } else {
+    devine = 45.5 + 2.3 * (heightInInches - 60);
+  }
+
+  const frameAdjust = { small: 0.9, medium: 1.0, large: 1.1 };
+  const ideal = devine * frameAdjust[frame];
+  const lower = Math.round(devine * 0.88);
+  const upper = Math.round(devine * 1.15);
+
+  document.getElementById('idealResult').style.display = 'block';
+  document.getElementById('idealWeight').textContent = Math.round(ideal) + ' kg';
+  document.getElementById('idealRange').textContent = lower + '-' + upper + ' kg';
+  document.getElementById('idealDevine').textContent = Math.round(devine) + ' kg';
+});
