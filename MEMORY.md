@@ -106,7 +106,7 @@
 
 | # | Part | Status | Priority | Details |
 |---|------|--------|----------|---------|
-| 35 | **BMI Calculator** | ⚪ | High | Interactive BMI with categories |
+| 35 | **BMI Calculator** | 🟢✅ | High | Interactive BMI with categories, progress bar |
 | 36 | **Heart Risk Calculator** | ⚪ | High | 10-year risk assessment |
 | 37 | **ASCVD Calculator** | ⚪ | Medium | Pooled cohort equation |
 | 38 | **BSA Calculator** | ⚪ | Low | Body surface area tool |
@@ -199,12 +199,12 @@
 | Metric | Value |
 |--------|-------|
 | **Total Parts** | 70 |
-| **Completed (🟢)** | 22 |
-| **In Progress (🟡)** | 5 |
+| **Completed (🟢)** | 23 |
+| **In Progress (🟡)** | 4 |
 | **Not Started (⚪)** | 38 |
 | **Blocked (🔴)** | 0 |
 | **Future (🏥)** | 5 |
-| **Progress** | **31%** |
+| **Progress** | **33%** |
 
 ---
 
@@ -212,11 +212,14 @@
 
 ```
 📦 Dr G S GILL WEBSITE/
- ┣ 📄 index.html        (628 lines — Main entry)
- ┣ 📄 style.css         (1604 lines — All styles)
- ┣ 📄 script.js         (278 lines — All JavaScript)
+ ┣ 📄 index.html        (2810 lines — Self-contained, double-click to open)
+ ┣ 📄 index-dev.html    (629 lines — Dev version, links to style.css + script.js)
+ ┣ 📄 standalone.html   (2810 lines — Standalone backup)
+ ┣ 📄 style.css         (1761 lines — Source CSS)
+ ┣ 📄 script.js         (355 lines — Source JavaScript)
  ┣ 📄 MEMORY.md         (This file — LEGO tracker)
  ┣ 📄 PRD.md            (Product Requirements Doc)
+ ┣ 📄 .gitignore
  ┣ 🖼️ doctor.jpg        (Hero image)
  ┣ 🖼️ doctor2.jpg       (About image)
  ┣ 🖼️ doctor3.jpg       (Doctor Profile image)
