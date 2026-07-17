@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/sitemap.xml

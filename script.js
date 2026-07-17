@@ -665,3 +665,57 @@ document.getElementById('calcIdeal')?.addEventListener('click', () => {
   document.getElementById('idealRange').textContent = lower + '-' + upper + ' kg';
   document.getElementById('idealDevine').textContent = Math.round(devine) + ' kg';
 });
+
+/* ==============================
+   DARK MODE TOGGLE (Part 57)
+   ============================== */
+const darkToggle = document.getElementById('darkModeToggle');
+if (darkToggle) {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  }
+  darkToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    darkToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+}
+
+/* ==============================
+   PWA INSTALL (Part 59)
+   ============================== */
+let deferredPrompt;
+const pwaInstall = document.getElementById('pwaInstall');
+const pwaBtn = document.getElementById('pwaInstallBtn');
+const pwaDismiss = document.getElementById('pwaDismiss');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  if (pwaInstall) pwaInstall.style.display = 'block';
+});
+
+if (pwaBtn) {
+  pwaBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const result = await deferredPrompt.userChoice;
+      if (result.outcome === 'accepted') console.log('App installed');
+      deferredPrompt = null;
+      if (pwaInstall) pwaInstall.style.display = 'none';
+    }
+  });
+}
+if (pwaDismiss) {
+  pwaDismiss.addEventListener('click', () => {
+    if (pwaInstall) pwaInstall.style.display = 'none';
+  });
+}
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}

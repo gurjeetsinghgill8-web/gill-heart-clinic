@@ -35,6 +35,55 @@
   <!-- Swiper.js -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#d90429">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Gill Heart Clinic">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "name": "Gill Heart Clinic",
+    "description": "Affordable & Ethical Cardiac Care by Dr G S Gill, Cardio-Physician in Meerut",
+    "url": "https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/",
+    "telephone": "+91-9258879884",
+    "email": "",
+    "priceRange": "₹300",
+    "image": "doctor.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sugar Mill, Mohiuddinpur",
+      "addressLocality": "Meerut",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "250205",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 28.981,
+      "longitude": 77.701
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      }
+    ],
+    "medicalSpecialty": "Cardiology",
+    "founder": {
+      "@type": "Person",
+      "name": "Dr G S Gill",
+      "jobTitle": "Cardio-Physician"
+    }
+  }
+  </script>
+
   <!-- Custom Styles -->
   <style>
 /* ==========================================
@@ -2534,6 +2583,189 @@ img {
 }
 
 /* ==============================
+   DARK MODE (Part 57)
+   ============================== */
+.dark-mode-btn {
+  position: fixed;
+  bottom: 190px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: var(--dark);
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 9998;
+  box-shadow: 0 6px 20px rgba(0,0,0,.2);
+  transition: var(--transition);
+}
+
+.dark-mode-btn:hover { transform: scale(1.1); }
+
+body.dark-mode {
+  --dark: #f1f5f9;
+  --light: #0f172a;
+  --white: #1e293b;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+body.dark-mode nav,
+body.dark-mode .card,
+body.dark-mode .service-card,
+body.dark-mode .testimonial-card,
+body.dark-mode .appointment-form,
+body.dark-mode .bmi-card,
+body.dark-mode .risk-card,
+body.dark-mode .tools-card,
+body.dark-mode .review-card,
+body.dark-mode .blog-card,
+body.dark-mode .diet-card,
+body.dark-mode .tip-card,
+body.dark-mode .award-card,
+body.dark-mode .contact-info-card,
+body.dark-mode .info-item,
+body.dark-mode .contact-card-sm {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+body.dark-mode .hero { background: linear-gradient(135deg, #0f172a, #1e293b); }
+body.dark-mode .services,
+body.dark-mode .testimonials,
+body.dark-mode .doctor,
+body.dark-mode .heart-risk,
+body.dark-mode .reviews-section,
+body.dark-mode .tips-section { background: #0f172a; }
+body.dark-mode .about,
+body.dark-mode .appointment,
+body.dark-mode .bmi-calculator,
+body.dark-mode .tools-section { background: #1a2639; }
+body.dark-mode .diet-section,
+body.dark-mode .blog-section,
+body.dark-mode .awards-section { background: #0f172a; }
+body.dark-mode .location { background: #1a2639; }
+body.dark-mode .heading { color: #f1f5f9; }
+body.dark-mode p,
+body.dark-mode .section-sub,
+body.dark-mode .service-card p,
+body.dark-mode .blog-body p { color: #94a3b8 !important; }
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea,
+body.dark-mode .bmi-input,
+body.dark-mode .risk-input,
+body.dark-mode .tools-input { background: #1e293b; border-color: #334155; color: #e2e8f0; }
+body.dark-mode .bmi-result,
+body.dark-mode .risk-result { background: #1e293b; }
+body.dark-mode .bmi-ranges span { color: #94a3b8; }
+
+/* ==============================
+   DOCTOR TIMELINE & AWARDS (14-16)
+   ============================== */
+.awards-section { background: var(--white); }
+.awards-subtitle { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 20px; }
+.awards-subtitle i { color: var(--primary); margin-right: 8px; }
+
+.timeline { position: relative; padding-left: 30px; }
+.timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--primary), var(--secondary)); border-radius: 10px; }
+.timeline-item { position: relative; margin-bottom: 25px; display: flex; gap: 15px; align-items: flex-start; }
+.timeline-dot { width: 22px; height: 22px; background: var(--primary); border-radius: 50%; flex-shrink: 0; margin-top: 3px; border: 3px solid white; box-shadow: 0 0 0 3px var(--primary); }
+.timeline-item strong { display: block; font-size: 16px; color: var(--dark); }
+.timeline-item span { font-size: 13px; color: var(--gray); }
+
+.awards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.award-card { background: var(--light); padding: 22px; border-radius: var(--radius-sm); text-align: center; transition: var(--transition); }
+.award-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.award-card i { font-size: 30px; color: #f59e0b; margin-bottom: 10px; }
+.award-card h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 5px; }
+.award-card p { font-size: 12px; color: var(--gray); margin: 0; }
+
+/* ==============================
+   HEART TIPS (Part 41)
+   ============================== */
+.tips-section { background: var(--light); }
+.tip-card { background: white; padding: 30px 25px; border-radius: var(--radius); text-align: center; box-shadow: var(--shadow-sm); transition: var(--transition); height: 100%; }
+.tip-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+.tip-icon { width: 65px; height: 65px; background: linear-gradient(135deg, rgba(217,4,41,.08), rgba(217,4,41,.15)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 28px; color: var(--primary); transition: var(--transition); }
+.tip-card:hover .tip-icon { background: var(--primary); color: white; }
+.tip-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--dark); }
+.tip-card p { font-size: 14px; color: var(--gray); margin: 0; line-height: 1.7; }
+
+/* ==============================
+   DIET PLANS (Part 42)
+   ============================== */
+.diet-section { background: var(--white); }
+.diet-card { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); height: 100%; }
+.diet-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+.diet-header { padding: 18px 22px; color: white; font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+.diet-body { padding: 20px 22px; }
+.diet-body ul { list-style: none; padding: 0; margin: 0; }
+.diet-body li { font-size: 14px; padding: 6px 0; color: #444; border-bottom: 1px solid #f0f0f0; }
+.diet-body li:last-child { border-bottom: none; }
+
+/* ==============================
+   BLOG SYSTEM (Part 40)
+   ============================== */
+.blog-section { background: var(--light); }
+.blog-card { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); height: 100%; }
+.blog-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+.blog-img { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 52px; color: rgba(255,255,255,.7); }
+.blog-body { padding: 22px 24px 28px; }
+.blog-tag { display: inline-block; padding: 3px 14px; background: rgba(217,4,41,.08); color: var(--primary); border-radius: 50px; font-size: 11px; font-weight: 600; margin-bottom: 10px; }
+.blog-body h4 { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 10px; line-height: 1.4; }
+.blog-body p { font-size: 13px; color: var(--gray); line-height: 1.7; margin-bottom: 15px; }
+.blog-read { font-size: 13px; font-weight: 600; color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: var(--transition); }
+.blog-read:hover { gap: 10px; color: var(--primary-dark); }
+
+/* ==============================
+   PWA INSTALL BANNER
+   ============================== */
+.pwa-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  box-shadow: 0 -5px 25px rgba(0,0,0,.12);
+  z-index: 99999;
+  padding: 12px 16px;
+  animation: slideUp .4s ease;
+}
+
+.pwa-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.pwa-icon { font-size: 28px; }
+.pwa-content strong { display: block; font-size: 14px; color: var(--dark); }
+.pwa-content small { font-size: 12px; color: var(--gray); }
+.pwa-btn {
+  margin-left: auto;
+  padding: 8px 20px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+.pwa-btn:hover { background: var(--primary-dark); }
+.pwa-close { background: none; border: none; font-size: 24px; color: var(--gray); cursor: pointer; padding: 0 5px; }
+
+body.dark-mode .pwa-banner { background: #1e293b; }
+body.dark-mode .pwa-content strong { color: #f1f5f9; }
+
+/* ==============================
    FADE IN ANIMATIONS (Fallback)
    ============================== */
 .fade-in {
@@ -3506,6 +3738,138 @@ img {
   </footer>
 
   <!-- ================================ -->
+  <!-- DOCTOR TIMELINE & AWARDS (14-16) -->
+  <!-- ================================ -->
+  <section id="awards" class="awards-section section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-trophy"></i> Credentials</span>
+        <h2 class="heading">Dr G S Gill — Journey & Achievements</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6" data-aos="fade-right">
+          <h3 class="awards-subtitle"><i class="fas fa-graduation-cap"></i> Qualifications</h3>
+          <div class="timeline">
+            <div class="timeline-item"><div class="timeline-dot"></div><div><strong>MD (Medicine)</strong><span>Gold Medalist | University Topper</span></div></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div><strong>DM (Cardiology)</strong><span>Specialized Heart Training</span></div></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div><strong>Senior Resident</strong><span>Major Govt Hospital, Delhi</span></div></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div><strong>Consultant Cardiologist</strong><span>Multi-specialty Hospital, Meerut</span></div></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div><strong>Founder — Gill Heart Clinic</strong><span>Serving since 2010+</span></div></div>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-left">
+          <h3 class="awards-subtitle"><i class="fas fa-award"></i> Awards & Recognition</h3>
+          <div class="awards-grid">
+            <div class="award-card"><i class="fas fa-medal"></i><h4>Gold Medalist</h4><p>University of Meerut — MD Medicine</p></div>
+            <div class="award-card"><i class="fas fa-star"></i><h4>Best Doctor Award</h4><p>IMA Meerut Chapter — 2018</p></div>
+            <div class="award-card"><i class="fas fa-heart"></i><h4>Community Service</h4><p>Free Heart Checkup Camps — 5000+ screened</p></div>
+            <div class="award-card"><i class="fas fa-trophy"></i><h4>Excellence in Cardiology</h4><p>Affordable Cardiac Care Initiative</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
+  <!-- HEART TIPS (Part 41)             -->
+  <!-- ================================ -->
+  <section id="tips" class="tips-section section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-lightbulb"></i> Education</span>
+        <h2 class="heading">Heart Health Tips</h2>
+        <p class="section-sub">Simple daily habits for a healthy heart — from Dr G S Gill.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="tip-card"><div class="tip-icon"><i class="fas fa-walking"></i></div><h4>Walk 30 Min Daily</h4><p>Brisk walking for 30 minutes reduces heart disease risk by 35%. Start today!</p></div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="tip-card"><div class="tip-icon"><i class="fas fa-apple-alt"></i></div><h4>Eat Colorful</h4><p>5 servings of fruits & vegetables daily. Green, red, yellow — eat the rainbow!</p></div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+          <div class="tip-card"><div class="tip-icon"><i class="fas fa-wine-bottle"></i></div><h4>Cut The Salt</h4><p>Less than 5g salt per day. High BP patients: avoid pickles, papad, and processed food.</p></div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="tip-card"><div class="tip-icon"><i class="fas fa-smoking-ban"></i></div><h4>Quit Tobacco</h4><p>Smokers have 2-4x higher heart attack risk. Quit today — your heart will thank you.</p></div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="tip-card"><div class="tip-icon"><i class="fas fa-bed"></i></div><h4>Sleep 7-8 Hours</h4><p>Poor sleep increases BP and stress hormones. Fix your sleep schedule for heart health.</p></div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+          <div class="tip-card"><div class="tip-icon"><i class="fas fa-heart"></i></div><h4>Regular Checkup</h4><p>Yearly heart checkup after 35. ECG + BP + Sugar — just ₹300 at Gill Heart Clinic!</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
+  <!-- DIET PLANS (Part 42)             -->
+  <!-- ================================ -->
+  <section id="diet" class="diet-section section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-utensils"></i> Nutrition</span>
+        <h2 class="heading">Heart-Healthy Diet Plans</h2>
+        <p class="section-sub">Eat your way to a healthier heart — diet plans recommended by Dr Gill.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="diet-card"><div class="diet-header" style="background:#10b981;"><i class="fas fa-leaf"></i> Indian Heart Diet</div>
+            <div class="diet-body"><ul><li>✅ Whole wheat roti × 2</li><li>✅ Green veg + dal</li><li>✅ Salad with lemon</li><li>✅ Buttermilk / curd</li><li>❌ No fried food</li><li>❌ No maida / white rice</li></ul></div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="diet-card"><div class="diet-header" style="background:#f59e0b;"><i class="fas fa-heart"></i> BP Control Diet</div>
+            <div class="diet-body"><ul><li>✅ Less salt in cooking</li><li>✅ Banana + oats breakfast</li><li>✅ More potassium foods</li><li>✅ Coconut water / juice</li><li>❌ No packaged snacks</li><li>❌ No pickles / papad</li></ul></div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="diet-card"><div class="diet-header" style="background:#ef4444;"><i class="fas fa-oil-can"></i> Cholesterol Diet</div>
+            <div class="diet-body"><ul><li>✅ Oats + nuts breakfast</li><li>✅ Fish twice a week</li><li>✅ Olive / mustard oil</li><li>✅ Garlic + ginger daily</li><li>❌ No butter / ghee</li><li>❌ No red meat / egg yolk</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
+  <!-- BLOG SYSTEM (Part 40)            -->
+  <!-- ================================ -->
+  <section id="blog" class="blog-section section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-pen-fancy"></i> Blog</span>
+        <h2 class="heading">Latest from Gill Heart Clinic</h2>
+        <p class="section-sub">Expert articles on heart health, prevention, and treatments.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="blog-card"><div class="blog-img" style="background:linear-gradient(135deg,#d90429,#ff1a40);"><i class="fas fa-heartbeat"></i></div>
+            <div class="blog-body"><span class="blog-tag">Prevention</span><h4>10 Signs of a Heart Attack You Shouldn't Ignore</h4>
+            <p>Chest pain, shortness of breath, cold sweat — know the warning signs that can save your life...</p>
+            <a href="#" class="blog-read" onclick="return false;"><i class="fas fa-arrow-right"></i> Read More</a></div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="blog-card"><div class="blog-img" style="background:linear-gradient(135deg,#0b5ed7,#3b82f6);"><i class="fas fa-stethoscope"></i></div>
+            <div class="blog-body"><span class="blog-tag">Treatment</span><h4>ECG vs 2D Echo vs TMT — What's the Difference?</h4>
+            <p>Understand which heart test you need and what each one tells your doctor about your heart...</p>
+            <a href="#" class="blog-read" onclick="return false;"><i class="fas fa-arrow-right"></i> Read More</a></div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="blog-card"><div class="blog-img" style="background:linear-gradient(135deg,#16a34a,#22c55e);"><i class="fas fa-apple-alt"></i></div>
+            <div class="blog-body"><span class="blog-tag">Lifestyle</span><h4>Indian Diet for a Healthy Heart — What to Eat & Avoid</h4>
+            <p>Simple swaps in your daily Indian diet that can dramatically reduce your heart disease risk...</p>
+            <a href="#" class="blog-read" onclick="return false;"><i class="fas fa-arrow-right"></i> Read More</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
   <!-- FLOATING ELEMENTS               -->
   <!-- ================================ -->
   <a href="https://wa.me/919258879884" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
@@ -3552,6 +3916,25 @@ img {
           <button class="chatbot-send" id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ================================ -->
+  <!-- DARK MODE TOGGLE (Part 57)       -->
+  <!-- ================================ -->
+  <button id="darkModeToggle" class="dark-mode-btn" aria-label="Toggle Dark Mode">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- ================================ -->
+  <!-- PWA INSTALL PROMPT              -->
+  <!-- ================================ -->
+  <div id="pwaInstall" class="pwa-banner" style="display:none;">
+    <div class="pwa-content">
+      <span class="pwa-icon">❤️</span>
+      <div><strong>Install Gill Heart Clinic</strong><br><small>Open as app • Works offline</small></div>
+      <button id="pwaInstallBtn" class="pwa-btn">Install</button>
+      <button id="pwaDismiss" class="pwa-close">&times;</button>
     </div>
   </div>
 
@@ -4229,6 +4612,60 @@ document.getElementById('calcIdeal')?.addEventListener('click', () => {
   document.getElementById('idealRange').textContent = lower + '-' + upper + ' kg';
   document.getElementById('idealDevine').textContent = Math.round(devine) + ' kg';
 });
+
+/* ==============================
+   DARK MODE TOGGLE (Part 57)
+   ============================== */
+const darkToggle = document.getElementById('darkModeToggle');
+if (darkToggle) {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
+  }
+  darkToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    darkToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+}
+
+/* ==============================
+   PWA INSTALL (Part 59)
+   ============================== */
+let deferredPrompt;
+const pwaInstall = document.getElementById('pwaInstall');
+const pwaBtn = document.getElementById('pwaInstallBtn');
+const pwaDismiss = document.getElementById('pwaDismiss');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  if (pwaInstall) pwaInstall.style.display = 'block';
+});
+
+if (pwaBtn) {
+  pwaBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const result = await deferredPrompt.userChoice;
+      if (result.outcome === 'accepted') console.log('App installed');
+      deferredPrompt = null;
+      if (pwaInstall) pwaInstall.style.display = 'none';
+    }
+  });
+}
+if (pwaDismiss) {
+  pwaDismiss.addEventListener('click', () => {
+    if (pwaInstall) pwaInstall.style.display = 'none';
+  });
+}
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
 
 </script>
 

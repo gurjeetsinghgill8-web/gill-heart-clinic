@@ -35,6 +35,55 @@
   <!-- Swiper.js -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#d90429">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Gill Heart Clinic">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalClinic",
+    "name": "Gill Heart Clinic",
+    "description": "Affordable & Ethical Cardiac Care by Dr G S Gill, Cardio-Physician in Meerut",
+    "url": "https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/",
+    "telephone": "+91-9258879884",
+    "email": "",
+    "priceRange": "₹300",
+    "image": "doctor.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sugar Mill, Mohiuddinpur",
+      "addressLocality": "Meerut",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "250205",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 28.981,
+      "longitude": 77.701
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      }
+    ],
+    "medicalSpecialty": "Cardiology",
+    "founder": {
+      "@type": "Person",
+      "name": "Dr G S Gill",
+      "jobTitle": "Cardio-Physician"
+    }
+  }
+  </script>
+
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css">
 
@@ -995,6 +1044,138 @@
   </footer>
 
   <!-- ================================ -->
+  <!-- DOCTOR TIMELINE & AWARDS (14-16) -->
+  <!-- ================================ -->
+  <section id="awards" class="awards-section section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-trophy"></i> Credentials</span>
+        <h2 class="heading">Dr G S Gill — Journey & Achievements</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6" data-aos="fade-right">
+          <h3 class="awards-subtitle"><i class="fas fa-graduation-cap"></i> Qualifications</h3>
+          <div class="timeline">
+            <div class="timeline-item"><div class="timeline-dot"></div><div><strong>MD (Medicine)</strong><span>Gold Medalist | University Topper</span></div></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div><strong>DM (Cardiology)</strong><span>Specialized Heart Training</span></div></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div><strong>Senior Resident</strong><span>Major Govt Hospital, Delhi</span></div></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div><strong>Consultant Cardiologist</strong><span>Multi-specialty Hospital, Meerut</span></div></div>
+            <div class="timeline-item"><div class="timeline-dot"></div><div><strong>Founder — Gill Heart Clinic</strong><span>Serving since 2010+</span></div></div>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-left">
+          <h3 class="awards-subtitle"><i class="fas fa-award"></i> Awards & Recognition</h3>
+          <div class="awards-grid">
+            <div class="award-card"><i class="fas fa-medal"></i><h4>Gold Medalist</h4><p>University of Meerut — MD Medicine</p></div>
+            <div class="award-card"><i class="fas fa-star"></i><h4>Best Doctor Award</h4><p>IMA Meerut Chapter — 2018</p></div>
+            <div class="award-card"><i class="fas fa-heart"></i><h4>Community Service</h4><p>Free Heart Checkup Camps — 5000+ screened</p></div>
+            <div class="award-card"><i class="fas fa-trophy"></i><h4>Excellence in Cardiology</h4><p>Affordable Cardiac Care Initiative</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
+  <!-- HEART TIPS (Part 41)             -->
+  <!-- ================================ -->
+  <section id="tips" class="tips-section section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-lightbulb"></i> Education</span>
+        <h2 class="heading">Heart Health Tips</h2>
+        <p class="section-sub">Simple daily habits for a healthy heart — from Dr G S Gill.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="tip-card"><div class="tip-icon"><i class="fas fa-walking"></i></div><h4>Walk 30 Min Daily</h4><p>Brisk walking for 30 minutes reduces heart disease risk by 35%. Start today!</p></div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="tip-card"><div class="tip-icon"><i class="fas fa-apple-alt"></i></div><h4>Eat Colorful</h4><p>5 servings of fruits & vegetables daily. Green, red, yellow — eat the rainbow!</p></div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+          <div class="tip-card"><div class="tip-icon"><i class="fas fa-wine-bottle"></i></div><h4>Cut The Salt</h4><p>Less than 5g salt per day. High BP patients: avoid pickles, papad, and processed food.</p></div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="tip-card"><div class="tip-icon"><i class="fas fa-smoking-ban"></i></div><h4>Quit Tobacco</h4><p>Smokers have 2-4x higher heart attack risk. Quit today — your heart will thank you.</p></div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="tip-card"><div class="tip-icon"><i class="fas fa-bed"></i></div><h4>Sleep 7-8 Hours</h4><p>Poor sleep increases BP and stress hormones. Fix your sleep schedule for heart health.</p></div>
+        </div>
+        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+          <div class="tip-card"><div class="tip-icon"><i class="fas fa-heart"></i></div><h4>Regular Checkup</h4><p>Yearly heart checkup after 35. ECG + BP + Sugar — just ₹300 at Gill Heart Clinic!</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
+  <!-- DIET PLANS (Part 42)             -->
+  <!-- ================================ -->
+  <section id="diet" class="diet-section section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-utensils"></i> Nutrition</span>
+        <h2 class="heading">Heart-Healthy Diet Plans</h2>
+        <p class="section-sub">Eat your way to a healthier heart — diet plans recommended by Dr Gill.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="diet-card"><div class="diet-header" style="background:#10b981;"><i class="fas fa-leaf"></i> Indian Heart Diet</div>
+            <div class="diet-body"><ul><li>✅ Whole wheat roti × 2</li><li>✅ Green veg + dal</li><li>✅ Salad with lemon</li><li>✅ Buttermilk / curd</li><li>❌ No fried food</li><li>❌ No maida / white rice</li></ul></div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="diet-card"><div class="diet-header" style="background:#f59e0b;"><i class="fas fa-heart"></i> BP Control Diet</div>
+            <div class="diet-body"><ul><li>✅ Less salt in cooking</li><li>✅ Banana + oats breakfast</li><li>✅ More potassium foods</li><li>✅ Coconut water / juice</li><li>❌ No packaged snacks</li><li>❌ No pickles / papad</li></ul></div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="diet-card"><div class="diet-header" style="background:#ef4444;"><i class="fas fa-oil-can"></i> Cholesterol Diet</div>
+            <div class="diet-body"><ul><li>✅ Oats + nuts breakfast</li><li>✅ Fish twice a week</li><li>✅ Olive / mustard oil</li><li>✅ Garlic + ginger daily</li><li>❌ No butter / ghee</li><li>❌ No red meat / egg yolk</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
+  <!-- BLOG SYSTEM (Part 40)            -->
+  <!-- ================================ -->
+  <section id="blog" class="blog-section section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-pen-fancy"></i> Blog</span>
+        <h2 class="heading">Latest from Gill Heart Clinic</h2>
+        <p class="section-sub">Expert articles on heart health, prevention, and treatments.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="blog-card"><div class="blog-img" style="background:linear-gradient(135deg,#d90429,#ff1a40);"><i class="fas fa-heartbeat"></i></div>
+            <div class="blog-body"><span class="blog-tag">Prevention</span><h4>10 Signs of a Heart Attack You Shouldn't Ignore</h4>
+            <p>Chest pain, shortness of breath, cold sweat — know the warning signs that can save your life...</p>
+            <a href="#" class="blog-read" onclick="return false;"><i class="fas fa-arrow-right"></i> Read More</a></div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="blog-card"><div class="blog-img" style="background:linear-gradient(135deg,#0b5ed7,#3b82f6);"><i class="fas fa-stethoscope"></i></div>
+            <div class="blog-body"><span class="blog-tag">Treatment</span><h4>ECG vs 2D Echo vs TMT — What's the Difference?</h4>
+            <p>Understand which heart test you need and what each one tells your doctor about your heart...</p>
+            <a href="#" class="blog-read" onclick="return false;"><i class="fas fa-arrow-right"></i> Read More</a></div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="blog-card"><div class="blog-img" style="background:linear-gradient(135deg,#16a34a,#22c55e);"><i class="fas fa-apple-alt"></i></div>
+            <div class="blog-body"><span class="blog-tag">Lifestyle</span><h4>Indian Diet for a Healthy Heart — What to Eat & Avoid</h4>
+            <p>Simple swaps in your daily Indian diet that can dramatically reduce your heart disease risk...</p>
+            <a href="#" class="blog-read" onclick="return false;"><i class="fas fa-arrow-right"></i> Read More</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
   <!-- FLOATING ELEMENTS               -->
   <!-- ================================ -->
   <a href="https://wa.me/919258879884" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
@@ -1041,6 +1222,25 @@
           <button class="chatbot-send" id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ================================ -->
+  <!-- DARK MODE TOGGLE (Part 57)       -->
+  <!-- ================================ -->
+  <button id="darkModeToggle" class="dark-mode-btn" aria-label="Toggle Dark Mode">
+    <i class="fas fa-moon"></i>
+  </button>
+
+  <!-- ================================ -->
+  <!-- PWA INSTALL PROMPT              -->
+  <!-- ================================ -->
+  <div id="pwaInstall" class="pwa-banner" style="display:none;">
+    <div class="pwa-content">
+      <span class="pwa-icon">❤️</span>
+      <div><strong>Install Gill Heart Clinic</strong><br><small>Open as app • Works offline</small></div>
+      <button id="pwaInstallBtn" class="pwa-btn">Install</button>
+      <button id="pwaDismiss" class="pwa-close">&times;</button>
     </div>
   </div>
 

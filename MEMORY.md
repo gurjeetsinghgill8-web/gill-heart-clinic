@@ -50,9 +50,9 @@
 
 | # | Part | Status | Priority | Details |
 |---|------|--------|----------|---------|
-| 14 | **Doctor Timeline** | ⚪ | High | Career timeline horizontal/vertical |
-| 15 | **Qualifications** | ⚪ | High | Degrees, certifications, experience |
-| 16 | **Awards** | ⚪ | Medium | Gold medalist, recognitions |
+| 14 | **Doctor Timeline** | 🟢✅ | High | Career timeline horizontal/vertical |
+| 15 | **Qualifications** | 🟢✅ | High | Degrees, certifications, experience |
+| 16 | **Awards** | 🟢✅ | Medium | Gold medalist, recognitions |
 | 17 | **Professional Certificates** | ⚪ | Medium | Certificate images/grid |
 
 ---
@@ -118,9 +118,9 @@
 
 | # | Part | Status | Priority | Details |
 |---|------|--------|----------|---------|
-| 40 | **Blog System** | ⚪ | High | Heart health articles |
-| 41 | **Heart Tips** | ⚪ | Medium | Daily/weekly tips cards |
-| 42 | **Diet Plans** | ⚪ | Medium | Heart-healthy diet guides |
+| 40 | **Blog System** | 🟢✅ | High | Heart health articles |
+| 41 | **Heart Tips** | 🟢✅ | Medium | Daily/weekly tips cards |
+| 42 | **Diet Plans** | 🟢✅ | Medium | Heart-healthy diet guides |
 | 43 | **Exercise Library** | ⚪ | Low | Cardiac rehab exercises |
 | 44 | **FAQs** | 🟢✅ | Medium | Built into services section |
 
@@ -152,10 +152,10 @@
 | # | Part | Status | Priority | Details |
 |---|------|--------|----------|---------|
 | 52 | **Local SEO** | 🟡 | High | Meta tags, keywords, OG tags in place |
-| 53 | **Google Search Console** | ⚪ | High | GSC verification tag |
-| 54 | **Schema.org** | ⚪ | High | LocalBusiness, Doctor, MedicalClinic schema |
-| 55 | **Sitemap** | ⚪ | Medium | XML sitemap generation |
-| 56 | **robots.txt** | ⚪ | Medium | Crawler directives |
+| 53 | **Google Search Console** | 🟢✅ | High | GSC verification tag |
+| 54 | **Schema.org** | 🟢✅ | High | LocalBusiness, Doctor, MedicalClinic schema |
+| 55 | **Sitemap** | 🟢✅ | Medium | XML sitemap generation |
+| 56 | **robots.txt** | 🟢✅ | Medium | Crawler directives |
 
 ---
 
@@ -163,10 +163,10 @@
 
 | # | Part | Status | Priority | Details |
 |---|------|--------|----------|---------|
-| 57 | **Dark Mode** | ⚪ | Medium | Theme toggle with persistence |
+| 57 | **Dark Mode** | 🟢✅ | Medium | Theme toggle with persistence |
 | 58 | **Loading Screen** | 🟢✅ | Medium | Heartbeat animation with progress bar |
-| 59 | **PWA (Android App)** | ⚪ | High | manifest.json + service worker |
-| 60 | **Offline Support** | ⚪ | Medium | Offline fallback page |
+| 59 | **PWA (Installable App)** | 🟢✅ | High | manifest.json + service worker |
+| 60 | **Offline Support** | 🟢✅ | Medium | Offline fallback page |
 
 ---
 
@@ -199,12 +199,12 @@
 | Metric | Value |
 |--------|-------|
 | **Total Parts** | 70 |
-| **Completed (🟢)** | 29 |
+| **Completed (🟢)** | 40 |
 | **In Progress (🟡)** | 0 |
-| **Not Started (⚪)** | 36 |
+| **Not Started (⚪)** | 25 |
 | **Blocked (🔴)** | 0 |
 | **Future (🏥)** | 5 |
-| **Progress** | **41%** |
+| **Progress** | **57%** |
 
 ---
 
@@ -212,15 +212,22 @@
 
 ```
 📦 Dr G S GILL WEBSITE/
- ┣ 📄 index.html        (2810 lines — Self-contained, double-click to open)
- ┣ 📄 index-dev.html    (629 lines — Dev version, links to style.css + script.js)
- ┣ 📄 standalone.html   (2810 lines — Standalone backup)
- ┣ 📄 style.css         (1761 lines — Source CSS)
- ┣ 📄 script.js         (355 lines — Source JavaScript)
+ ┣ 📄 index.html        (4674 lines — Self-contained, double-click to open)
+ ┣ 📄 index-dev.html    (Dev version, links to style.css + script.js)
+ ┣ 📄 standalone.html   (Self-contained backup)
+ ┣ 📄 style.css         (Source CSS)
+ ┣ 📄 script.js         (Source JavaScript)
  ┣ 📄 MEMORY.md         (This file — LEGO tracker)
  ┣ 📄 PRD.md            (Product Requirements Doc)
+ ┣ 📄 manifest.json     (PWA — Install as Android App)
+ ┣ 📄 sw.js             (Service Worker — Offline support)
+ ┣ 📄 robots.txt        (SEO — Crawler directives)
+ ┣ 📄 sitemap.xml       (SEO — Site map for Google)
  ┣ 📄 .gitignore
  ┣ 🖼️ doctor.jpg        (Hero image)
+ ┣ 🖼️ doctor2.jpg       (About image)
+ ┣ 🖼️ doctor3.jpg       (Doctor Profile image)
+```
  ┣ 🖼️ doctor2.jpg       (About image)
  ┣ 🖼️ doctor3.jpg       (Doctor Profile image)
 ```

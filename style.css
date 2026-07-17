@@ -2495,6 +2495,189 @@ img {
 }
 
 /* ==============================
+   DARK MODE (Part 57)
+   ============================== */
+.dark-mode-btn {
+  position: fixed;
+  bottom: 190px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background: var(--dark);
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 9998;
+  box-shadow: 0 6px 20px rgba(0,0,0,.2);
+  transition: var(--transition);
+}
+
+.dark-mode-btn:hover { transform: scale(1.1); }
+
+body.dark-mode {
+  --dark: #f1f5f9;
+  --light: #0f172a;
+  --white: #1e293b;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+body.dark-mode nav,
+body.dark-mode .card,
+body.dark-mode .service-card,
+body.dark-mode .testimonial-card,
+body.dark-mode .appointment-form,
+body.dark-mode .bmi-card,
+body.dark-mode .risk-card,
+body.dark-mode .tools-card,
+body.dark-mode .review-card,
+body.dark-mode .blog-card,
+body.dark-mode .diet-card,
+body.dark-mode .tip-card,
+body.dark-mode .award-card,
+body.dark-mode .contact-info-card,
+body.dark-mode .info-item,
+body.dark-mode .contact-card-sm {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+body.dark-mode .hero { background: linear-gradient(135deg, #0f172a, #1e293b); }
+body.dark-mode .services,
+body.dark-mode .testimonials,
+body.dark-mode .doctor,
+body.dark-mode .heart-risk,
+body.dark-mode .reviews-section,
+body.dark-mode .tips-section { background: #0f172a; }
+body.dark-mode .about,
+body.dark-mode .appointment,
+body.dark-mode .bmi-calculator,
+body.dark-mode .tools-section { background: #1a2639; }
+body.dark-mode .diet-section,
+body.dark-mode .blog-section,
+body.dark-mode .awards-section { background: #0f172a; }
+body.dark-mode .location { background: #1a2639; }
+body.dark-mode .heading { color: #f1f5f9; }
+body.dark-mode p,
+body.dark-mode .section-sub,
+body.dark-mode .service-card p,
+body.dark-mode .blog-body p { color: #94a3b8 !important; }
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .form-group textarea,
+body.dark-mode .bmi-input,
+body.dark-mode .risk-input,
+body.dark-mode .tools-input { background: #1e293b; border-color: #334155; color: #e2e8f0; }
+body.dark-mode .bmi-result,
+body.dark-mode .risk-result { background: #1e293b; }
+body.dark-mode .bmi-ranges span { color: #94a3b8; }
+
+/* ==============================
+   DOCTOR TIMELINE & AWARDS (14-16)
+   ============================== */
+.awards-section { background: var(--white); }
+.awards-subtitle { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 20px; }
+.awards-subtitle i { color: var(--primary); margin-right: 8px; }
+
+.timeline { position: relative; padding-left: 30px; }
+.timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 3px; background: linear-gradient(to bottom, var(--primary), var(--secondary)); border-radius: 10px; }
+.timeline-item { position: relative; margin-bottom: 25px; display: flex; gap: 15px; align-items: flex-start; }
+.timeline-dot { width: 22px; height: 22px; background: var(--primary); border-radius: 50%; flex-shrink: 0; margin-top: 3px; border: 3px solid white; box-shadow: 0 0 0 3px var(--primary); }
+.timeline-item strong { display: block; font-size: 16px; color: var(--dark); }
+.timeline-item span { font-size: 13px; color: var(--gray); }
+
+.awards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.award-card { background: var(--light); padding: 22px; border-radius: var(--radius-sm); text-align: center; transition: var(--transition); }
+.award-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.award-card i { font-size: 30px; color: #f59e0b; margin-bottom: 10px; }
+.award-card h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 5px; }
+.award-card p { font-size: 12px; color: var(--gray); margin: 0; }
+
+/* ==============================
+   HEART TIPS (Part 41)
+   ============================== */
+.tips-section { background: var(--light); }
+.tip-card { background: white; padding: 30px 25px; border-radius: var(--radius); text-align: center; box-shadow: var(--shadow-sm); transition: var(--transition); height: 100%; }
+.tip-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+.tip-icon { width: 65px; height: 65px; background: linear-gradient(135deg, rgba(217,4,41,.08), rgba(217,4,41,.15)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; font-size: 28px; color: var(--primary); transition: var(--transition); }
+.tip-card:hover .tip-icon { background: var(--primary); color: white; }
+.tip-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 10px; color: var(--dark); }
+.tip-card p { font-size: 14px; color: var(--gray); margin: 0; line-height: 1.7; }
+
+/* ==============================
+   DIET PLANS (Part 42)
+   ============================== */
+.diet-section { background: var(--white); }
+.diet-card { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); height: 100%; }
+.diet-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+.diet-header { padding: 18px 22px; color: white; font-weight: 700; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+.diet-body { padding: 20px 22px; }
+.diet-body ul { list-style: none; padding: 0; margin: 0; }
+.diet-body li { font-size: 14px; padding: 6px 0; color: #444; border-bottom: 1px solid #f0f0f0; }
+.diet-body li:last-child { border-bottom: none; }
+
+/* ==============================
+   BLOG SYSTEM (Part 40)
+   ============================== */
+.blog-section { background: var(--light); }
+.blog-card { background: white; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); height: 100%; }
+.blog-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+.blog-img { height: 180px; display: flex; align-items: center; justify-content: center; font-size: 52px; color: rgba(255,255,255,.7); }
+.blog-body { padding: 22px 24px 28px; }
+.blog-tag { display: inline-block; padding: 3px 14px; background: rgba(217,4,41,.08); color: var(--primary); border-radius: 50px; font-size: 11px; font-weight: 600; margin-bottom: 10px; }
+.blog-body h4 { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 10px; line-height: 1.4; }
+.blog-body p { font-size: 13px; color: var(--gray); line-height: 1.7; margin-bottom: 15px; }
+.blog-read { font-size: 13px; font-weight: 600; color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: var(--transition); }
+.blog-read:hover { gap: 10px; color: var(--primary-dark); }
+
+/* ==============================
+   PWA INSTALL BANNER
+   ============================== */
+.pwa-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  box-shadow: 0 -5px 25px rgba(0,0,0,.12);
+  z-index: 99999;
+  padding: 12px 16px;
+  animation: slideUp .4s ease;
+}
+
+.pwa-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.pwa-icon { font-size: 28px; }
+.pwa-content strong { display: block; font-size: 14px; color: var(--dark); }
+.pwa-content small { font-size: 12px; color: var(--gray); }
+.pwa-btn {
+  margin-left: auto;
+  padding: 8px 20px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition);
+}
+.pwa-btn:hover { background: var(--primary-dark); }
+.pwa-close { background: none; border: none; font-size: 24px; color: var(--gray); cursor: pointer; padding: 0 5px; }
+
+body.dark-mode .pwa-banner { background: #1e293b; }
+body.dark-mode .pwa-content strong { color: #f1f5f9; }
+
+/* ==============================
    FADE IN ANIMATIONS (Fallback)
    ============================== */
 .fade-in {
