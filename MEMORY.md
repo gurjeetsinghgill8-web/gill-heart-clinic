@@ -107,7 +107,7 @@
 | # | Part | Status | Priority | Details |
 |---|------|--------|----------|---------|
 | 35 | **BMI Calculator** | 🟢✅ | High | Interactive BMI with categories, progress bar |
-| 36 | **Heart Risk Calculator** | ⚪ | High | 10-year risk assessment |
+| 36 | **Heart Risk Calculator** | 🟢✅ | High | Framingham-based risk with gauge visualization |
 | 37 | **ASCVD Calculator** | ⚪ | Medium | Pooled cohort equation |
 | 38 | **BSA Calculator** | ⚪ | Low | Body surface area tool |
 | 39 | **Ideal Weight Calculator** | ⚪ | Low | Healthy weight range |
@@ -142,7 +142,7 @@
 | # | Part | Status | Priority | Details |
 |---|------|--------|----------|---------|
 | 49 | **AI Receptionist** | ⚪ | High | Voice/call AI assistant |
-| 50 | **AI Chatbot** | ⚪ | High | Website chatbot (WhatsApp API) |
+| 50 | **AI Chatbot** | 🟢✅ | High | Virtual assistant with quick replies + knowledge base |
 | 51 | **Voice Assistant** | ⚪ | Low | Hindi/English voice interface |
 
 ---
@@ -164,7 +164,7 @@
 | # | Part | Status | Priority | Details |
 |---|------|--------|----------|---------|
 | 57 | **Dark Mode** | ⚪ | Medium | Theme toggle with persistence |
-| 58 | **Loading Screen** | ⚪ | Medium | Animated preloader |
+| 58 | **Loading Screen** | 🟢✅ | Medium | Heartbeat animation with progress bar |
 | 59 | **PWA (Android App)** | ⚪ | High | manifest.json + service worker |
 | 60 | **Offline Support** | ⚪ | Medium | Offline fallback page |
 
@@ -204,7 +204,7 @@
 | **Not Started (⚪)** | 38 |
 | **Blocked (🔴)** | 0 |
 | **Future (🏥)** | 5 |
-| **Progress** | **33%** |
+| **Progress** | **36%*** |
 
 ---
 

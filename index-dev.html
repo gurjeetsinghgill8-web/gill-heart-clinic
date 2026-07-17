@@ -45,6 +45,22 @@
 <body>
 
   <!-- ================================ -->
+  <!-- LOADING SCREEN (LEGO Part 58)    -->
+  <!-- ================================ -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-heart">
+        <i class="fas fa-heartbeat"></i>
+      </div>
+      <div class="preloader-text">Gill Heart Clinic</div>
+      <div class="preloader-bar">
+        <div class="preloader-bar-fill"></div>
+      </div>
+      <div class="preloader-sub">Loading...</div>
+    </div>
+  </div>
+
+  <!-- ================================ -->
   <!-- EMERGENCY BANNER                 -->
   <!-- ================================ -->
   <div class="emergency-banner">
@@ -775,6 +791,45 @@
   <a href="tel:9258879884" class="call-float d-lg-none" aria-label="Call">
     <i class="fas fa-phone-alt"></i>
   </a>
+
+  <!-- ================================ -->
+  <!-- AI CHATBOT (LEGO Part 50)        -->
+  <!-- ================================ -->
+  <div class="chatbot-widget" id="chatbotWidget">
+    <div class="chatbot-btn" id="chatbotToggle">
+      <i class="fas fa-robot"></i>
+    </div>
+    <div class="chatbot-box" id="chatbotBox">
+      <div class="chatbot-header">
+        <i class="fas fa-robot"></i>
+        <div>
+          <strong>Gill Heart Assistant</strong>
+          <span>Online</span>
+        </div>
+        <button class="chatbot-close" id="chatbotClose">&times;</button>
+      </div>
+      <div class="chatbot-msgs" id="chatbotMsgs">
+        <div class="chat-msg bot">
+          <div class="msg-text">👋 Namaste! I'm Dr Gill's virtual assistant. How can I help you today?</div>
+        </div>
+        <div class="chat-msg bot">
+          <div class="msg-text">Ask me about: <br>🩺 Services &nbsp; 📍 Location &nbsp; ⏰ Timings &nbsp; 💰 Fees &nbsp; 📞 Contact</div>
+        </div>
+      </div>
+      <div class="chatbot-input-area">
+        <div class="chatbot-quick">
+          <button class="quick-btn" data-msg="Timings">🕘 Timings</button>
+          <button class="quick-btn" data-msg="Fees">💰 Fees</button>
+          <button class="quick-btn" data-msg="Location">📍 Where?</button>
+          <button class="quick-btn" data-msg="Services">🩺 Services</button>
+        </div>
+        <div class="chatbot-input-row">
+          <input type="text" id="chatbotInput" placeholder="Type your question..." class="chatbot-input">
+          <button class="chatbot-send" id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ================================ -->
   <!-- SCRIPTS                         -->

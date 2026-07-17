@@ -6,6 +6,19 @@
    ========================================== */
 
 /* ==============================
+   PRELOADER (LEGO Part 58)
+   ============================== */
+window.addEventListener('load', () => {
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    setTimeout(() => {
+      preloader.classList.add('hide');
+      setTimeout(() => { preloader.style.display = 'none'; }, 600);
+    }, 2000);
+  }
+});
+
+/* ==============================
    INIT AOS (Animate On Scroll)
    ============================== */
 AOS.init({
@@ -389,6 +402,101 @@ if (riskBtn) {
     if (levelEl) { levelEl.textContent = level; levelEl.className = 'risk-level ' + level.split(' ')[0].toLowerCase(); }
     if (barFill) barFill.style.width = Math.min((risk / 30) * 100, 100) + '%';
     if (msgEl) msgEl.textContent = message;
+  });
+}
+
+/* ==============================
+   AI CHATBOT (LEGO Part 50)
+   ============================== */
+const chatbotToggle = document.getElementById('chatbotToggle');
+const chatbotBox = document.getElementById('chatbotBox');
+const chatbotClose = document.getElementById('chatbotClose');
+const chatbotInput = document.getElementById('chatbotInput');
+const chatbotSend = document.getElementById('chatbotSend');
+const chatbotMsgs = document.getElementById('chatbotMsgs');
+
+// Chatbot knowledge base
+const botReplies = {
+  'timings': '🕘 **Clinic Hours:**\nMonday – Sunday\n9:00 AM – 7:00 PM\n\n📍 Sugar Mill, Mohiuddinpur, Meerut',
+  'fees': '💰 **Consultation Fee:**\nJust ₹300 only!\n\nAffordable & ethical cardiac care for everyone.',
+  'location': '📍 **Gill Heart Clinic**\nSugar Mill, Mohiuddinpur\nMeerut 250205\nNear Metro Pillar No. 1375\n\n📞 +91 9258879884',
+  'services': '🩺 **Heart Care Services:**\n❤️ Chest Pain Evaluation\n📈 ECG & 2D Echo\n🏃 TMT (Treadmill Test)\n🫀 Heart Failure Treatment\n💉 Diabetes Care\n🥗 Cholesterol Management\n🩺 High BP Management',
+  'contact': '📞 **Contact Us:**\nPhone: +91 9258879884\nWhatsApp: +91 9258879884\n\n📍 Sugar Mill, Mohiuddinpur, Meerut\nNear Metro Pillar No. 1375',
+  'doctor': '👨‍⚕️ **Dr G S Gill**\nCardio-Physician\n\n✅ 15+ Years Experience\n✅ Gold Medalist\n✅ 50,000+ Patients Treated\n✅ Affordable & Ethical Care',
+  'emergency': '🚑 **Heart Emergency?**\nCall us immediately:\n📞 +91 9258879884\n\nChest Pain • Breathlessness • High BP\nDon\'t delay!',
+  'appointment': '📅 **Book Appointment**\nCall: +91 9258879884\nWhatsApp: wa.me/919258879884\n\nOr fill the appointment form on our website!',
+};
+
+function addBotMessage(text) {
+  const div = document.createElement('div');
+  div.className = 'chat-msg bot';
+  div.innerHTML = '<div class="msg-text">' + text.replace(/\n/g, '<br>') + '</div>';
+  chatbotMsgs.appendChild(div);
+  chatbotMsgs.scrollTop = chatbotMsgs.scrollHeight;
+}
+
+function addUserMessage(text) {
+  const div = document.createElement('div');
+  div.className = 'chat-msg user';
+  div.innerHTML = '<div class="msg-text">' + text + '</div>';
+  chatbotMsgs.appendChild(div);
+  chatbotMsgs.scrollTop = chatbotMsgs.scrollHeight;
+}
+
+function getBotReply(input) {
+  const q = input.toLowerCase().trim();
+  if (q.includes('time') || q.includes('hour') || q.includes('timing') || q.includes('kholta') || q.includes('kab')) return botReplies.timings;
+  if (q.includes('fee') || q.includes('price') || q.includes('cost') || q.includes('₹') || q.includes('rs') || q.includes('kimat')) return botReplies.fees;
+  if (q.includes('where') || q.includes('location') || q.includes('address') || q.includes('map') || q.includes('kahan') || q.includes('pata')) return botReplies.location;
+  if (q.includes('service') || q.includes('treat') || q.includes('ecg') || q.includes('echo') || q.includes('tmt')) return botReplies.services;
+  if (q.includes('doctor') || q.includes('gill') || q.includes('specia')) return botReplies.doctor;
+  if (q.includes('emergency') || q.includes('chest pain') || q.includes('attack') || q.includes('ambulance')) return botReplies.emergency;
+  if (q.includes('appointment') || q.includes('book') || q.includes('visit') || q.includes('meet')) return botReplies.appointment;
+  if (q.includes('contact') || q.includes('phone') || q.includes('call') || q.includes('mobile') || q.includes('whatsapp') || q.includes('📞')) return botReplies.contact;
+  if (q.includes('hi') || q.includes('hello') || q.includes('hey') || q.includes('namaste') || q.includes('hlo')) return '👋 Namaste! I\'m Dr Gill\'s virtual assistant. How can I help you?\n\nTry asking about:\n🕘 Timings &nbsp; 💰 Fees &nbsp; 📍 Location &nbsp; 🩺 Services &nbsp; 📞 Contact';
+  if (q.includes('thank') || q.includes('thanks') || q.includes('dhanyavad')) return '🙏 You\'re welcome! Is there anything else I can help you with?\n\nFor emergencies, please call 📞 +91 9258879884 immediately.';
+  if (q.includes('bmi') || q.includes('weight')) return '📊 Try our **BMI Calculator** on this website! Go to the BMI Calculator section to check your Body Mass Index.';
+  if (q.includes('risk') || q.includes('heart disease')) return '🫀 Try our **Heart Risk Calculator** on this website! Fill in your health details to check your 10-year heart disease risk.';
+  return '🤔 I\'m not sure I understand. Try asking about:\n\n🕘 **Timings** — Clinic hours\n💰 **Fees** — Consultation cost\n📍 **Location** — Where to find us\n🩺 **Services** — What we treat\n📞 **Contact** — Phone & WhatsApp\n👨‍⚕️ **Doctor** — About Dr Gill';
+}
+
+if (chatbotToggle && chatbotBox) {
+  chatbotToggle.addEventListener('click', () => {
+    chatbotBox.classList.toggle('open');
+  });
+
+  if (chatbotClose) {
+    chatbotClose.addEventListener('click', () => {
+      chatbotBox.classList.remove('open');
+    });
+  }
+
+  if (chatbotSend && chatbotInput) {
+    const sendMsg = () => {
+      const msg = chatbotInput.value.trim();
+      if (!msg) return;
+      addUserMessage(msg);
+      chatbotInput.value = '';
+      setTimeout(() => {
+        const reply = getBotReply(msg);
+        addBotMessage(reply);
+      }, 500);
+    };
+
+    chatbotSend.addEventListener('click', sendMsg);
+    chatbotInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') sendMsg();
+    });
+  }
+
+  // Quick buttons
+  document.querySelectorAll('.quick-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const msg = btn.dataset.msg;
+      addUserMessage(msg);
+      const reply = getBotReply(msg);
+      setTimeout(() => addBotMessage(reply), 400);
+    });
   });
 }
 

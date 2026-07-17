@@ -73,6 +73,83 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ==============================
+   PRELOADER / LOADING SCREEN (58)
+   ============================== */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity .6s ease, visibility .6s ease;
+}
+
+#preloader.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.preloader-content {
+  text-align: center;
+}
+
+.preloader-heart i {
+  font-size: 52px;
+  color: var(--primary);
+  animation: loaderHeartbeat 1s ease-in-out infinite;
+}
+
+@keyframes loaderHeartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.2); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.15); }
+  60% { transform: scale(1); }
+}
+
+.preloader-text {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--dark);
+  margin: 15px 0;
+  letter-spacing: -0.5px;
+}
+
+.preloader-bar {
+  width: 200px;
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 auto 10px;
+}
+
+.preloader-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--primary), #ff1a40);
+  border-radius: 10px;
+  animation: loaderFill 1.8s ease-in-out forwards;
+}
+
+@keyframes loaderFill {
+  0% { width: 0%; }
+  50% { width: 60%; }
+  100% { width: 100%; }
+}
+
+.preloader-sub {
+  font-size: 13px;
+  color: var(--gray);
+  font-weight: 500;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background: var(--light);
@@ -1620,6 +1697,213 @@ img {
 }
 
 /* ==============================
+   AI CHATBOT (LEGO Part 50)
+   ============================== */
+.chatbot-widget {
+  position: fixed;
+  bottom: 110px;
+  right: 30px;
+  z-index: 9999;
+  font-family: 'Poppins', sans-serif;
+}
+
+.chatbot-btn {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--secondary), #3b82f6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(11,94,215,.4);
+  transition: var(--transition);
+  animation: pulse 2s infinite;
+}
+
+.chatbot-btn:hover {
+  transform: scale(1.1);
+}
+
+.chatbot-box {
+  position: absolute;
+  bottom: 75px;
+  right: 0;
+  width: 350px;
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0,0,0,.18);
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  animation: slideUp .3s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.chatbot-box.open {
+  display: flex;
+}
+
+.chatbot-header {
+  background: linear-gradient(135deg, var(--secondary), #3b82f6);
+  color: white;
+  padding: 15px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chatbot-header i {
+  font-size: 22px;
+}
+
+.chatbot-header div {
+  flex: 1;
+}
+
+.chatbot-header strong {
+  display: block;
+  font-size: 14px;
+}
+
+.chatbot-header span {
+  font-size: 11px;
+  opacity: .8;
+}
+
+.chatbot-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0 5px;
+  opacity: .7;
+  transition: .3s;
+}
+
+.chatbot-close:hover {
+  opacity: 1;
+}
+
+.chatbot-msgs {
+  padding: 15px;
+  height: 260px;
+  overflow-y: auto;
+  background: #f8faff;
+}
+
+.chat-msg {
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.chat-msg.bot {
+  justify-content: flex-start;
+}
+
+.chat-msg.user {
+  justify-content: flex-end;
+}
+
+.chat-msg .msg-text {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.chat-msg.bot .msg-text {
+  background: white;
+  color: #333;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+
+.chat-msg.user .msg-text {
+  background: var(--secondary);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.chatbot-input-area {
+  border-top: 1px solid #eee;
+  padding: 10px;
+  background: white;
+}
+
+.chatbot-quick {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.quick-btn {
+  padding: 5px 12px;
+  border: 1px solid #dde7f0;
+  border-radius: 50px;
+  background: white;
+  font-size: 11px;
+  cursor: pointer;
+  transition: .3s;
+  font-family: 'Poppins', sans-serif;
+  color: #555;
+}
+
+.quick-btn:hover {
+  background: #eef3f8;
+  border-color: var(--secondary);
+}
+
+.chatbot-input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.chatbot-input {
+  flex: 1;
+  padding: 10px 14px;
+  border: 2px solid #e5e7eb;
+  border-radius: 25px;
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
+  outline: none;
+  transition: var(--transition);
+}
+
+.chatbot-input:focus {
+  border-color: var(--secondary);
+}
+
+.chatbot-send {
+  width: 40px;
+  height: 40px;
+  background: var(--secondary);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatbot-send:hover {
+  background: #0a4fbf;
+  transform: scale(1.05);
+}
+
+/* ==============================
    FLOATING BUTTONS
    ============================== */
 .whatsapp-float {
@@ -1709,6 +1993,37 @@ img {
   }
   .hero-img {
     width: 350px;
+  }
+}
+
+/* ==============================
+   CHATBOT RESPONSIVE
+   ============================== */
+@media (max-width: 575.98px) {
+  .chatbot-box {
+    width: 300px;
+    right: -10px;
+    bottom: 70px;
+  }
+
+  .chatbot-widget {
+    bottom: 95px;
+    right: 15px;
+  }
+
+  .chatbot-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+  }
+
+  .chatbot-msgs {
+    height: 220px;
+  }
+
+  .quick-btn {
+    font-size: 10px;
+    padding: 4px 10px;
   }
 }
 
@@ -1985,6 +2300,22 @@ img {
 
 </head>
 <body>
+
+  <!-- ================================ -->
+  <!-- LOADING SCREEN (LEGO Part 58)    -->
+  <!-- ================================ -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-heart">
+        <i class="fas fa-heartbeat"></i>
+      </div>
+      <div class="preloader-text">Gill Heart Clinic</div>
+      <div class="preloader-bar">
+        <div class="preloader-bar-fill"></div>
+      </div>
+      <div class="preloader-sub">Loading...</div>
+    </div>
+  </div>
 
   <!-- ================================ -->
   <!-- EMERGENCY BANNER                 -->
@@ -2719,6 +3050,45 @@ img {
   </a>
 
   <!-- ================================ -->
+  <!-- AI CHATBOT (LEGO Part 50)        -->
+  <!-- ================================ -->
+  <div class="chatbot-widget" id="chatbotWidget">
+    <div class="chatbot-btn" id="chatbotToggle">
+      <i class="fas fa-robot"></i>
+    </div>
+    <div class="chatbot-box" id="chatbotBox">
+      <div class="chatbot-header">
+        <i class="fas fa-robot"></i>
+        <div>
+          <strong>Gill Heart Assistant</strong>
+          <span>Online</span>
+        </div>
+        <button class="chatbot-close" id="chatbotClose">&times;</button>
+      </div>
+      <div class="chatbot-msgs" id="chatbotMsgs">
+        <div class="chat-msg bot">
+          <div class="msg-text">👋 Namaste! I'm Dr Gill's virtual assistant. How can I help you today?</div>
+        </div>
+        <div class="chat-msg bot">
+          <div class="msg-text">Ask me about: <br>🩺 Services &nbsp; 📍 Location &nbsp; ⏰ Timings &nbsp; 💰 Fees &nbsp; 📞 Contact</div>
+        </div>
+      </div>
+      <div class="chatbot-input-area">
+        <div class="chatbot-quick">
+          <button class="quick-btn" data-msg="Timings">🕘 Timings</button>
+          <button class="quick-btn" data-msg="Fees">💰 Fees</button>
+          <button class="quick-btn" data-msg="Location">📍 Where?</button>
+          <button class="quick-btn" data-msg="Services">🩺 Services</button>
+        </div>
+        <div class="chatbot-input-row">
+          <input type="text" id="chatbotInput" placeholder="Type your question..." class="chatbot-input">
+          <button class="chatbot-send" id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================ -->
   <!-- SCRIPTS                         -->
   <!-- ================================ -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -2731,6 +3101,19 @@ img {
    Features: AOS, Swiper, Navbar, Counter,
    Typewriter, Back to Top, Ripple, Floating Hearts
    ========================================== */
+
+/* ==============================
+   PRELOADER (LEGO Part 58)
+   ============================== */
+window.addEventListener('load', () => {
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    setTimeout(() => {
+      preloader.classList.add('hide');
+      setTimeout(() => { preloader.style.display = 'none'; }, 600);
+    }, 2000);
+  }
+});
 
 /* ==============================
    INIT AOS (Animate On Scroll)
@@ -3116,6 +3499,101 @@ if (riskBtn) {
     if (levelEl) { levelEl.textContent = level; levelEl.className = 'risk-level ' + level.split(' ')[0].toLowerCase(); }
     if (barFill) barFill.style.width = Math.min((risk / 30) * 100, 100) + '%';
     if (msgEl) msgEl.textContent = message;
+  });
+}
+
+/* ==============================
+   AI CHATBOT (LEGO Part 50)
+   ============================== */
+const chatbotToggle = document.getElementById('chatbotToggle');
+const chatbotBox = document.getElementById('chatbotBox');
+const chatbotClose = document.getElementById('chatbotClose');
+const chatbotInput = document.getElementById('chatbotInput');
+const chatbotSend = document.getElementById('chatbotSend');
+const chatbotMsgs = document.getElementById('chatbotMsgs');
+
+// Chatbot knowledge base
+const botReplies = {
+  'timings': '🕘 **Clinic Hours:**\nMonday – Sunday\n9:00 AM – 7:00 PM\n\n📍 Sugar Mill, Mohiuddinpur, Meerut',
+  'fees': '💰 **Consultation Fee:**\nJust ₹300 only!\n\nAffordable & ethical cardiac care for everyone.',
+  'location': '📍 **Gill Heart Clinic**\nSugar Mill, Mohiuddinpur\nMeerut 250205\nNear Metro Pillar No. 1375\n\n📞 +91 9258879884',
+  'services': '🩺 **Heart Care Services:**\n❤️ Chest Pain Evaluation\n📈 ECG & 2D Echo\n🏃 TMT (Treadmill Test)\n🫀 Heart Failure Treatment\n💉 Diabetes Care\n🥗 Cholesterol Management\n🩺 High BP Management',
+  'contact': '📞 **Contact Us:**\nPhone: +91 9258879884\nWhatsApp: +91 9258879884\n\n📍 Sugar Mill, Mohiuddinpur, Meerut\nNear Metro Pillar No. 1375',
+  'doctor': '👨‍⚕️ **Dr G S Gill**\nCardio-Physician\n\n✅ 15+ Years Experience\n✅ Gold Medalist\n✅ 50,000+ Patients Treated\n✅ Affordable & Ethical Care',
+  'emergency': '🚑 **Heart Emergency?**\nCall us immediately:\n📞 +91 9258879884\n\nChest Pain • Breathlessness • High BP\nDon\'t delay!',
+  'appointment': '📅 **Book Appointment**\nCall: +91 9258879884\nWhatsApp: wa.me/919258879884\n\nOr fill the appointment form on our website!',
+};
+
+function addBotMessage(text) {
+  const div = document.createElement('div');
+  div.className = 'chat-msg bot';
+  div.innerHTML = '<div class="msg-text">' + text.replace(/\n/g, '<br>') + '</div>';
+  chatbotMsgs.appendChild(div);
+  chatbotMsgs.scrollTop = chatbotMsgs.scrollHeight;
+}
+
+function addUserMessage(text) {
+  const div = document.createElement('div');
+  div.className = 'chat-msg user';
+  div.innerHTML = '<div class="msg-text">' + text + '</div>';
+  chatbotMsgs.appendChild(div);
+  chatbotMsgs.scrollTop = chatbotMsgs.scrollHeight;
+}
+
+function getBotReply(input) {
+  const q = input.toLowerCase().trim();
+  if (q.includes('time') || q.includes('hour') || q.includes('timing') || q.includes('kholta') || q.includes('kab')) return botReplies.timings;
+  if (q.includes('fee') || q.includes('price') || q.includes('cost') || q.includes('₹') || q.includes('rs') || q.includes('kimat')) return botReplies.fees;
+  if (q.includes('where') || q.includes('location') || q.includes('address') || q.includes('map') || q.includes('kahan') || q.includes('pata')) return botReplies.location;
+  if (q.includes('service') || q.includes('treat') || q.includes('ecg') || q.includes('echo') || q.includes('tmt')) return botReplies.services;
+  if (q.includes('doctor') || q.includes('gill') || q.includes('specia')) return botReplies.doctor;
+  if (q.includes('emergency') || q.includes('chest pain') || q.includes('attack') || q.includes('ambulance')) return botReplies.emergency;
+  if (q.includes('appointment') || q.includes('book') || q.includes('visit') || q.includes('meet')) return botReplies.appointment;
+  if (q.includes('contact') || q.includes('phone') || q.includes('call') || q.includes('mobile') || q.includes('whatsapp') || q.includes('📞')) return botReplies.contact;
+  if (q.includes('hi') || q.includes('hello') || q.includes('hey') || q.includes('namaste') || q.includes('hlo')) return '👋 Namaste! I\'m Dr Gill\'s virtual assistant. How can I help you?\n\nTry asking about:\n🕘 Timings &nbsp; 💰 Fees &nbsp; 📍 Location &nbsp; 🩺 Services &nbsp; 📞 Contact';
+  if (q.includes('thank') || q.includes('thanks') || q.includes('dhanyavad')) return '🙏 You\'re welcome! Is there anything else I can help you with?\n\nFor emergencies, please call 📞 +91 9258879884 immediately.';
+  if (q.includes('bmi') || q.includes('weight')) return '📊 Try our **BMI Calculator** on this website! Go to the BMI Calculator section to check your Body Mass Index.';
+  if (q.includes('risk') || q.includes('heart disease')) return '🫀 Try our **Heart Risk Calculator** on this website! Fill in your health details to check your 10-year heart disease risk.';
+  return '🤔 I\'m not sure I understand. Try asking about:\n\n🕘 **Timings** — Clinic hours\n💰 **Fees** — Consultation cost\n📍 **Location** — Where to find us\n🩺 **Services** — What we treat\n📞 **Contact** — Phone & WhatsApp\n👨‍⚕️ **Doctor** — About Dr Gill';
+}
+
+if (chatbotToggle && chatbotBox) {
+  chatbotToggle.addEventListener('click', () => {
+    chatbotBox.classList.toggle('open');
+  });
+
+  if (chatbotClose) {
+    chatbotClose.addEventListener('click', () => {
+      chatbotBox.classList.remove('open');
+    });
+  }
+
+  if (chatbotSend && chatbotInput) {
+    const sendMsg = () => {
+      const msg = chatbotInput.value.trim();
+      if (!msg) return;
+      addUserMessage(msg);
+      chatbotInput.value = '';
+      setTimeout(() => {
+        const reply = getBotReply(msg);
+        addBotMessage(reply);
+      }, 500);
+    };
+
+    chatbotSend.addEventListener('click', sendMsg);
+    chatbotInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') sendMsg();
+    });
+  }
+
+  // Quick buttons
+  document.querySelectorAll('.quick-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const msg = btn.dataset.msg;
+      addUserMessage(msg);
+      const reply = getBotReply(msg);
+      setTimeout(() => addBotMessage(reply), 400);
+    });
   });
 }
 
