@@ -422,7 +422,7 @@ const botReplies = {
   'location': '📍 **Gill Heart Clinic**\nSugar Mill, Mohiuddinpur\nMeerut 250205\nNear Metro Pillar No. 1375\n\n📞 +91 9258879884',
   'services': '🩺 **Heart Care Services:**\n❤️ Chest Pain Evaluation\n📈 ECG & 2D Echo\n🏃 TMT (Treadmill Test)\n🫀 Heart Failure Treatment\n💉 Diabetes Care\n🥗 Cholesterol Management\n🩺 High BP Management',
   'contact': '📞 **Contact Us:**\nPhone: +91 9258879884\nWhatsApp: +91 9258879884\n\n📍 Sugar Mill, Mohiuddinpur, Meerut\nNear Metro Pillar No. 1375',
-  'doctor': '👨‍⚕️ **Dr G S Gill**\nCardio-Physician\n\n✅ 15+ Years Experience\n✅ Gold Medalist\n✅ 50,000+ Patients Treated\n✅ Affordable & Ethical Care',
+  'doctor': '👨‍⚕️ **Dr Gurjeet Singh Gill (Dr. GS Gill)**\nCardio-Physician | AI in Healthcare (IIT Kanpur)\n\n✅ MBBS — Govt Medical College MPSMC\n✅ Diploma Cardiology — UN Mehta Institute, Ahmedabad\n✅ PGDCCP (NI) — Clinical Cardiology\n✅ AI in Healthcare — IIT Kanpur\n✅ 12+ Years Experience\n✅ 50,000+ Patients Treated\n✅ Associate Consultant — Yashoda Hospital, Ghaziabad',
   'emergency': '🚑 **Heart Emergency?**\nCall us immediately:\n📞 +91 9258879884\n\nChest Pain • Breathlessness • High BP\nDon\'t delay!',
   'appointment': '📅 **Book Appointment**\nCall: +91 9258879884\nWhatsApp: wa.me/919258879884\n\nOr fill the appointment form on our website!',
 };
