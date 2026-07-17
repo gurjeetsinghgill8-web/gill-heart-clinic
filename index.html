@@ -512,6 +512,66 @@
   </section>
 
   <!-- ================================ -->
+  <!-- BMI CALCULATOR (LEGO Part 35)   -->
+  <!-- ================================ -->
+  <section id="bmi" class="bmi-calculator section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-calculator"></i> Health Tool</span>
+        <h2 class="heading">BMI Calculator</h2>
+        <p class="section-sub">Check your Body Mass Index — Know if your weight is in healthy range.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="bmi-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="row g-4 align-items-center">
+              <div class="col-md-6">
+                <div class="bmi-inputs">
+                  <div class="bmi-field">
+                    <label><i class="fas fa-weight"></i> Weight (kg)</label>
+                    <input type="number" id="weight" class="bmi-input" placeholder="e.g. 70" min="20" max="300" step="0.1">
+                  </div>
+                  <div class="bmi-field">
+                    <label><i class="fas fa-ruler-vertical"></i> Height (cm)</label>
+                    <input type="number" id="height" class="bmi-input" placeholder="e.g. 175" min="50" max="250" step="0.1">
+                  </div>
+                  <button class="submit-btn" id="calcBmi">
+                    <i class="fas fa-calculator"></i> Calculate BMI
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="bmi-result" id="bmiResult">
+                  <div class="bmi-result-placeholder">
+                    <i class="fas fa-heartbeat"></i>
+                    <p>Enter your details and click Calculate</p>
+                  </div>
+                  <div class="bmi-result-data" style="display:none;">
+                    <div class="bmi-score-wrap">
+                      <span class="bmi-label">Your BMI</span>
+                      <span class="bmi-score" id="bmiScore">0.0</span>
+                    </div>
+                    <div class="bmi-category" id="bmiCategory">Normal Weight</div>
+                    <div class="bmi-bar">
+                      <div class="bmi-bar-fill" id="bmiBarFill"></div>
+                    </div>
+                    <div class="bmi-ranges">
+                      <span>Underweight<br>< 18.5</span>
+                      <span>Normal<br>18.5–24.9</span>
+                      <span>Overweight<br>25–29.9</span>
+                      <span>Obese<br>> 30</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
   <!-- GOOGLE MAPS + CONTACT           -->
   <!-- ================================ -->
   <section id="location" class="location section-padding">

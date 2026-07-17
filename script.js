@@ -208,6 +208,83 @@ setInterval(() => {
 }, 3500);
 
 /* ==============================
+   BMI CALCULATOR (LEGO Part 35)
+   ============================== */
+const calcBtn = document.getElementById('calcBmi');
+if (calcBtn) {
+  calcBtn.addEventListener('click', () => {
+    const weight = parseFloat(document.getElementById('weight').value);
+    const height = parseFloat(document.getElementById('height').value);
+
+    if (!weight || !height || weight < 1 || height < 1) {
+      alert('Please enter valid weight and height.');
+      return;
+    }
+
+    const heightM = height / 100;
+    const bmi = weight / (heightM * heightM);
+    const rounded = bmi.toFixed(1);
+
+    // Category
+    let category, color, barColor, percent;
+    if (bmi < 18.5) {
+      category = 'Underweight';
+      color = '#92400e';
+      barColor = '#f59e0b';
+      percent = (bmi / 40) * 100;
+    } else if (bmi < 25) {
+      category = 'Normal Weight';
+      color = '#065f46';
+      barColor = '#10b981';
+      percent = (bmi / 40) * 100;
+    } else if (bmi < 30) {
+      category = 'Overweight';
+      color = '#9a3412';
+      barColor = '#f97316';
+      percent = (bmi / 40) * 100;
+    } else {
+      category = 'Obese';
+      color = '#991b1b';
+      barColor = '#ef4444';
+      percent = (bmi / 40) * 100;
+    }
+
+    // Show results
+    const placeholder = document.querySelector('.bmi-result-placeholder');
+    const data = document.querySelector('.bmi-result-data');
+    if (placeholder) placeholder.style.display = 'none';
+    if (data) data.style.display = 'block';
+
+    const scoreEl = document.getElementById('bmiScore');
+    const catEl = document.getElementById('bmiCategory');
+    const barEl = document.getElementById('bmiBarFill');
+
+    if (scoreEl) scoreEl.textContent = rounded;
+    if (catEl) {
+      catEl.textContent = category;
+      catEl.className = 'bmi-category ' + category.toLowerCase().replace(' ', '');
+    }
+    if (barEl) {
+      barEl.style.width = Math.min(percent, 100) + '%';
+      barEl.style.background = barColor;
+    }
+
+    // Animate score
+    if (scoreEl) {
+      scoreEl.style.color = color;
+      scoreEl.style.transition = 'color .5s';
+    }
+  });
+
+  // Enter key support
+  document.querySelectorAll('.bmi-input').forEach(input => {
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') calcBtn.click();
+    });
+  });
+}
+
+/* ==============================
    APPOINTMENT FORM HANDLER
    ============================== */
 const appointmentForm = document.getElementById('appointmentForm');
