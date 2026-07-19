@@ -468,32 +468,37 @@ img {
   margin-right: 6px;
 }
 
-.price {
+
+/* Trust pills replacing the price row */
+.hero-trust-row {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
-  margin: 20px 0;
   flex-wrap: wrap;
+  gap: 12px;
+  margin: 18px 0;
 }
-
-.price-label {
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--gray);
+.trust-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(217,4,41,.07), rgba(217,4,41,.03));
+  border: 1.5px solid rgba(217,4,41,.15);
+  color: var(--dark);
+  padding: 9px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: var(--transition);
 }
-
-.price-amount {
-  font-size: 48px;
-  font-weight: 800;
+.trust-pill:hover {
+  background: rgba(217,4,41,.1);
+  border-color: var(--primary);
   color: var(--primary);
-  line-height: 1;
+}
+.trust-pill i {
+  color: var(--primary);
+  font-size: 14px;
 }
 
-.price-only {
-  font-size: 14px;
-  color: var(--gray);
-  font-weight: 500;
-}
 
 .hero-buttons {
   display: flex;
@@ -2901,6 +2906,131 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
 }
 
 
+/* ==============================
+   CONSULTING STRIP
+   ============================== */
+.consulting-strip {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  padding: 20px 0;
+}
+.consulting-inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.consulting-label {
+  color: rgba(255,255,255,.6);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.consulting-label i { margin-right: 6px; color: var(--primary); }
+.consulting-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+.consulting-badge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px;
+  padding: 10px 18px;
+  color: white;
+  transition: .3s;
+}
+.consulting-badge:hover { background: rgba(255,255,255,.12); }
+.consulting-badge i { font-size: 22px; color: var(--primary); }
+.consulting-badge strong { display: block; font-size: 13px; line-height: 1.3; }
+.consulting-badge small { font-size: 11px; color: rgba(255,255,255,.5); }
+
+/* ==============================
+   PATIENT'S CORNER
+   ============================== */
+.patients-corner { background: linear-gradient(135deg, #fff 0%, #f8fafc 100%); }
+.pc-card {
+  background: white;
+  border-radius: 20px;
+  padding: 28px 24px 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.06);
+  border: 1.5px solid #eef2f6;
+  cursor: pointer;
+  transition: transform .35s, box-shadow .35s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.pc-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s;
+}
+.pc-card:hover { transform: translateY(-8px); box-shadow: 0 18px 45px rgba(0,0,0,.11); }
+.pc-card:hover::after { transform: scaleX(1); }
+.pc-icon {
+  width: 58px; height: 58px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 24px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.15);
+  flex-shrink: 0;
+}
+.pc-content h4 { font-size: 17px; font-weight: 700; color: var(--dark); margin: 0 0 6px; }
+.pc-content p { font-size: 13px; color: var(--gray); line-height: 1.6; margin: 0; }
+.pc-tips {
+  list-style: none;
+  padding: 0; margin: 8px 0 0;
+}
+.pc-tips li {
+  font-size: 12.5px;
+  color: #555;
+  padding: 4px 0;
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.5;
+}
+.pc-tips li::before {
+  content: '✓';
+  position: absolute; left: 0;
+  color: #10b981;
+  font-weight: 700;
+}
+.pc-action {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid #f0f0f0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap .3s;
+}
+.pc-card:hover .pc-action { gap: 12px; }
+.pc-action i { font-size: 12px; }
+
+/* Navbar "Health" link for patients corner */
+@media (max-width: 767.98px) {
+  .consulting-inner { flex-direction: column; gap: 12px; }
+  .consulting-badge { padding: 8px 14px; }
+}
+
 </style>
 
   <!-- Favicon -->
@@ -2926,12 +3056,12 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
   </div>
 
   <!-- ================================ -->
-  <!-- EMERGENCY BANNER                 -->
+  <!-- CLINIC HELPLINE BANNER           -->
   <!-- ================================ -->
   <div class="emergency-banner">
-    <div class="container d-flex justify-content-between align-items-center">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
       <span class="emergency-text">
-        <i class="fas fa-ambulance"></i> Emergency: 24/7 Cardiac Helpline
+        <i class="fas fa-calendar-check"></i>&nbsp; Clinic Helpline &mdash; Appointment Required &mdash; Mon to Sun, 9 AM &ndash; 7 PM
       </span>
       <a href="tel:9258879884" class="emergency-phone">
         <i class="fas fa-phone-alt"></i> +91 9258879884
@@ -2957,7 +3087,7 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
           <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
-          <li class="nav-item"><a class="nav-link" href="#stats">Stats</a></li>
+          <li class="nav-item"><a class="nav-link" href="#patients-corner">Health Tools</a></li>
           <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
           <li class="nav-item"><a class="nav-link" href="#appointment">Book</a></li>
           <li class="nav-item"><a class="nav-link" href="#location">Contact</a></li>
@@ -2974,19 +3104,19 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
       <div class="row align-items-center">
         <div class="col-lg-6 hero-text" data-aos="fade-right" data-aos-duration="1000">
           <span class="hero-badge">
-            <i class="fas fa-certificate"></i> Cardio-Physician | MBBS, Diploma Cardiology, PGDCCCP (NI)
+            <i class="fas fa-certificate"></i> MBBS &bull; Diploma Cardiology (UN Mehta) &bull; PGDCCP (NI) &bull; AI in Healthcare (IIT Kanpur)
           </span>
           <h1>Dr. Gurjeet Singh Gill (Dr. GS Gill)</h1>
-          <h3>Cardio-Physician | AI in Healthcare Specialist (IIT Kanpur) | 12+ Years</h3>
+          <h3>Cardiac Physician &amp; Non-Invasive Heart Care Specialist | 12+ Years</h3>
           <div class="hero-features">
             <span><i class="fas fa-check-circle"></i> 12+ Years Experience</span>
             <span><i class="fas fa-check-circle"></i> 50,000+ Patients Treated</span>
+            <span><i class="fas fa-check-circle"></i> Non-Invasive Cardiac Diagnostics</span>
             <span><i class="fas fa-check-circle"></i> AI in Healthcare (IIT Kanpur)</span>
           </div>
-          <div class="price">
-            <span class="price-label">Consultation Fee</span>
-            <span class="price-amount">₹300</span>
-            <span class="price-only">Only</span>
+          <div class="hero-trust-row">
+            <div class="trust-pill"><i class="fas fa-stethoscope"></i> ECG &bull; 2D Echo &bull; TMT</div>
+            <div class="trust-pill"><i class="fas fa-clinic-medical"></i> By Appointment Only</div>
           </div>
           <div class="hero-buttons">
             <a href="tel:9258879884" class="btn btn-red">
@@ -3113,6 +3243,7 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
           <div class="section-header" data-aos="fade-up">
             <span class="section-tag">Know Your Doctor</span>
             <h2 class="heading text-start">About Dr. Gurjeet Singh Gill (Dr. GS Gill)</h2>
+          <p style="font-size:13px;font-weight:600;color:var(--primary);margin-bottom:16px;"><i class="fas fa-info-circle"></i> Cardiac Physician &amp; Non-Invasive Heart Care Specialist (MBBS, Dip. Cardiology, PGDCCP &mdash; not performing surgical/invasive procedures)</p>
           </div>
           <p class="about-desc">
             <strong>Dr. Gurjeet Singh Gill (Dr. GS Gill)</strong> is a highly experienced Cardio-Physician with 12+ years of clinical expertise in non-invasive cardiology and critical care. He is currently bridging the gap between medicine and technology through an advanced certification in <strong>Artificial Intelligence in Healthcare from IIT Kanpur</strong>.
@@ -3233,8 +3364,173 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
   </section>
 
   <!-- ================================ -->
+  <!-- ALSO CONSULTING AT               -->
+  <!-- ================================ -->
+  <div class="consulting-strip" data-aos="fade-up">
+    <div class="container">
+      <div class="consulting-inner">
+        <span class="consulting-label"><i class="fas fa-hospital-alt"></i> Also Consulting At:</span>
+        <div class="consulting-badges">
+          <div class="consulting-badge">
+            <i class="fas fa-h-square"></i>
+            <div>
+              <strong>Yashoda Hospital</strong>
+              <small>Ghaziabad &bull; Associate Consultant</small>
+            </div>
+          </div>
+          <div class="consulting-badge">
+            <i class="fas fa-heartbeat"></i>
+            <div>
+              <strong>UN Mehta Institute of Cardiology</strong>
+              <small>Ahmedabad &bull; Diploma Cardiology Alumni</small>
+            </div>
+          </div>
+          <div class="consulting-badge">
+            <i class="fas fa-laptop-medical"></i>
+            <div>
+              <strong>IIT Kanpur</strong>
+              <small>AI in Healthcare &bull; Certified</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================================ -->
+  <!-- PATIENT'S CORNER                 -->
+  <!-- ================================ -->
+  <section id="patients-corner" class="patients-corner section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Know Your Health</span>
+        <h2 class="heading">Patient's Corner</h2>
+        <p class="section-sub">Click on any health topic to understand your condition and check your personal health numbers instantly.</p>
+      </div>
+      <div class="row g-4">
+
+        <!-- Card 1: Know Your Heart Risk -->
+        <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="pc-card" onclick="document.getElementById('heart-risk').scrollIntoView({behavior:'smooth'})">
+            <div class="pc-icon" style="background:linear-gradient(135deg,#d90429,#ff1a40);">
+              <i class="fas fa-heartbeat"></i>
+            </div>
+            <div class="pc-content">
+              <h4>Know Your Heart Risk</h4>
+              <p>Check your 10-year cardiovascular risk score based on age, BP, cholesterol &amp; lifestyle.</p>
+              <ul class="pc-tips">
+                <li>High BP increases risk 3x</li>
+                <li>Smoking doubles heart attack risk</li>
+                <li>Diabetes adds 4 extra risk points</li>
+              </ul>
+            </div>
+            <div class="pc-action">Calculate Now <i class="fas fa-arrow-right"></i></div>
+          </div>
+        </div>
+
+        <!-- Card 2: Know Your BMI -->
+        <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="pc-card" onclick="document.getElementById('bmi').scrollIntoView({behavior:'smooth'})">
+            <div class="pc-icon" style="background:linear-gradient(135deg,#0b5ed7,#3b82f6);">
+              <i class="fas fa-weight"></i>
+            </div>
+            <div class="pc-content">
+              <h4>Check Your BMI</h4>
+              <p>Body Mass Index tells you if your weight is healthy for your height.</p>
+              <ul class="pc-tips">
+                <li>BMI &gt; 25 = Overweight</li>
+                <li>Obesity raises heart disease risk</li>
+                <li>Ideal BMI: 18.5 – 24.9</li>
+              </ul>
+            </div>
+            <div class="pc-action">Check Now <i class="fas fa-arrow-right"></i></div>
+          </div>
+        </div>
+
+        <!-- Card 3: ASCVD Risk Score -->
+        <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="pc-card" onclick="document.getElementById('ascvd').scrollIntoView({behavior:'smooth'})">
+            <div class="pc-icon" style="background:linear-gradient(135deg,#16a34a,#22c55e);">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="pc-content">
+              <h4>ASCVD Risk Score</h4>
+              <p>Advanced 10-year atherosclerotic cardiovascular disease (ASCVD) risk assessment.</p>
+              <ul class="pc-tips">
+                <li>Considers gender, race, age</li>
+                <li>Based on ACC/AHA guidelines</li>
+                <li>Guides statin therapy decisions</li>
+              </ul>
+            </div>
+            <div class="pc-action">Assess Now <i class="fas fa-arrow-right"></i></div>
+          </div>
+        </div>
+
+        <!-- Card 4: Blood Pressure Guide -->
+        <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="pc-card pc-card-info">
+            <div class="pc-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
+              <i class="fas fa-tachometer-alt"></i>
+            </div>
+            <div class="pc-content">
+              <h4>Understand Your BP</h4>
+              <p>What do your blood pressure numbers mean? When to see a doctor?</p>
+              <ul class="pc-tips">
+                <li>Normal: Below 120/80</li>
+                <li>High: 130/80 or above</li>
+                <li>Crisis: 180/120+ (Consult Now)</li>
+              </ul>
+            </div>
+            <div class="pc-action" onclick="window.open('https://wa.me/919258879884?text=I%20want%20to%20check%20my%20Blood%20Pressure','_blank')">Ask Dr. Gill <i class="fab fa-whatsapp"></i></div>
+          </div>
+        </div>
+
+        <!-- Card 5: Diabetes & Heart -->
+        <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+          <div class="pc-card pc-card-info">
+            <div class="pc-icon" style="background:linear-gradient(135deg,#d97706,#fbbf24);">
+              <i class="fas fa-syringe"></i>
+            </div>
+            <div class="pc-content">
+              <h4>Diabetes &amp; Heart Link</h4>
+              <p>Diabetes doubles your risk of heart disease. Know the connection and how to protect yourself.</p>
+              <ul class="pc-tips">
+                <li>HbA1c target: below 7%</li>
+                <li>Fasting sugar: 70-100 mg/dL</li>
+                <li>Diabetics need annual ECG</li>
+              </ul>
+            </div>
+            <div class="pc-action" onclick="window.open('https://wa.me/919258879884?text=I%20want%20to%20know%20about%20Diabetes%20and%20Heart','_blank')">Ask Dr. Gill <i class="fab fa-whatsapp"></i></div>
+          </div>
+        </div>
+
+        <!-- Card 6: Ideal Body Weight -->
+        <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+          <div class="pc-card" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">
+            <div class="pc-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
+              <i class="fas fa-balance-scale"></i>
+            </div>
+            <div class="pc-content">
+              <h4>Ideal Weight &amp; BSA</h4>
+              <p>Calculate your ideal body weight and body surface area for medication dosage guidance.</p>
+              <ul class="pc-tips">
+                <li>Devine formula for ideal weight</li>
+                <li>BSA used in cardiac drug dosing</li>
+                <li>Most accurate at normal BMI</li>
+              </ul>
+            </div>
+            <div class="pc-action">Calculate Now <i class="fas fa-arrow-right"></i></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
   <!-- STATISTICS SECTION              -->
   <!-- ================================ -->
+
   <section id="stats" class="stats section-padding">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
