@@ -2754,8 +2754,25 @@ body.dark-mode .bmi-ranges span { color: #94a3b8; }
 .blog-tag { display: inline-block; padding: 3px 14px; background: rgba(217,4,41,.08); color: var(--primary); border-radius: 50px; font-size: 11px; font-weight: 600; margin-bottom: 10px; }
 .blog-body h4 { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 10px; line-height: 1.4; }
 .blog-body p { font-size: 13px; color: var(--gray); line-height: 1.7; margin-bottom: 15px; }
-.blog-read { font-size: 13px; font-weight: 600; color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: var(--transition); }
+.blog-read { font-size: 13px; font-weight: 600; color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: var(--transition); background: none; border: none; cursor: pointer; padding: 0; }
 .blog-read:hover { gap: 10px; color: var(--primary-dark); }
+
+/* Enhanced blog card v2 */
+.blog-card-v2 { display: flex; flex-direction: column; }
+.blog-card-v2 .blog-body { flex: 1; display: flex; flex-direction: column; }
+.blog-card-v2 .blog-read { margin-top: auto; padding-top: 14px; border-top: 1px solid #f0f0f0; width: 100%; }
+.blog-expand { margin-top: 12px; padding-top: 12px; border-top: 1px dashed #e0e0e0; font-size: 13px; color: #444; line-height: 1.8; animation: fadeIn .4s ease; }
+.blog-cta-box {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 20px;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  border-radius: 20px; padding: 28px 32px;
+  justify-content: center; text-align: left;
+}
+.blog-cta-icon { font-size: 48px; color: #ff5722; flex-shrink: 0; }
+.blog-cta-box h4 { color: white; font-size: 20px; font-weight: 700; margin: 0 0 6px; }
+.blog-cta-box p { color: rgba(255,255,255,.65); font-size: 14px; margin: 0; }
+.blog-cta-box .btn-red { flex-shrink: 0; white-space: nowrap; }
+
 
 /* ==============================
    PWA INSTALL BANNER
@@ -3088,6 +3105,7 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
           <li class="nav-item"><a class="nav-link" href="#patients-corner">Health Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
           <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
           <li class="nav-item"><a class="nav-link" href="#appointment">Book</a></li>
           <li class="nav-item"><a class="nav-link" href="#location">Contact</a></li>
@@ -3324,12 +3342,12 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
           <div class="gallery-card">
             <div class="gallery-img-box">
-              <img src="clinic4.jpg" alt="24/7 Cardiac Emergency Unit" class="img-fluid">
-              <div class="gallery-badge"><i class="fas fa-ambulance"></i> Emergency Unit</div>
+              <img src="clinic4.jpg" alt="Cardiac Monitoring Equipment" class="img-fluid">
+              <div class="gallery-badge"><i class="fas fa-stethoscope"></i> Cardiac Monitoring</div>
             </div>
             <div class="gallery-info">
-              <h4>24/7 Cardiac Emergency Bed</h4>
-              <p>Equipped with vital signs monitoring & rapid response emergency cardiac care.</p>
+              <h4>Cardiac Monitoring Setup</h4>
+              <p>Patient vitals monitoring equipment for consultation and evaluation during OPD visits.</p>
             </div>
           </div>
         </div>
@@ -3771,20 +3789,26 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
   </section>
 
   <!-- ================================ -->
-  <!-- EMERGENCY SECTION               -->
+  <!-- APPOINTMENT CALL TO ACTION     -->
   <!-- ================================ -->
   <section id="emergency" class="emergency">
     <div class="container" data-aos="zoom-in" data-aos-duration="800">
       <div class="emergency-content">
-        <span class="emergency-icon">❤️</span>
-        <h1>Heart Emergency?</h1>
+        <span class="emergency-icon">🫀</span>
+        <h1>Feeling Unwell? Talk to Dr. Gill</h1>
         <p class="emergency-symptoms">
-          <span>Chest Pain</span> • <span>Breathlessness</span> • <span>High BP</span>
+          <span>Chest Discomfort</span> &bull; <span>Breathlessness</span> &bull; <span>High BP</span> &bull; <span>Irregular Heartbeat</span>
         </p>
-        <p class="emergency-msg">Don't Delay — Every Second Counts. Call us right now.</p>
-        <a href="tel:9258879884" class="btn btn-white btn-lg">
-          <i class="fas fa-phone-alt"></i> Call Now — +91 9258879884
-        </a>
+        <p class="emergency-msg">If you are experiencing any of these symptoms, <strong>please book an appointment</strong> or call the clinic directly. For life-threatening emergencies, please call <strong>112</strong> or go to the nearest hospital emergency room immediately.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:10px;">
+          <a href="tel:9258879884" class="btn btn-white btn-lg">
+            <i class="fas fa-phone-alt"></i> Call Clinic &mdash; +91 9258879884
+          </a>
+          <a href="https://wa.me/919258879884?text=I%20need%20to%20book%20an%20appointment" target="_blank" class="btn" style="background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.5);color:white;">
+            <i class="fab fa-whatsapp"></i> Book on WhatsApp
+          </a>
+        </div>
+        <p style="margin-top:14px;font-size:12px;opacity:.7;"><i class="fas fa-info-circle"></i> This is an OPD clinic &mdash; By Appointment Only. We do not provide 24/7 emergency services.</p>
       </div>
     </div>
   </section>
@@ -4413,38 +4437,219 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
   </section>
 
   <!-- ================================ -->
-  <!-- BLOG SYSTEM (Part 40)            -->
+  <!-- BLOG SYSTEM (Part 40) ENHANCED  -->
   <!-- ================================ -->
   <section id="blog" class="blog-section section-padding">
     <div class="container">
       <div class="section-header" data-aos="fade-up">
-        <span class="section-tag"><i class="fas fa-pen-fancy"></i> Blog</span>
-        <h2 class="heading">Latest from Gill Heart Clinic</h2>
-        <p class="section-sub">Expert articles on heart health, prevention, and treatments.</p>
+        <span class="section-tag"><i class="fas fa-pen-fancy"></i> Health Blog by Dr. GS Gill</span>
+        <h2 class="heading">Heart Health Articles</h2>
+        <p class="section-sub">Read, learn and protect your heart — expert-written articles in simple language by Dr. Gurjeet Singh Gill.</p>
       </div>
       <div class="row g-4">
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="blog-card"><div class="blog-img" style="background:linear-gradient(135deg,#d90429,#ff1a40);"><i class="fas fa-heartbeat"></i></div>
-            <div class="blog-body"><span class="blog-tag">Prevention</span><h4>10 Signs of a Heart Attack You Shouldn't Ignore</h4>
-            <p>Chest pain, shortness of breath, cold sweat — know the warning signs that can save your life...</p>
-            <a href="#" class="blog-read" onclick="return false;"><i class="fas fa-arrow-right"></i> Read More</a></div>
+
+        <!-- Blog 1 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="blog-card blog-card-v2">
+            <div class="blog-img" style="background:linear-gradient(135deg,#d90429,#ff1a40);">
+              <i class="fas fa-heartbeat"></i>
+            </div>
+            <div class="blog-body">
+              <span class="blog-tag">Prevention</span>
+              <h4>10 Warning Signs of Heart Disease You Must Not Ignore</h4>
+              <p>Chest discomfort, breathlessness, palpitations — these could be your heart asking for help. Learn the 10 early warning signs that every person above 35 should know.</p>
+              <div class="blog-expand" id="blog1-content" style="display:none;">
+                <p>1. <strong>Chest pressure or tightness</strong> — Not always severe pain. Many people feel a squeezing or heaviness.<br>
+                2. <strong>Shortness of breath</strong> — Even with mild activity or while lying down.<br>
+                3. <strong>Palpitations</strong> — Rapid, fluttering or irregular heartbeat.<br>
+                4. <strong>Excessive sweating</strong> — Cold, clammy sweat without physical exertion.<br>
+                5. <strong>Pain spreading to arm, jaw or back</strong> — Classic radiation pattern of cardiac pain.<br>
+                6. <strong>Unexplained fatigue</strong> — Especially in women — feeling tired despite rest.<br>
+                7. <strong>Dizziness or fainting</strong> — Reduced blood flow to brain.<br>
+                8. <strong>Swollen ankles or feet</strong> — Sign of fluid retention / heart failure.<br>
+                9. <strong>Persistent dry cough</strong> — Associated with heart failure.<br>
+                10. <strong>Nausea or indigestion</strong> — Especially in women — often mistaken for stomach issues.<br><br>
+                <strong>Dr. GS Gill advises:</strong> If you have 2 or more of these symptoms regularly, book an appointment for ECG and cardiac evaluation.</p>
+              </div>
+              <button class="blog-read" onclick="toggleBlog('blog1-content',this)">
+                <i class="fas fa-arrow-right"></i> Read More
+              </button>
+            </div>
           </div>
         </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="blog-card"><div class="blog-img" style="background:linear-gradient(135deg,#0b5ed7,#3b82f6);"><i class="fas fa-stethoscope"></i></div>
-            <div class="blog-body"><span class="blog-tag">Treatment</span><h4>ECG vs 2D Echo vs TMT — What's the Difference?</h4>
-            <p>Understand which heart test you need and what each one tells your doctor about your heart...</p>
-            <a href="#" class="blog-read" onclick="return false;"><i class="fas fa-arrow-right"></i> Read More</a></div>
+
+        <!-- Blog 2 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="blog-card blog-card-v2">
+            <div class="blog-img" style="background:linear-gradient(135deg,#0b5ed7,#3b82f6);">
+              <i class="fas fa-stethoscope"></i>
+            </div>
+            <div class="blog-body">
+              <span class="blog-tag">Tests</span>
+              <h4>ECG vs 2D Echo vs TMT — Which Test Do You Need?</h4>
+              <p>All three are heart tests — but which one does your doctor order and why? Simple explanation of the difference.</p>
+              <div class="blog-expand" id="blog2-content" style="display:none;">
+                <p><strong>ECG (Electrocardiogram)</strong> — Records the electrical activity of your heart. Done in 5 minutes. Used for: Heart attack detection, rhythm disorders, palpitations. Cost: Very affordable.<br><br>
+                <strong>2D Echocardiography</strong> — Ultrasound of the heart. Shows heart chambers, valves and pumping function. Used for: Heart failure, valve disease, heart size. Takes 20–30 minutes.<br><br>
+                <strong>TMT (Treadmill Test / Stress Test)</strong> — ECG done while walking on treadmill. Detects blockages in heart arteries. Used for: Chest pain on exertion, suspected angina. Duration: 15–30 minutes.<br><br>
+                <strong>Which one for you?</strong><br>
+                • Chest pain at rest → ECG first<br>
+                • Breathlessness / heart failure → 2D Echo<br>
+                • Chest pain on walking / exercise → TMT<br><br>
+                All 3 are done at <strong>Gill Heart Clinic, Meerut.</strong></p>
+              </div>
+              <button class="blog-read" onclick="toggleBlog('blog2-content',this)">
+                <i class="fas fa-arrow-right"></i> Read More
+              </button>
+            </div>
           </div>
         </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="blog-card"><div class="blog-img" style="background:linear-gradient(135deg,#16a34a,#22c55e);"><i class="fas fa-apple-alt"></i></div>
-            <div class="blog-body"><span class="blog-tag">Lifestyle</span><h4>Indian Diet for a Healthy Heart — What to Eat & Avoid</h4>
-            <p>Simple swaps in your daily Indian diet that can dramatically reduce your heart disease risk...</p>
-            <a href="#" class="blog-read" onclick="return false;"><i class="fas fa-arrow-right"></i> Read More</a></div>
+
+        <!-- Blog 3 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="blog-card blog-card-v2">
+            <div class="blog-img" style="background:linear-gradient(135deg,#16a34a,#22c55e);">
+              <i class="fas fa-apple-alt"></i>
+            </div>
+            <div class="blog-body">
+              <span class="blog-tag">Diet</span>
+              <h4>Indian Diet for a Healthy Heart — What to Eat &amp; Avoid</h4>
+              <p>Simple swaps in your daily Indian diet that can dramatically reduce your heart disease risk — no fancy food needed.</p>
+              <div class="blog-expand" id="blog3-content" style="display:none;">
+                <p><strong>✅ Heart-Healthy Indian Foods:</strong><br>
+                • Whole grains: Bajra, Jowar, Brown rice, Oats<br>
+                • Dals and legumes: Masoor, Moong, Chana<br>
+                • Vegetables: Palak, Methi, Lauki, Karela<br>
+                • Fruits: Amla, Pomegranate, Guava, Papaya<br>
+                • Healthy fats: Mustard oil, Walnut, Flaxseeds<br>
+                • Spices: Haldi, Dalchini, Lahsun (garlic)<br><br>
+                <strong>❌ Foods to Avoid / Reduce:</strong><br>
+                • Vanaspati / Dalda / Trans fats<br>
+                • Maida (refined flour) products<br>
+                • Packaged namkeen, chips, biscuits<br>
+                • Excess salt (namak) — limit to 5g/day<br>
+                • Sugary drinks — cold drinks, packaged juice<br>
+                • Red meat excess<br><br>
+                <strong>Dr. GS Gill's Tip:</strong> Ghee in moderation is okay. It is the trans fats (vanaspati) that are truly harmful for the heart.</p>
+              </div>
+              <button class="blog-read" onclick="toggleBlog('blog3-content',this)">
+                <i class="fas fa-arrow-right"></i> Read More
+              </button>
+            </div>
           </div>
+        </div>
+
+        <!-- Blog 4 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="blog-card blog-card-v2">
+            <div class="blog-img" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
+              <i class="fas fa-tachometer-alt"></i>
+            </div>
+            <div class="blog-body">
+              <span class="blog-tag">Blood Pressure</span>
+              <h4>High BP: The Silent Killer — Know Your Numbers</h4>
+              <p>Blood pressure 140/90 or above is dangerous — yet most patients feel no symptoms. Know when to act.</p>
+              <div class="blog-expand" id="blog4-content" style="display:none;">
+                <p><strong>Blood Pressure Categories:</strong><br>
+                • Normal: Below 120/80 mmHg<br>
+                • Elevated: 120–129 / below 80<br>
+                • Stage 1 High BP: 130–139 / 80–89<br>
+                • Stage 2 High BP: 140/90 or above<br>
+                • Hypertensive Crisis: 180/120+ — Seek care immediately<br><br>
+                <strong>Why is high BP dangerous?</strong><br>
+                Sustained high pressure damages arteries silently over years, leading to:<br>
+                • Heart attack<br>
+                • Stroke<br>
+                • Kidney damage<br>
+                • Vision loss<br><br>
+                <strong>Dr. GS Gill advises:</strong> Check your BP at home every week if you are above 40. A digital BP machine costs ₹1000–1500 and can save your life. Take medications regularly — never stop on your own.</p>
+              </div>
+              <button class="blog-read" onclick="toggleBlog('blog4-content',this)">
+                <i class="fas fa-arrow-right"></i> Read More
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog 5 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+          <div class="blog-card blog-card-v2">
+            <div class="blog-img" style="background:linear-gradient(135deg,#d97706,#fbbf24);">
+              <i class="fas fa-syringe"></i>
+            </div>
+            <div class="blog-body">
+              <span class="blog-tag">Diabetes</span>
+              <h4>Diabetes &amp; Heart Disease: The Deadly Connection</h4>
+              <p>Diabetic patients are 2–4 times more likely to develop heart disease. Here's what you must do differently.</p>
+              <div class="blog-expand" id="blog5-content" style="display:none;">
+                <p><strong>How Diabetes Damages Your Heart:</strong><br>
+                High blood sugar damages blood vessel walls over time, causing:<br>
+                • Atherosclerosis (hardening of arteries)<br>
+                • Silent heart attacks (without chest pain)<br>
+                • Heart failure<br>
+                • Poor healing after cardiac events<br><br>
+                <strong>Diabetic Heart Care Checklist:</strong><br>
+                ✓ HbA1c test every 3 months — target below 7%<br>
+                ✓ Annual ECG and lipid profile<br>
+                ✓ BP monitoring — target below 130/80<br>
+                ✓ Cholesterol check — LDL below 100 mg/dL<br>
+                ✓ Quit smoking completely<br>
+                ✓ Walk 30 minutes daily<br><br>
+                <strong>Dr. GS Gill advises:</strong> Every diabetic patient above 40 should get an annual non-invasive cardiac evaluation — ECG + 2D Echo + Lipid profile — even without symptoms.</p>
+              </div>
+              <button class="blog-read" onclick="toggleBlog('blog5-content',this)">
+                <i class="fas fa-arrow-right"></i> Read More
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Blog 6 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+          <div class="blog-card blog-card-v2">
+            <div class="blog-img" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
+              <i class="fas fa-running"></i>
+            </div>
+            <div class="blog-body">
+              <span class="blog-tag">Lifestyle</span>
+              <h4>Best Exercises for a Healthy Heart — Safe for Indian Patients</h4>
+              <p>Not all exercise is equal. Know which physical activities strengthen the heart without putting it at risk.</p>
+              <div class="blog-expand" id="blog6-content" style="display:none;">
+                <p><strong>Best Cardiac-Safe Exercises:</strong><br>
+                • <strong>Brisk Walking</strong> — 30 min daily, 5 days/week. Most effective and safest.<br>
+                • <strong>Cycling</strong> — Low impact, great for BP control.<br>
+                • <strong>Swimming</strong> — Excellent for heart and joints.<br>
+                • <strong>Yoga &amp; Pranayam</strong> — Anulom-Vilom, Bhramari reduce stress and BP.<br>
+                • <strong>Light weight training</strong> — 2–3 times/week under supervision.<br><br>
+                <strong>Warning — Avoid these if unfit:</strong><br>
+                ❌ Sudden intense exercise without warm-up<br>
+                ❌ Heavy weight lifting if BP uncontrolled<br>
+                ❌ Running in extreme heat<br><br>
+                <strong>Dr. GS Gill advises:</strong> Get a TMT (Treadmill Test) done before starting any new exercise program if you are above 45, diabetic, hypertensive, or a smoker. Exercise is medicine — but the dose matters.</p>
+              </div>
+              <button class="blog-read" onclick="toggleBlog('blog6-content',this)">
+                <i class="fas fa-arrow-right"></i> Read More
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end row -->
+
+      <!-- Google Blogger CTA -->
+      <div class="text-center mt-5" data-aos="fade-up">
+        <div class="blog-cta-box">
+          <div class="blog-cta-icon"><i class="fab fa-blogger-b"></i></div>
+          <div>
+            <h4>Read More Articles on Our Blog</h4>
+            <p>We regularly publish new heart health articles in Hindi &amp; English on Google Blogger — free to read, easy to share.</p>
+          </div>
+          <a href="https://gillheartclinic.blogspot.com" target="_blank" class="btn btn-red">
+            <i class="fab fa-blogger-b"></i> Visit Blog
+          </a>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -4530,6 +4735,19 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
    Features: AOS, Swiper, Navbar, Counter,
    Typewriter, Back to Top, Ripple, Floating Hearts
    ========================================== */
+
+/* ==============================
+   BLOG EXPAND / COLLAPSE
+   ============================== */
+function toggleBlog(id, btn) {
+  const el = document.getElementById(id);
+  const isOpen = el.style.display !== 'none';
+  el.style.display = isOpen ? 'none' : 'block';
+  btn.innerHTML = isOpen
+    ? '<i class="fas fa-arrow-right"></i> Read More'
+    : '<i class="fas fa-arrow-up"></i> Show Less';
+}
+
 
 /* ==============================
    PRELOADER (LEGO Part 58)
