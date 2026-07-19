@@ -560,17 +560,43 @@ img {
 .hero-img-wrapper {
   position: relative;
   display: inline-block;
+  border-radius: 28px;
 }
 
 .hero-img {
-  width: 420px;
-  border-radius: 30px;
-  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 440px;
+  height: 380px;
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: 28px;
+  border: 4px solid white;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
   transition: var(--transition);
 }
 
 .hero-img:hover {
   transform: scale(1.02);
+}
+
+.about-img-wrapper {
+  position: relative;
+  display: inline-block;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+  border: 4px solid white;
+}
+
+.about-img {
+  width: 100%;
+  max-width: 420px;
+  height: 380px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 20px;
+  display: block;
+  transition: transform 0.5s ease;
 }
 
 .hero-exp-badge {
@@ -3193,12 +3219,12 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
         <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
           <div class="gallery-card">
             <div class="gallery-img-box">
-              <img src="doctor2.jpg" alt="Dr GS Gill Cardiac Evaluation" class="img-fluid">
-              <div class="gallery-badge"><i class="fas fa-stethoscope"></i> Patient Care</div>
+              <img src="doctor3.jpg" alt="Dr Gurjeet Singh Gill Cardio Physician" class="img-fluid">
+              <div class="gallery-badge"><i class="fas fa-stethoscope"></i> Dr. GS Gill</div>
             </div>
             <div class="gallery-info">
-              <h4>Dr. G.S. Gill Patient Care</h4>
-              <p>Over 12+ years of compassionate non-invasive cardiac care and patient trust.</p>
+              <h4>Dr. Gurjeet Singh Gill (Dr. GS Gill)</h4>
+              <p>12+ Years experience in clinical cardiology & AI in healthcare (IIT Kanpur).</p>
             </div>
           </div>
         </div>
