@@ -418,7 +418,7 @@ const chatbotMsgs = document.getElementById('chatbotMsgs');
 // Chatbot knowledge base
 const botReplies = {
   'timings': '🕘 **Clinic Hours:**\nMonday – Sunday\n9:00 AM – 7:00 PM\n\n📍 Sugar Mill, Mohiuddinpur, Meerut',
-  'fees': '💰 **Consultation Fee:**\nJust ₹300 only!\n\nAffordable & ethical cardiac care for everyone.',
+  'fees': '💰 **Consultation Fee:**\nAffordable & ethical cardiac care for everyone.\n\n📞 Call +91 9258879884 for current consultation charges.',
   'location': '📍 **Gill Heart Clinic**\nSugar Mill, Mohiuddinpur\nMeerut 250205\nNear Metro Pillar No. 1375\n\n📞 +91 9258879884',
   'services': '🩺 **Heart Care Services:**\n❤️ Chest Pain Evaluation\n📈 ECG & 2D Echo\n🏃 TMT (Treadmill Test)\n🫀 Heart Failure Treatment\n💉 Diabetes Care\n🥗 Cholesterol Management\n🩺 High BP Management',
   'contact': '📞 **Contact Us:**\nPhone: +91 9258879884\nWhatsApp: +91 9258879884\n\n📍 Sugar Mill, Mohiuddinpur, Meerut\nNear Metro Pillar No. 1375',
@@ -453,11 +453,11 @@ function getBotReply(input) {
   if (q.includes('emergency') || q.includes('chest pain') || q.includes('attack') || q.includes('ambulance')) return botReplies.emergency;
   if (q.includes('appointment') || q.includes('book') || q.includes('visit') || q.includes('meet')) return botReplies.appointment;
   if (q.includes('contact') || q.includes('phone') || q.includes('call') || q.includes('mobile') || q.includes('whatsapp') || q.includes('📞')) return botReplies.contact;
-  if (q.includes('hi') || q.includes('hello') || q.includes('hey') || q.includes('namaste') || q.includes('hlo')) return '👋 Namaste! I\'m Dr Gill\'s virtual assistant. How can I help you?\n\nTry asking about:\n🕘 Timings &nbsp; 💰 Fees &nbsp; 📍 Location &nbsp; 🩺 Services &nbsp; 📞 Contact';
+  if (q.includes('hi') || q.includes('hello') || q.includes('hey') || q.includes('namaste') || q.includes('hlo')) return '👋 Namaste! I\'m Dr Gill\'s virtual assistant. How can I help you?\n\nTry asking about:\n🕘 Timings &nbsp; 📍 Location &nbsp; 🩺 Services &nbsp; 📞 Contact';
   if (q.includes('thank') || q.includes('thanks') || q.includes('dhanyavad')) return '🙏 You\'re welcome! Is there anything else I can help you with?\n\nFor emergencies, please call 📞 +91 9258879884 immediately.';
   if (q.includes('bmi') || q.includes('weight')) return '📊 Try our **BMI Calculator** on this website! Go to the BMI Calculator section to check your Body Mass Index.';
   if (q.includes('risk') || q.includes('heart disease')) return '🫀 Try our **Heart Risk Calculator** on this website! Fill in your health details to check your 10-year heart disease risk.';
-  return '🤔 I\'m not sure I understand. Try asking about:\n\n🕘 **Timings** — Clinic hours\n💰 **Fees** — Consultation cost\n📍 **Location** — Where to find us\n🩺 **Services** — What we treat\n📞 **Contact** — Phone & WhatsApp\n👨‍⚕️ **Doctor** — About Dr Gill';
+  return '🤔 I\'m not sure I understand. Try asking about:\n\n🕘 **Timings** — Clinic hours\n📍 **Location** — Where to find us\n🩺 **Services** — What we treat\n📞 **Contact** — Phone & WhatsApp\n👨‍⚕️ **Doctor** — About Dr Gill';
 }
 
 if (chatbotToggle && chatbotBox) {
@@ -719,3 +719,106 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').catch(() => {});
   });
 }
+
+// ==============================
+// CAREERS — Apply via WhatsApp
+// ==============================
+function applyCareer(position) {
+  const msg = encodeURIComponent(
+    'Namaste! 🙏\n\n' +
+    'I am applying for the position of: *' + position + '* at Gill Heart Clinic.\n\n' +
+    'Please share my details:\n' +
+    '👤 Name: _______________\n' +
+    '🎓 Qualification: _______________\n' +
+    '📅 Experience: ___ years\n' +
+    '📱 Mobile: _______________\n' +
+    '📍 Current Location: _______________\n\n' +
+    'I am interested in joining your team. Kindly guide me on the next steps.\n\n' +
+    'Thank you! 🙏'
+  );
+  window.open('https://wa.me/919258879884?text=' + msg, '_blank');
+}
+
+// ==============================
+// CAREERS ADMIN PANEL
+// ==============================
+function toggleCareerAdmin() {
+  const form = document.getElementById('careerAdminForm');
+  if (form) form.style.display = form.style.display === 'none' ? 'block' : 'none';
+}
+
+function addCareerJob() {
+  const title = document.getElementById('newJobTitle')?.value.trim();
+  const qual = document.getElementById('newJobQual')?.value.trim();
+  const type = document.getElementById('newJobType')?.value.trim();
+  const loc = document.getElementById('newJobLoc')?.value.trim();
+  const badge = document.getElementById('newJobBadge')?.value.trim() || 'Hiring';
+  const desc = document.getElementById('newJobDesc')?.value.trim();
+
+  if (!title || !qual || !type || !loc || !desc) {
+    alert('Please fill all required fields.');
+    return;
+  }
+
+  // Save to localStorage
+  let jobs = JSON.parse(localStorage.getItem('gill_career_jobs') || '[]');
+  jobs.push({ title, qual, type, loc, badge, desc, date: new Date().toISOString() });
+  localStorage.setItem('gill_career_jobs', JSON.stringify(jobs));
+
+  // Clear form
+  ['newJobTitle','newJobQual','newJobType','newJobLoc','newJobBadge','newJobDesc'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+
+  // Reload jobs display
+  renderCareerJobs();
+  alert('✅ Job listing saved! Refresh the page to see all changes.');
+}
+
+function renderCareerJobs() {
+  const container = document.getElementById('careersContainer');
+  if (!container) return;
+
+  let jobs = JSON.parse(localStorage.getItem('gill_career_jobs') || '[]');
+
+  // Keep default 3 jobs if localStorage empty
+  if (jobs.length === 0) {
+    // Don't override the HTML — keep the static defaults
+    return;
+  }
+
+  // Build HTML for saved jobs
+  let html = '';
+  jobs.forEach((job, i) => {
+    const badgeClass = job.badge.toLowerCase().includes('urgent') ? 'urgent' : 'hiring';
+    html += `
+    <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="${(i+1)*100}">
+      <div class="career-card">
+        <div class="career-icon"><i class="fas fa-user-md"></i></div>
+        <span class="career-badge ${badgeClass}">${job.badge}</span>
+        <h4>${job.title}</h4>
+        <div class="career-meta">
+          <span><i class="fas fa-graduation-cap"></i> ${job.qual}</span>
+          <span><i class="fas fa-clock"></i> ${job.type}</span>
+          <span><i class="fas fa-map-marker-alt"></i> ${job.loc}</span>
+        </div>
+        <p>${job.desc}</p>
+        <button class="btn btn-blue w-100" onclick="applyCareer('${job.title.replace(/'/g, "\\'")}')">
+          <i class="fab fa-whatsapp"></i> Apply Now
+        </button>
+      </div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+// Show admin panel if ?admin=jobs in URL
+(function initCareerAdmin() {
+  if (window.location.search.includes('admin=jobs') || window.location.search.includes('admin=careers')) {
+    const panel = document.getElementById('careerAdminPanel');
+    if (panel) panel.style.display = 'block';
+  }
+  // Load saved jobs from localStorage
+  renderCareerJobs();
+})();

@@ -58,7 +58,7 @@
     "url": "https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/",
     "telephone": "+91-9258879884",
     "email": "gurjeetsinghgill8@gmail.com",
-    "priceRange": "₹300",
+    "priceRange": "₹₹",
     "image": "doctor.jpg",
     "address": {
       "@type": "PostalAddress",
@@ -88,6 +88,90 @@
       "jobTitle": "Cardio-Physician | AI in Healthcare (IIT Kanpur)"
     }
   }
+  </script>
+
+  <!-- Google JobPosting Structured Data for Careers -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "JobPosting",
+      "title": "MBBS Doctor",
+      "description": "Looking for an MBBS doctor to consult OPD patients at Gill Heart Clinic, Meerut. Freshers & experienced both welcome. Ethical practice, supportive environment.",
+      "hiringOrganization": {
+        "@type": "MedicalClinic",
+        "name": "Gill Heart Clinic",
+        "sameAs": "https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/"
+      },
+      "jobLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Sugar Mill, Mohiuddinpur",
+          "addressLocality": "Meerut",
+          "addressRegion": "Uttar Pradesh",
+          "postalCode": "250205",
+          "addressCountry": "IN"
+        }
+      },
+      "employmentType": ["FULL_TIME", "PART_TIME"],
+      "qualifications": "MBBS (Registered)",
+      "datePosted": "2026-07-28",
+      "validThrough": "2026-10-28"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "JobPosting",
+      "title": "BMS Doctor",
+      "description": "BMS doctor needed for OPD & patient management at Gill Heart Clinic, Meerut. Attractive salary + incentives. Learn advanced cardiac care under Dr GS Gill.",
+      "hiringOrganization": {
+        "@type": "MedicalClinic",
+        "name": "Gill Heart Clinic",
+        "sameAs": "https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/"
+      },
+      "jobLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Sugar Mill, Mohiuddinpur",
+          "addressLocality": "Meerut",
+          "addressRegion": "Uttar Pradesh",
+          "postalCode": "250205",
+          "addressCountry": "IN"
+        }
+      },
+      "employmentType": "FULL_TIME",
+      "qualifications": "BMS (Registered)",
+      "datePosted": "2026-07-28",
+      "validThrough": "2026-10-28"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "JobPosting",
+      "title": "BHMS Doctor",
+      "description": "BHMS doctor for general OPD & preventive cardiology counselling at Gill Heart Clinic, Meerut. Flexible hours, friendly work environment.",
+      "hiringOrganization": {
+        "@type": "MedicalClinic",
+        "name": "Gill Heart Clinic",
+        "sameAs": "https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/"
+      },
+      "jobLocation": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Sugar Mill, Mohiuddinpur",
+          "addressLocality": "Meerut",
+          "addressRegion": "Uttar Pradesh",
+          "postalCode": "250205",
+          "addressCountry": "IN"
+        }
+      },
+      "employmentType": ["FULL_TIME", "PART_TIME"],
+      "qualifications": "BHMS (Registered)",
+      "datePosted": "2026-07-28",
+      "validThrough": "2026-10-28"
+    }
+  ]
   </script>
 
   <!-- Custom Styles -->
@@ -1657,6 +1741,50 @@ img {
   margin-right: 5px;
 }
 
+.review-cta-banner {
+  display: inline-block;
+  background: linear-gradient(135deg, #fff8e1, #fff3e0);
+  border: 2px dashed #f59e0b;
+  border-radius: 16px;
+  padding: 16px 32px;
+  font-size: 1.05rem;
+  color: #555;
+  transition: all 0.3s;
+}
+
+.review-cta-banner i.fa-heart {
+  color: #e53e3e;
+  margin-right: 6px;
+  animation: pulse 2s infinite;
+}
+
+.review-cta-banner a {
+  color: #4285F4;
+  font-weight: 700;
+  text-decoration: none;
+  margin-left: 4px;
+}
+
+.review-cta-banner a:hover {
+  text-decoration: underline;
+}
+
+.review-cta-banner:hover {
+  border-color: #4285F4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(66,133,244,.15);
+}
+
+body.dark-mode .review-cta-banner {
+  background: linear-gradient(135deg, #2d2410, #2a2015);
+  border-color: #8b6914;
+  color: #ccc;
+}
+
+body.dark-mode .review-cta-banner a {
+  color: #8ab4f8;
+}
+
 /* ==============================
    EMERGENCY SECTION
    ============================== */
@@ -2285,6 +2413,50 @@ img {
   color: white;
 }
 
+.review-float {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 65px;
+  height: 65px;
+  background: linear-gradient(135deg, #4285F4, #34A853);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(66,133,244,.4);
+  z-index: 999;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.review-float:hover {
+  transform: scale(1.1);
+  color: white;
+}
+
+.review-float::after {
+  content: 'Review Us';
+  position: absolute;
+  left: 75px;
+  background: #333;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.review-float:hover::after {
+  opacity: 1;
+}
+
 @keyframes pulse {
   0%, 100% { transform: scale(1); box-shadow: 0 10px 30px rgba(37,211,102,.4); }
   50% { transform: scale(1.08); box-shadow: 0 15px 45px rgba(37,211,102,.6); }
@@ -2500,7 +2672,8 @@ img {
   }
 
   .whatsapp-float,
-  .call-float {
+  .call-float,
+  .review-float {
     width: 55px;
     height: 55px;
     font-size: 26px;
@@ -2515,6 +2688,15 @@ img {
     right: 15px;
     bottom: 90px;
     display: flex !important;
+  }
+
+  .review-float {
+    left: 15px;
+    bottom: 20px;
+  }
+
+  .review-float::after {
+    display: none;
   }
 
   #topBtn {
@@ -2772,6 +2954,70 @@ body.dark-mode .bmi-ranges span { color: #94a3b8; }
 .blog-cta-box h4 { color: white; font-size: 20px; font-weight: 700; margin: 0 0 6px; }
 .blog-cta-box p { color: rgba(255,255,255,.65); font-size: 14px; margin: 0; }
 .blog-cta-box .btn-red { flex-shrink: 0; white-space: nowrap; }
+
+/* ==============================
+   CAREERS / JOIN OUR TEAM
+   ============================== */
+.careers-section { background: linear-gradient(180deg, #f8fafc 0%, #fff 100%); }
+.career-card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 30px 24px;
+  text-align: center;
+  position: relative;
+  transition: var(--transition);
+  height: 100%;
+  border: 1px solid #f0f0f0;
+}
+.career-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow);
+  border-color: var(--primary);
+}
+.career-icon {
+  width: 70px; height: 70px;
+  background: linear-gradient(135deg, rgba(217,4,41,.08), rgba(217,4,41,.15));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 18px;
+  font-size: 30px;
+  color: var(--primary);
+}
+.career-badge {
+  position: absolute; top: 16px; right: 16px;
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.career-badge.urgent { background: #fee2e2; color: #dc2626; }
+.career-badge.hiring { background: #dbeafe; color: #2563eb; }
+.career-card h4 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 14px; }
+.career-meta { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 14px; }
+.career-meta span {
+  font-size: 12px; color: var(--gray);
+  background: #f8fafc;
+  padding: 5px 12px; border-radius: 50px;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.career-meta span i { color: var(--primary); font-size: 11px; }
+.career-card p { font-size: 13px; color: #666; line-height: 1.7; margin-bottom: 18px; }
+.career-admin-form {
+  background: #f8fafc;
+  border-radius: 16px;
+  border: 2px dashed #e0e0e0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+body.dark-mode .careers-section { background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%); }
+body.dark-mode .career-card { background: #1e293b; border-color: #334155; }
+body.dark-mode .career-card h4 { color: #e2e8f0; }
+body.dark-mode .career-card p { color: #94a3b8; }
+body.dark-mode .career-meta span { background: #0f172a; color: #94a3b8; }
+body.dark-mode .career-admin-form { background: #1e293b; border-color: #334155; }
 
 
 /* ==============================
@@ -3106,6 +3352,7 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
           <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
           <li class="nav-item"><a class="nav-link" href="#patients-corner">Health Tools</a></li>
           <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#careers">Careers</a></li>
           <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
           <li class="nav-item"><a class="nav-link" href="#appointment">Book</a></li>
           <li class="nav-item"><a class="nav-link" href="#location">Contact</a></li>
@@ -3659,6 +3906,11 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
         </div>
         <div class="swiper-pagination"></div>
       </div>
+      <div class="text-center mt-4" data-aos="fade-up">
+        <div class="review-cta-banner">
+          <i class="fas fa-heart"></i> Loved our care? <a href="https://search.google.com/local/writereview?cid=4216517169009844765" target="_blank">Share your experience on Google <i class="fab fa-google"></i></a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -4180,7 +4432,7 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
         </div>
       </div>
       <div class="text-center mt-4" data-aos="fade-up">
-        <a href="#" class="btn btn-blue" target="_blank"><i class="fab fa-google"></i> Write a Review on Google</a>
+        <a href="https://search.google.com/local/writereview?cid=4216517169009844765" class="btn btn-blue" target="_blank"><i class="fab fa-google"></i> Write a Review on Google</a>
       </div>
     </div>
   </section>
@@ -4400,7 +4652,7 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
           <div class="tip-card"><div class="tip-icon"><i class="fas fa-bed"></i></div><h4>Sleep 7-8 Hours</h4><p>Poor sleep increases BP and stress hormones. Fix your sleep schedule for heart health.</p></div>
         </div>
         <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
-          <div class="tip-card"><div class="tip-icon"><i class="fas fa-heart"></i></div><h4>Regular Checkup</h4><p>Yearly heart checkup after 35. ECG + BP + Sugar — just ₹300 at Gill Heart Clinic!</p></div>
+          <div class="tip-card"><div class="tip-icon"><i class="fas fa-heart"></i></div><h4>Regular Checkup</h4><p>Yearly heart checkup after 35. ECG + BP + Sugar — get a complete checkup at Gill Heart Clinic!</p></div>
         </div>
       </div>
     </div>
@@ -4654,6 +4906,90 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
   </section>
 
   <!-- ================================ -->
+  <!-- CAREERS / JOIN OUR TEAM         -->
+  <!-- ================================ -->
+  <section id="careers" class="careers-section section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-briefcase-medical"></i> Careers</span>
+        <h2 class="heading">Join Our Team</h2>
+        <p class="section-sub">We're looking for dedicated doctors to join Gill Heart Clinic. Apply now!</p>
+      </div>
+      <div class="row g-4" id="careersContainer">
+        <!-- Job 1: MBBS Doctor -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="career-card">
+            <div class="career-icon"><i class="fas fa-user-md"></i></div>
+            <span class="career-badge urgent">Urgent</span>
+            <h4>MBBS Doctor</h4>
+            <div class="career-meta">
+              <span><i class="fas fa-graduation-cap"></i> MBBS (Registered)</span>
+              <span><i class="fas fa-clock"></i> Full-time / Part-time</span>
+              <span><i class="fas fa-map-marker-alt"></i> Meerut</span>
+            </div>
+            <p>Looking for an MBBS doctor to consult OPD patients. Freshers & experienced both welcome. Ethical practice, supportive environment.</p>
+            <button class="btn btn-blue w-100" onclick="applyCareer('MBBS Doctor')">
+              <i class="fab fa-whatsapp"></i> Apply Now
+            </button>
+          </div>
+        </div>
+        <!-- Job 2: BMS Doctor -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="career-card">
+            <div class="career-icon"><i class="fas fa-user-md"></i></div>
+            <span class="career-badge">Hiring</span>
+            <h4>BMS Doctor</h4>
+            <div class="career-meta">
+              <span><i class="fas fa-graduation-cap"></i> BMS (Registered)</span>
+              <span><i class="fas fa-clock"></i> Full-time</span>
+              <span><i class="fas fa-map-marker-alt"></i> Meerut</span>
+            </div>
+            <p>BMS doctor needed for OPD & patient management. Attractive salary + incentives. Learn advanced cardiac care under Dr GS Gill.</p>
+            <button class="btn btn-green w-100" onclick="applyCareer('BMS Doctor')">
+              <i class="fab fa-whatsapp"></i> Apply Now
+            </button>
+          </div>
+        </div>
+        <!-- Job 3: BHMS Doctor -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="career-card">
+            <div class="career-icon"><i class="fas fa-user-md"></i></div>
+            <span class="career-badge">Hiring</span>
+            <h4>BHMS Doctor</h4>
+            <div class="career-meta">
+              <span><i class="fas fa-graduation-cap"></i> BHMS (Registered)</span>
+              <span><i class="fas fa-clock"></i> Part-time / Full-time</span>
+              <span><i class="fas fa-map-marker-alt"></i> Meerut</span>
+            </div>
+            <p>BHMS doctor for general OPD & preventive cardiology counselling. Flexible hours, friendly work environment.</p>
+            <button class="btn btn-green w-100" onclick="applyCareer('BHMS Doctor')">
+              <i class="fab fa-whatsapp"></i> Apply Now
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Admin: Add New Job (hidden by default) -->
+      <div class="text-center mt-4" id="careerAdminPanel" style="display:none;" data-aos="fade-up">
+        <button class="btn btn-outline-primary btn-sm" onclick="toggleCareerAdmin()">
+          <i class="fas fa-cog"></i> Manage Job Listings
+        </button>
+        <div id="careerAdminForm" style="display:none;" class="mt-3 p-4 career-admin-form">
+          <h5><i class="fas fa-plus-circle"></i> Add New Job Listing</h5>
+          <div class="row g-3">
+            <div class="col-md-6"><input type="text" id="newJobTitle" class="form-control" placeholder="Job Title (e.g., MBBS Doctor)"></div>
+            <div class="col-md-6"><input type="text" id="newJobQual" class="form-control" placeholder="Qualification (e.g., MBBS Registered)"></div>
+            <div class="col-md-4"><input type="text" id="newJobType" class="form-control" placeholder="Job Type (Full-time)"></div>
+            <div class="col-md-4"><input type="text" id="newJobLoc" class="form-control" placeholder="Location (Meerut)"></div>
+            <div class="col-md-4"><input type="text" id="newJobBadge" class="form-control" placeholder="Badge (Hiring/Urgent)"></div>
+            <div class="col-12"><textarea id="newJobDesc" class="form-control" rows="2" placeholder="Job description..."></textarea></div>
+            <div class="col-12"><button class="btn btn-red" onclick="addCareerJob()"><i class="fas fa-save"></i> Save Job Listing</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================ -->
   <!-- FLOATING ELEMENTS               -->
   <!-- ================================ -->
   <a href="https://wa.me/919258879884" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
@@ -4662,6 +4998,10 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
 
   <a href="tel:9258879884" class="call-float d-lg-none" aria-label="Call">
     <i class="fas fa-phone-alt"></i>
+  </a>
+
+  <a href="https://search.google.com/local/writereview?cid=4216517169009844765" class="review-float" target="_blank" aria-label="Write Google Review">
+    <i class="fas fa-star"></i>
   </a>
 
   <!-- ================================ -->
@@ -4685,13 +5025,13 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
           <div class="msg-text">👋 Namaste! I'm Dr Gill's virtual assistant. How can I help you today?</div>
         </div>
         <div class="chat-msg bot">
-          <div class="msg-text">Ask me about: <br>🩺 Services &nbsp; 📍 Location &nbsp; ⏰ Timings &nbsp; 💰 Fees &nbsp; 📞 Contact</div>
+          <div class="msg-text">Ask me about: <br>🩺 Services &nbsp; 📍 Location &nbsp; ⏰ Timings &nbsp; 📞 Contact</div>
         </div>
       </div>
       <div class="chatbot-input-area">
         <div class="chatbot-quick">
           <button class="quick-btn" data-msg="Timings">🕘 Timings</button>
-          <button class="quick-btn" data-msg="Fees">💰 Fees</button>
+          <button class="quick-btn" data-msg="Contact">💬 Contact</button>
           <button class="quick-btn" data-msg="Location">📍 Where?</button>
           <button class="quick-btn" data-msg="Services">🩺 Services</button>
         </div>
@@ -5162,7 +5502,7 @@ const chatbotMsgs = document.getElementById('chatbotMsgs');
 // Chatbot knowledge base
 const botReplies = {
   'timings': '🕘 **Clinic Hours:**\nMonday – Sunday\n9:00 AM – 7:00 PM\n\n📍 Sugar Mill, Mohiuddinpur, Meerut',
-  'fees': '💰 **Consultation Fee:**\nJust ₹300 only!\n\nAffordable & ethical cardiac care for everyone.',
+  'fees': '💰 **Consultation Fee:**\nAffordable & ethical cardiac care for everyone.\n\n📞 Call +91 9258879884 for current consultation charges.',
   'location': '📍 **Gill Heart Clinic**\nSugar Mill, Mohiuddinpur\nMeerut 250205\nNear Metro Pillar No. 1375\n\n📞 +91 9258879884',
   'services': '🩺 **Heart Care Services:**\n❤️ Chest Pain Evaluation\n📈 ECG & 2D Echo\n🏃 TMT (Treadmill Test)\n🫀 Heart Failure Treatment\n💉 Diabetes Care\n🥗 Cholesterol Management\n🩺 High BP Management',
   'contact': '📞 **Contact Us:**\nPhone: +91 9258879884\nWhatsApp: +91 9258879884\n\n📍 Sugar Mill, Mohiuddinpur, Meerut\nNear Metro Pillar No. 1375',
@@ -5197,11 +5537,11 @@ function getBotReply(input) {
   if (q.includes('emergency') || q.includes('chest pain') || q.includes('attack') || q.includes('ambulance')) return botReplies.emergency;
   if (q.includes('appointment') || q.includes('book') || q.includes('visit') || q.includes('meet')) return botReplies.appointment;
   if (q.includes('contact') || q.includes('phone') || q.includes('call') || q.includes('mobile') || q.includes('whatsapp') || q.includes('📞')) return botReplies.contact;
-  if (q.includes('hi') || q.includes('hello') || q.includes('hey') || q.includes('namaste') || q.includes('hlo')) return '👋 Namaste! I\'m Dr Gill\'s virtual assistant. How can I help you?\n\nTry asking about:\n🕘 Timings &nbsp; 💰 Fees &nbsp; 📍 Location &nbsp; 🩺 Services &nbsp; 📞 Contact';
+  if (q.includes('hi') || q.includes('hello') || q.includes('hey') || q.includes('namaste') || q.includes('hlo')) return '👋 Namaste! I\'m Dr Gill\'s virtual assistant. How can I help you?\n\nTry asking about:\n🕘 Timings &nbsp; 📍 Location &nbsp; 🩺 Services &nbsp; 📞 Contact';
   if (q.includes('thank') || q.includes('thanks') || q.includes('dhanyavad')) return '🙏 You\'re welcome! Is there anything else I can help you with?\n\nFor emergencies, please call 📞 +91 9258879884 immediately.';
   if (q.includes('bmi') || q.includes('weight')) return '📊 Try our **BMI Calculator** on this website! Go to the BMI Calculator section to check your Body Mass Index.';
   if (q.includes('risk') || q.includes('heart disease')) return '🫀 Try our **Heart Risk Calculator** on this website! Fill in your health details to check your 10-year heart disease risk.';
-  return '🤔 I\'m not sure I understand. Try asking about:\n\n🕘 **Timings** — Clinic hours\n💰 **Fees** — Consultation cost\n📍 **Location** — Where to find us\n🩺 **Services** — What we treat\n📞 **Contact** — Phone & WhatsApp\n👨‍⚕️ **Doctor** — About Dr Gill';
+  return '🤔 I\'m not sure I understand. Try asking about:\n\n🕘 **Timings** — Clinic hours\n📍 **Location** — Where to find us\n🩺 **Services** — What we treat\n📞 **Contact** — Phone & WhatsApp\n👨‍⚕️ **Doctor** — About Dr Gill';
 }
 
 if (chatbotToggle && chatbotBox) {
