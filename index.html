@@ -8,17 +8,24 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <script>
-    // Auto-clear old Service Workers and Cache Storage across all devices
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then(function(regs) {
-        for (let r of regs) r.unregister();
-      });
-    }
-    if ('caches' in window) {
-      caches.keys().then(function(names) {
-        for (let name of names) caches.delete(name);
-      });
-    }
+    // Auto-purge old browser memory & hard refresh on first visit without ?v= parameter
+    (function() {
+      var key = 'gill_v10_cache_purged';
+      if (!localStorage.getItem(key)) {
+        localStorage.setItem(key, 'true');
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(function(regs) {
+            for (var i = 0; i < regs.length; i++) regs[i].unregister();
+          });
+        }
+        if ('caches' in window) {
+          caches.keys().then(function(names) {
+            for (var i = 0; i < names.length; i++) caches.delete(names[i]);
+          });
+        }
+        window.location.reload(true);
+      }
+    })();
   </script>
   <title>Gill Heart Clinic | Dr Gurjeet Singh Gill — Cardio-Physician & AI in Healthcare (IIT Kanpur)</title>
 
