@@ -1786,10 +1786,10 @@ body.dark-mode .review-cta-banner a {
 }
 
 /* ==============================
-   EMERGENCY SECTION
+   APPOINTMENT CTA / URGENT CARE SECTION
    ============================== */
-.emergency {
-  background: linear-gradient(135deg, var(--primary) 0%, #ff1a40 50%, var(--primary-dark) 100%);
+.urgent-care {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 50%, #1d4ed8 100%);
   text-align: center;
   padding: 90px 20px;
   color: white;
@@ -1797,7 +1797,7 @@ body.dark-mode .review-cta-banner a {
   overflow: hidden;
 }
 
-.emergency::before {
+.urgent-care::before {
   content: '';
   position: absolute;
   top: 0;
@@ -1808,37 +1808,37 @@ body.dark-mode .review-cta-banner a {
   pointer-events: none;
 }
 
-.emergency-content {
+.urgent-content {
   position: relative;
   z-index: 1;
 }
 
-.emergency-icon {
+.urgent-icon {
   font-size: 60px;
   display: block;
   margin-bottom: 15px;
   animation: heartbeat 1.5s infinite;
 }
 
-.emergency h1 {
+.urgent-care h1 {
   font-size: 52px;
   font-weight: 800;
   margin-bottom: 15px;
 }
 
-.emergency-symptoms {
+.urgent-symptoms {
   font-size: 20px;
   font-weight: 600;
   margin: 15px 0;
   opacity: .9;
 }
 
-.emergency-symptoms span {
+.urgent-symptoms span {
   display: inline-block;
   margin: 0 5px;
 }
 
-.emergency-msg {
+.urgent-msg {
   font-size: 18px;
   margin-bottom: 30px;
   opacity: .8;
@@ -4043,24 +4043,24 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
   <!-- ================================ -->
   <!-- APPOINTMENT CALL TO ACTION     -->
   <!-- ================================ -->
-  <section id="emergency" class="emergency">
+  <section id="urgent-care" class="urgent-care">
     <div class="container" data-aos="zoom-in" data-aos-duration="800">
-      <div class="emergency-content">
-        <span class="emergency-icon">🫀</span>
-        <h1>Feeling Unwell? Talk to Dr. Gill</h1>
-        <p class="emergency-symptoms">
+      <div class="urgent-content">
+        <span class="urgent-icon">🫀</span>
+        <h1>Heart Concern? Consult Dr. Gill — By Appointment</h1>
+        <p class="urgent-symptoms">
           <span>Chest Discomfort</span> &bull; <span>Breathlessness</span> &bull; <span>High BP</span> &bull; <span>Irregular Heartbeat</span>
         </p>
-        <p class="emergency-msg">If you are experiencing any of these symptoms, <strong>please book an appointment</strong> or call the clinic directly. For life-threatening emergencies, please call <strong>112</strong> or go to the nearest hospital emergency room immediately.</p>
+        <p class="urgent-msg">If you have any of these symptoms, <strong>book an appointment</strong> or call the clinic. We are an OPD clinic — <strong>no walk-ins, appointment only</strong>. For life-threatening emergencies, please call <strong>112</strong> or visit the nearest hospital ER.</p>
         <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:10px;">
           <a href="tel:9258879884" class="btn btn-white btn-lg">
-            <i class="fas fa-phone-alt"></i> Call Clinic &mdash; +91 9258879884
+            <i class="fas fa-phone-alt"></i> Call Clinic — +91 9258879884
           </a>
           <a href="https://wa.me/919258879884?text=I%20need%20to%20book%20an%20appointment" target="_blank" class="btn" style="background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.5);color:white;">
-            <i class="fab fa-whatsapp"></i> Book on WhatsApp
+            <i class="fab fa-whatsapp"></i> Book Appointment on WhatsApp
           </a>
         </div>
-        <p style="margin-top:14px;font-size:12px;opacity:.7;"><i class="fas fa-info-circle"></i> This is an OPD clinic &mdash; By Appointment Only. We do not provide 24/7 emergency services.</p>
+        <p style="margin-top:14px;font-size:12px;opacity:.7;"><i class="fas fa-info-circle"></i> OPD Clinic — By Appointment Only. Mon to Sun, 9 AM – 7 PM.</p>
       </div>
     </div>
   </section>
@@ -5507,7 +5507,7 @@ const botReplies = {
   'services': '🩺 **Heart Care Services:**\n❤️ Chest Pain Evaluation\n📈 ECG & 2D Echo\n🏃 TMT (Treadmill Test)\n🫀 Heart Failure Treatment\n💉 Diabetes Care\n🥗 Cholesterol Management\n🩺 High BP Management',
   'contact': '📞 **Contact Us:**\nPhone: +91 9258879884\nWhatsApp: +91 9258879884\n\n📍 Sugar Mill, Mohiuddinpur, Meerut\nNear Metro Pillar No. 1375',
   'doctor': '👨‍⚕️ **Dr Gurjeet Singh Gill (Dr. GS Gill)**\nCardio-Physician | AI in Healthcare (IIT Kanpur)\n\n✅ MBBS — Govt Medical College MPSMC\n✅ Diploma Cardiology — UN Mehta Institute, Ahmedabad\n✅ PGDCCP (NI) — Clinical Cardiology\n✅ AI in Healthcare — IIT Kanpur\n✅ 12+ Years Experience\n✅ 50,000+ Patients Treated\n✅ Associate Consultant — Yashoda Hospital, Ghaziabad',
-  'emergency': '🚑 **Heart Emergency?**\nCall us immediately:\n📞 +91 9258879884\n\nChest Pain • Breathlessness • High BP\nDon\'t delay!',
+  'emergency': '🩺 **Gill Heart Clinic — OPD Only**\nWe provide OPD cardiac consultations by appointment.\n\n📞 Book appointment: +91 9258879884\n🕘 Mon–Sun, 9 AM – 7 PM\n\nFor cardiac emergencies, please go to your nearest hospital emergency.',
   'appointment': '📅 **Book Appointment**\nCall: +91 9258879884\nWhatsApp: wa.me/919258879884\n\nOr fill the appointment form on our website!',
 };
 
@@ -5534,11 +5534,11 @@ function getBotReply(input) {
   if (q.includes('where') || q.includes('location') || q.includes('address') || q.includes('map') || q.includes('kahan') || q.includes('pata')) return botReplies.location;
   if (q.includes('service') || q.includes('treat') || q.includes('ecg') || q.includes('echo') || q.includes('tmt')) return botReplies.services;
   if (q.includes('doctor') || q.includes('gill') || q.includes('specia')) return botReplies.doctor;
-  if (q.includes('emergency') || q.includes('chest pain') || q.includes('attack') || q.includes('ambulance')) return botReplies.emergency;
+  if (q.includes('emergency') || q.includes('chest pain') || q.includes('attack') || q.includes('ambulance')) return botReplies.emergency;  // OPD only - redirects to nearest hospital
   if (q.includes('appointment') || q.includes('book') || q.includes('visit') || q.includes('meet')) return botReplies.appointment;
   if (q.includes('contact') || q.includes('phone') || q.includes('call') || q.includes('mobile') || q.includes('whatsapp') || q.includes('📞')) return botReplies.contact;
   if (q.includes('hi') || q.includes('hello') || q.includes('hey') || q.includes('namaste') || q.includes('hlo')) return '👋 Namaste! I\'m Dr Gill\'s virtual assistant. How can I help you?\n\nTry asking about:\n🕘 Timings &nbsp; 📍 Location &nbsp; 🩺 Services &nbsp; 📞 Contact';
-  if (q.includes('thank') || q.includes('thanks') || q.includes('dhanyavad')) return '🙏 You\'re welcome! Is there anything else I can help you with?\n\nFor emergencies, please call 📞 +91 9258879884 immediately.';
+  if (q.includes('thank') || q.includes('thanks') || q.includes('dhanyavad')) return '🙏 You\'re welcome! Is there anything else I can help you with?\n\nTo book an OPD appointment, call 📞 +91 9258879884.';
   if (q.includes('bmi') || q.includes('weight')) return '📊 Try our **BMI Calculator** on this website! Go to the BMI Calculator section to check your Body Mass Index.';
   if (q.includes('risk') || q.includes('heart disease')) return '🫀 Try our **Heart Risk Calculator** on this website! Fill in your health details to check your 10-year heart disease risk.';
   return '🤔 I\'m not sure I understand. Try asking about:\n\n🕘 **Timings** — Clinic hours\n📍 **Location** — Where to find us\n🩺 **Services** — What we treat\n📞 **Contact** — Phone & WhatsApp\n👨‍⚕️ **Doctor** — About Dr Gill';
