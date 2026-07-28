@@ -7,6 +7,19 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
+  <script>
+    // Auto-clear old Service Workers and Cache Storage across all devices
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(regs) {
+        for (let r of regs) r.unregister();
+      });
+    }
+    if ('caches' in window) {
+      caches.keys().then(function(names) {
+        for (let name of names) caches.delete(name);
+      });
+    }
+  </script>
   <title>Gill Heart Clinic | Dr Gurjeet Singh Gill — Cardio-Physician & AI in Healthcare (IIT Kanpur)</title>
 
   <!-- Meta Tags for SEO -->
@@ -2652,10 +2665,6 @@ body.dark-mode .review-cta-banner a {
 
   .hero-img {
     width: 260px;
-  }
-
-  .price-amount {
-    font-size: 36px;
   }
 
   .heading {
