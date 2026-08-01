@@ -1,3 +1,23 @@
 User-agent: *
 Allow: /
+
+# AI Engine Search Crawlers (Generative Engine Optimization - GEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
 Sitemap: https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/sitemap.xml
