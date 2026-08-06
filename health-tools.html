@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <script>
+    (function() {
+      var key = 'gill_v10_cache_purged';
+      if (!localStorage.getItem(key)) {
+        localStorage.setItem(key, 'true');
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(function(regs) {
+            for (var i = 0; i < regs.length; i++) regs[i].unregister();
+          });
+        }
+        if ('caches' in window) {
+          caches.keys().then(function(names) {
+            for (var i = 0; i < names.length; i++) caches.delete(names[i]);
+          });
+        }
+        window.location.reload(true);
+      }
+    })();
+  </script>
+  <title>Health Tools & Calculators | Gill Heart Clinic</title>
+  <meta name="description" content="Free health calculators: BMI, Heart Risk, ASCVD, BSA & Ideal Weight.">
+  <meta name="keywords" content="cardio physician meerut, heart doctor ghaziabad, heart clinic delhi ncr, dr gurjeet singh gill, heart specialist modinagar, heart doctor govindpuri, ecg test hapur, bp doctor baghpat, heart checkup muradnagar, sardhana cardiology">
+  <meta name="author" content="Dr Gurjeet Singh Gill (Dr. GS Gill)">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/">
+  <meta property="og:title" content="Gill Heart Clinic – Dr Gurjeet Singh Gill | Cardio-Physician">
+  <meta property="og:description" content="MBBS (MPSMC), Diploma Cardiology (UN Mehta Institute), PGDCCP (NI), AI in Healthcare (IIT Kanpur). Affordable care in Meerut.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/">
+  <meta property="og:image" content="og-image.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#d90429">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Gill Heart">
+  <meta name="google-site-verification" content="google838c583d645bf1d7">
+  <meta name="msvalidate.01" content="GillHeartClinic-BING-Verification">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+</head>
+<body>
+<div id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-heart">
+        <i class="fas fa-heartbeat"></i>
+      </div>
+      <div class="preloader-text">Gill Heart Clinic</div>
+      <div class="preloader-bar">
+        <div class="preloader-bar-fill"></div>
+      </div>
+<div class="emergency-banner">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <span class="emergency-text">
+        <i class="fas fa-calendar-check"></i>&nbsp; Clinic Helpline &mdash; Appointment Required &mdash; Mon to Sun, 9 AM &ndash; 7 PM
+      </span>
+      <a href="tel:9258879884" class="emergency-phone">
+        <i class="fas fa-phone-alt"></i> +91 9258879884
+      </a>
+    </div>
+  </div>
+<nav id="navbar" class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="logo navbar-brand" href="#">
+        <i class="fas fa-heartbeat"></i> Gill Heart Clinic
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" 
+              aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#patients-corner">Health Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#careers">Careers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
+          <li class="nav-item"><a class="nav-link" href="#appointment">Book</a></li>
+          <li class="nav-item"><a class="nav-link" href="#location">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<section id="patients-corner" class="patients-corner section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Know Your Health</span>
+        <h2 class="heading">Patient's Corner</h2>
+        <p class="section-sub">Click on any health topic to understand your condition and check your personal health numbers instantly.</p>
+      </div>
+      <div class="row g-4">
+
+        <!-- Card 1: Know Your Heart Risk -->
+        <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="pc-card" onclick="document.getElementById('heart-risk').scrollIntoView({behavior:'smooth'})">
+            <div class="pc-icon" style="background:linear-gradient(135deg,#d90429,#ff1a40);">
+              <i class="fas fa-heartbeat"></i>
+            </div>
+            <div class="pc-content">
+              <h4>Know Your Heart Risk</h4>
+              <p>Check your 10-year cardiovascular risk score based on age, BP, cholesterol &amp; lifestyle.</p>
+              <ul class="pc-tips">
+                <li>High BP increases risk 3x</li>
+                <li>Smoking doubles heart attack risk</li>
+                <li>Diabetes adds 4 extra risk points</li>
+              </ul>
+            </div>
+            <div class="pc-action">Calculate Now <i class="fas fa-arrow-right"></i></div>
+          </div>
+        </div>
+
+        <!-- Card 2: Know Your BMI -->
+        <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="pc-card" onclick="document.getElementById('bmi').scrollIntoView({behavior:'smooth'})">
+            <div class="pc-icon" style="background:linear-gradient(135deg,#0b5ed7,#3b82f6);">
+              <i class="fas fa-weight"></i>
+            </div>
+            <div class="pc-content">
+              <h4>Check Your BMI</h4>
+              <p>Body Mass Index tells you if your weight is healthy for your height.</p>
+              <ul class="pc-tips">
+                <li>BMI &gt; 25 = Overweight</li>
+                <li>Obesity raises heart disease risk</li>
+                <li>Ideal BMI: 18.5 – 24.9</li>
+              </ul>
+            </div>
+            <div class="pc-action">Check Now <i class="fas fa-arrow-right"></i></div>
+          </div>
+        </div>
+
+        <!-- Card 3: ASCVD Risk Score -->
+        <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="pc-card" onclick="document.getElementById('ascvd').scrollIntoView({behavior:'smooth'})">
+            <div class="pc-icon" style="background:linear-gradient(135deg,#16a34a,#22c55e);">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="pc-content">
+              <h4>ASCVD Risk Score</h4>
+              <p>Advanced 10-year atherosclerotic cardiovascular disease (ASCVD) risk assessment.</p>
+              <ul class="pc-tips">
+                <li>Considers gender, race, age</li>
+                <li>Based on ACC/AHA guidelines</li>
+                <li>Guides statin therapy decisions</li>
+              </ul>
+            </div>
+            <div class="pc-action">Assess Now <i class="fas fa-arrow-right"></i></div>
+          </div>
+        </div>
+
+        <!-- Card 4: Blood Pressure Guide -->
+        <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="pc-card pc-card-info">
+            <div class="pc-icon" style="background:linear-gradient(135deg,#7c3aed,#a78bfa);">
+              <i class="fas fa-tachometer-alt"></i>
+            </div>
+            <div class="pc-content">
+              <h4>Understand Your BP</h4>
+              <p>What do your blood pressure numbers mean? When to see a doctor?</p>
+              <ul class="pc-tips">
+                <li>Normal: Below 120/80</li>
+                <li>High: 130/80 or above</li>
+                <li>Crisis: 180/120+ (Consult Now)</li>
+              </ul>
+            </div>
+            <div class="pc-action" onclick="window.open('https://wa.me/919258879884?text=I%20want%20to%20check%20my%20Blood%20Pressure','_blank')">Ask Dr. Gill <i class="fab fa-whatsapp"></i></div>
+          </div>
+        </div>
+
+        <!-- Card 5: Diabetes & Heart -->
+        <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+          <div class="pc-card pc-card-info">
+            <div class="pc-icon" style="background:linear-gradient(135deg,#d97706,#fbbf24);">
+              <i class="fas fa-syringe"></i>
+            </div>
+            <div class="pc-content">
+              <h4>Diabetes &amp; Heart Link</h4>
+              <p>Diabetes doubles your risk of heart disease. Know the connection and how to protect yourself.</p>
+              <ul class="pc-tips">
+                <li>HbA1c target: below 7%</li>
+                <li>Fasting sugar: 70-100 mg/dL</li>
+                <li>Diabetics need annual ECG</li>
+              </ul>
+            </div>
+            <div class="pc-action" onclick="window.open('https://wa.me/919258879884?text=I%20want%20to%20know%20about%20Diabetes%20and%20Heart','_blank')">Ask Dr. Gill <i class="fab fa-whatsapp"></i></div>
+          </div>
+        </div>
+
+        <!-- Card 6: Ideal Body Weight -->
+        <div class="col-sm-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+          <div class="pc-card" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">
+            <div class="pc-icon" style="background:linear-gradient(135deg,#0891b2,#06b6d4);">
+              <i class="fas fa-balance-scale"></i>
+            </div>
+            <div class="pc-content">
+              <h4>Ideal Weight &amp; BSA</h4>
+              <p>Calculate your ideal body weight and body surface area for medication dosage guidance.</p>
+              <ul class="pc-tips">
+                <li>Devine formula for ideal weight</li>
+                <li>BSA used in cardiac drug dosing</li>
+                <li>Most accurate at normal BMI</li>
+              </ul>
+            </div>
+            <div class="pc-action">Calculate Now <i class="fas fa-arrow-right"></i></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section><section id="bmi" class="bmi-calculator section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-calculator"></i> Health Tool</span>
+        <h2 class="heading">BMI Calculator</h2>
+        <p class="section-sub">Check your Body Mass Index — Know if your weight is in healthy range.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="bmi-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="row g-4 align-items-center">
+              <div class="col-md-6">
+                <div class="bmi-inputs">
+                  <div class="bmi-field">
+                    <label><i class="fas fa-weight"></i> Weight (kg)</label>
+                    <input type="number" id="weight" class="bmi-input" placeholder="e.g. 70" min="20" max="300" step="0.1">
+                  </div>
+                  <div class="bmi-field">
+                    <label><i class="fas fa-ruler-vertical"></i> Height (cm)</label>
+                    <input type="number" id="height" class="bmi-input" placeholder="e.g. 175" min="50" max="250" step="0.1">
+                  </div>
+                  <button class="submit-btn" id="calcBmi">
+                    <i class="fas fa-calculator"></i> Calculate BMI
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="bmi-result" id="bmiResult">
+                  <div class="bmi-result-placeholder">
+                    <i class="fas fa-heartbeat"></i>
+                    <p>Enter your details and click Calculate</p>
+                  </div>
+                  <div class="bmi-result-data" style="display:none;">
+                    <div class="bmi-score-wrap">
+                      <span class="bmi-label">Your BMI</span>
+                      <span class="bmi-score" id="bmiScore">0.0</span>
+                    </div>
+                    <div class="bmi-category" id="bmiCategory">Normal Weight</div>
+                    <div class="bmi-bar">
+                      <div class="bmi-bar-fill" id="bmiBarFill"></div>
+                    </div>
+                    <div class="bmi-ranges">
+                      <span>Underweight<br>< 18.5</span>
+                      <span>Normal<br>18.5–24.9</span>
+                      <span>Overweight<br>25–29.9</span>
+                      <span>Obese<br>> 30</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><section id="heart-risk" class="heart-risk section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-heartbeat"></i> Health Tool</span>
+        <h2 class="heading">Heart Risk Calculator</h2>
+        <p class="section-sub">Check your 10-year risk of heart disease. Know your score, take control.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="risk-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="row g-4">
+              <div class="col-md-7">
+                <div class="risk-form">
+                  <div class="row g-3">
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-venus-mars"></i> Gender</label>
+                      <select id="riskGender" class="risk-input">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-birthday-cake"></i> Age</label>
+                      <input type="number" id="riskAge" class="risk-input" placeholder="30-74" min="30" max="74">
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-weight"></i> Weight (kg)</label>
+                      <input type="number" id="riskWeight" class="risk-input" placeholder="e.g. 70" min="20" max="300">
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-ruler-vertical"></i> Height (cm)</label>
+                      <input type="number" id="riskHeight" class="risk-input" placeholder="e.g. 170" min="50" max="250">
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-smoking"></i> Smoker?</label>
+                      <select id="riskSmoker" class="risk-input">
+                        <option value="no">Non-Smoker</option>
+                        <option value="yes">Smoker</option>
+                      </select>
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-tint"></i> Diabetic?</label>
+                      <select id="riskDiabetes" class="risk-input">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                      </select>
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-heart"></i> Systolic BP</label>
+                      <input type="number" id="riskBP" class="risk-input" placeholder="120 mmHg" min="80" max="250">
+                    </div>
+                    <div class="col-6">
+                      <label class="risk-label"><i class="fas fa-oil-can"></i> Cholesterol (mg/dL)</label>
+                      <input type="number" id="riskChol" class="risk-input" placeholder="e.g. 200" min="50" max="500">
+                    </div>
+                  </div>
+                  <button class="submit-btn mt-3" id="calcRisk">
+                    <i class="fas fa-heartbeat"></i> Calculate My Risk
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="risk-result" id="riskResult">
+                  <div class="risk-placeholder">
+                    <i class="fas fa-heartbeat"></i>
+                    <p>Fill your details to see your 10-year heart risk score.</p>
+                  </div>
+                  <div class="risk-data" style="display:none;">
+                    <div class="risk-gauge">
+                      <div class="risk-gauge-circle" id="riskGauge">
+                        <span class="risk-percent" id="riskPercent">0%</span>
+                      </div>
+                    </div>
+                    <div class="risk-level" id="riskLevel">Low Risk</div>
+                    <div class="risk-bar">
+                      <div class="risk-bar-fill" id="riskBarFill"></div>
+                    </div>
+                    <div class="risk-bar-labels">
+                      <span>0%</span>
+                      <span style="color:#10b981;">Low</span>
+                      <span style="color:#f59e0b;">Mod</span>
+                      <span style="color:#ef4444;">High</span>
+                      <span>30%+</span>
+                    </div>
+                    <p class="risk-message" id="riskMessage">Your risk is low. Keep up the healthy lifestyle!</p>
+                    <p class="risk-disclaimer"><i class="fas fa-info-circle"></i> This is an estimate based on standard risk factors. Consult Dr G S Gill for a complete assessment.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><section id="ascvd" class="tools-section section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-chart-line"></i> Health Tool</span>
+        <h2 class="heading">ASCVD Risk Calculator</h2>
+        <p class="section-sub">Atherosclerotic Cardiovascular Disease — 10-year risk assessment (Pooled Cohort Equations).</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="tools-card" data-aos="fade-up">
+            <div class="row g-3">
+              <div class="col-md-4">
+                <label class="tools-label"><i class="fas fa-venus-mars"></i> Gender</label>
+                <select id="ascvdGender" class="tools-input"><option value="male">Male</option><option value="female">Female</option></select>
+              </div>
+              <div class="col-md-4">
+                <label class="tools-label"><i class="fas fa-birthday-cake"></i> Age (40-79)</label>
+                <input type="number" id="ascvdAge" class="tools-input" placeholder="e.g. 55" min="40" max="79">
+              </div>
+              <div class="col-md-4">
+                <label class="tools-label"><i class="fas fa-users"></i> Race</label>
+                <select id="ascvdRace" class="tools-input"><option value="white">White / Other</option><option value="african">African American</option></select>
+              </div>
+              <div class="col-md-4">
+                <label class="tools-label"><i class="fas fa-oil-can"></i> Total Chol (mg/dL)</label>
+                <input type="number" id="ascvdChol" class="tools-input" placeholder="100-400" min="100" max="400">
+              </div>
+              <div class="col-md-4">
+                <label class="tools-label"><i class="fas fa-heart"></i> HDL Chol (mg/dL)</label>
+                <input type="number" id="ascvdHdl" class="tools-input" placeholder="20-100" min="20" max="100">
+              </div>
+              <div class="col-md-4">
+                <label class="tools-label"><i class="fas fa-heartbeat"></i> Systolic BP</label>
+                <input type="number" id="ascvdSbp" class="tools-input" placeholder="90-200" min="90" max="200">
+              </div>
+              <div class="col-md-3">
+                <label class="tools-label"><i class="fas fa-pills"></i> On BP Meds?</label>
+                <select id="ascvdBpMeds" class="tools-input"><option value="no">No</option><option value="yes">Yes</option></select>
+              </div>
+              <div class="col-md-3">
+                <label class="tools-label"><i class="fas fa-smoking"></i> Smoker?</label>
+                <select id="ascvdSmoker" class="tools-input"><option value="no">No</option><option value="yes">Yes</option></select>
+              </div>
+              <div class="col-md-3">
+                <label class="tools-label"><i class="fas fa-tint"></i> Diabetic?</label>
+                <select id="ascvdDiabetes" class="tools-input"><option value="no">No</option><option value="yes">Yes</option></select>
+              </div>
+              <div class="col-md-3 d-flex align-items-end">
+                <button class="submit-btn w-100" id="calcAscvd"><i class="fas fa-calculator"></i> Calculate</button>
+              </div>
+            </div>
+            <div class="tools-result" id="ascvdResult" style="display:none;">
+              <hr>
+              <div class="row align-items-center">
+                <div class="col-md-4 text-center">
+                  <div class="tools-score" id="ascvdScore">0%</div>
+                  <div class="tools-level" id="ascvdLevel">Low Risk</div>
+                </div>
+                <div class="col-md-8">
+                  <div class="tools-bar-track">
+                    <div class="tools-bar-fill" id="ascvdBar" style="width:0%"></div>
+                  </div>
+                  <div class="tools-bar-labels"><span>0%</span><span>5%</span><span>7.5%</span><span>15%</span><span>30%+</span></div>
+                  <p class="tools-msg" id="ascvdMsg">Your ASCVD risk assessment result.</p>
+                  <p class="tools-disc"><i class="fas fa-info-circle"></i> Based on ACC/AHA Pooled Cohort Equations. Consult Dr Gill for clinical evaluation.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><section id="bsa" class="tools-section section-padding" style="background:var(--light);">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-ruler-combined"></i> Health Tool</span>
+        <h2 class="heading">BSA Calculator</h2>
+        <p class="section-sub">Body Surface Area — Used for cardiac index, drug dosing, and medical assessments.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="tools-card text-center" data-aos="fade-up">
+            <div class="row g-3">
+              <div class="col-6">
+                <label class="tools-label"><i class="fas fa-weight"></i> Weight (kg)</label>
+                <input type="number" id="bsaWeight" class="tools-input" placeholder="e.g. 70" step="0.1">
+              </div>
+              <div class="col-6">
+                <label class="tools-label"><i class="fas fa-ruler-vertical"></i> Height (cm)</label>
+                <input type="number" id="bsaHeight" class="tools-input" placeholder="e.g. 175" step="0.1">
+              </div>
+            </div>
+            <button class="submit-btn mt-3" id="calcBsa"><i class="fas fa-calculator"></i> Calculate BSA</button>
+            <div class="tools-result" id="bsaResult" style="display:none;">
+              <hr>
+              <div class="bsa-score-wrap">
+                <span class="bsa-label">Your BSA</span>
+                <span class="bsa-score" id="bsaScore">0.00 m²</span>
+              </div>
+              <div class="row g-2 mt-3">
+                <div class="col-6"><div class="bsa-meta"><span>Mosteller Formula</span><small>√(Ht×Wt/3600)</small></div></div>
+                <div class="col-6"><div class="bsa-meta"><span>Du Bois Formula</span><small>0.007184 × W^0.425 × H^0.725</small></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><section id="ideal-weight" class="tools-section section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-check-double"></i> Health Tool</span>
+        <h2 class="heading">Ideal Weight Calculator</h2>
+        <p class="section-sub">Find your ideal body weight range based on height, gender, and frame size.</p>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <div class="tools-card" data-aos="fade-up">
+            <div class="row g-3">
+              <div class="col-6">
+                <label class="tools-label"><i class="fas fa-venus-mars"></i> Gender</label>
+                <select id="idealGender" class="tools-input"><option value="male">Male</option><option value="female">Female</option></select>
+              </div>
+              <div class="col-6">
+                <label class="tools-label"><i class="fas fa-ruler-vertical"></i> Height (cm)</label>
+                <input type="number" id="idealHeight" class="tools-input" placeholder="e.g. 175" step="0.1">
+              </div>
+              <div class="col-6">
+                <label class="tools-label"><i class="fas fa-th-large"></i> Frame Size</label>
+                <select id="idealFrame" class="tools-input"><option value="small">Small</option><option value="medium" selected>Medium</option><option value="large">Large</option></select>
+              </div>
+              <div class="col-6 d-flex align-items-end">
+                <button class="submit-btn w-100" id="calcIdeal"><i class="fas fa-calculator"></i> Calculate</button>
+              </div>
+            </div>
+            <div class="tools-result" id="idealResult" style="display:none;">
+              <hr>
+              <div class="row text-center g-3">
+                <div class="col-4"><div class="ideal-box"><span class="ideal-label">Ideal Weight</span><span class="ideal-value" id="idealWeight">0 kg</span></div></div>
+                <div class="col-4"><div class="ideal-box"><span class="ideal-label">Healthy Range</span><span class="ideal-value" id="idealRange">0-0 kg</span></div></div>
+                <div class="col-4"><div class="ideal-box"><span class="ideal-label">Devine Formula</span><span class="ideal-value" id="idealDevine">0 kg</span></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo"><i class="fas fa-heartbeat"></i> Gill Heart Clinic</div>
+          <p class="footer-desc">Providing ethical, affordable and quality care. Serving Meerut and surrounding areas.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/919258879884" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <a href="index.html"><i class="fas fa-chevron-right"></i> Home</a>
+          <a href="about.html"><i class="fas fa-chevron-right"></i> About Doctor</a>
+          <a href="services.html"><i class="fas fa-chevron-right"></i> Services</a>
+          <a href="health-tools.html"><i class="fas fa-chevron-right"></i> Health Tools</a>
+          <a href="blog.html"><i class="fas fa-chevron-right"></i> Health Blog</a>
+          <a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a>
+          <a href="contact.html"><i class="fas fa-chevron-right"></i> Contact & Booking</a>
+        </div>
+        <div class="footer-col">
+          <h3>Contact Info</h3>
+          <p><i class="fas fa-phone"></i> 9258879884</p>
+          <p><i class="fas fa-clock"></i> 9 AM – 7 PM</p>
+          <p><i class="fas fa-map-marker-alt"></i> Sugar Mill Mohiuddinpur,<br>Meerut</p>
+        </div>
+      </div>
+      <div class="row mt-4"><div class="col-12 text-center">
+        <p style="font-size:13px;opacity:.6;"><i class="fas fa-search"></i> Find us on: &nbsp;
+        <a href="https://www.eka.care/doctor/dr-gurjeet-singh-gill-general-physician-meerut" target="_blank" style="color:#4285F4;">Eka.Care</a> &nbsp;|&nbsp;
+        <a href="https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/" style="color:white;">Gill Heart Clinic</a> &nbsp;|&nbsp;
+        <a href="https://www.google.com/search?q=Gill%20Heart%20Clinic+Meerut" target="_blank" style="color:#4285F4;">Google</a></p>
+      </div></div>
+    </div>
+    <hr>
+    <p class="copyright">© 2026 <strong>Gill Heart Clinic</strong>. All Rights Reserved. Designed with <i class="fas fa-heart" style="color:#d90429;"></i></p>
+</footer>
+<a href="https://wa.me/919258879884" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a href="tel:9258879884" class="call-float d-lg-none" aria-label="Call"><i class="fas fa-phone-alt"></i></a>
+<a href="https://search.google.com/local/writereview?placeid=ChIJhXPKKcVhDDkRQC5IEfUI2p0" class="review-float" target="_blank" aria-label="Write Google Review"><i class="fas fa-star"></i></a>
+<div class="chatbot-widget" id="chatbotWidget">
+    <div class="chatbot-btn" id="chatbotToggle">
+      <i class="fas fa-robot"></i>
+    </div>
+    <div class="chatbot-box" id="chatbotBox">
+      <div class="chatbot-header">
+        <i class="fas fa-robot"></i>
+        <div>
+          <strong>Gill Heart Assistant</strong>
+          <span>Online</span>
+        </div>
+        <button class="chatbot-close" id="chatbotClose">&times;</button>
+      </div>
+      <div class="chatbot-msgs" id="chatbotMsgs">
+        <div class="chat-msg bot">
+          <div class="msg-text">👋 Namaste! I'm Dr Gill's virtual assistant. How can I help you today?</div>
+        </div>
+        <div class="chat-msg bot">
+          <div class="msg-text">Ask me about: <br>🩺 Services &nbsp; 📍 Location &nbsp; ⏰ Timings &nbsp; 📞 Contact</div>
+        </div>
+      </div>
+<button id="darkModeToggle" class="dark-mode-btn" aria-label="Toggle Dark Mode">
+    <i class="fas fa-moon"></i>
+  </button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

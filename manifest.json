@@ -1,8 +1,8 @@
 {
-  "name": "Gill Heart Clinic",
-  "short_name": "Gill Heart",
-  "description": "Affordable & Ethical Cardiac Care by Dr G S Gill, Meerut",
-  "start_url": "/gill-heart-clinic/",
+  "name": "Sharma Heart & General Clinic",
+  "short_name": "Sharma Clinic",
+  "description": "Affordable & Ethical Care by Dr R K Sharma, Meerut",
+  "start_url": "/sharma-clinic/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#d90429",

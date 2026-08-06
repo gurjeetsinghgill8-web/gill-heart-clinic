@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <script>
+    (function() {
+      var key = 'gill_v10_cache_purged';
+      if (!localStorage.getItem(key)) {
+        localStorage.setItem(key, 'true');
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(function(regs) {
+            for (var i = 0; i < regs.length; i++) regs[i].unregister();
+          });
+        }
+        if ('caches' in window) {
+          caches.keys().then(function(names) {
+            for (var i = 0; i < names.length; i++) caches.delete(names[i]);
+          });
+        }
+        window.location.reload(true);
+      }
+    })();
+  </script>
+  <title>Clinic Gallery & Reviews | Gill Heart Clinic</title>
+  <meta name="description" content="Take a tour of Gill Heart Clinic facilities and read patient reviews.">
+  <meta name="keywords" content="cardio physician meerut, heart doctor ghaziabad, heart clinic delhi ncr, dr gurjeet singh gill, heart specialist modinagar, heart doctor govindpuri, ecg test hapur, bp doctor baghpat, heart checkup muradnagar, sardhana cardiology">
+  <meta name="author" content="Dr Gurjeet Singh Gill (Dr. GS Gill)">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/">
+  <meta property="og:title" content="Gill Heart Clinic – Dr Gurjeet Singh Gill | Cardio-Physician">
+  <meta property="og:description" content="MBBS (MPSMC), Diploma Cardiology (UN Mehta Institute), PGDCCP (NI), AI in Healthcare (IIT Kanpur). Affordable care in Meerut.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/">
+  <meta property="og:image" content="og-image.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#d90429">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Gill Heart">
+  <meta name="google-site-verification" content="google838c583d645bf1d7">
+  <meta name="msvalidate.01" content="GillHeartClinic-BING-Verification">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+</head>
+<body>
+<div id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-heart">
+        <i class="fas fa-heartbeat"></i>
+      </div>
+      <div class="preloader-text">Gill Heart Clinic</div>
+      <div class="preloader-bar">
+        <div class="preloader-bar-fill"></div>
+      </div>
+<div class="emergency-banner">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+      <span class="emergency-text">
+        <i class="fas fa-calendar-check"></i>&nbsp; Clinic Helpline &mdash; Appointment Required &mdash; Mon to Sun, 9 AM &ndash; 7 PM
+      </span>
+      <a href="tel:9258879884" class="emergency-phone">
+        <i class="fas fa-phone-alt"></i> +91 9258879884
+      </a>
+    </div>
+  </div>
+<nav id="navbar" class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="logo navbar-brand" href="#">
+        <i class="fas fa-heartbeat"></i> Gill Heart Clinic
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" 
+              aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#patients-corner">Health Tools</a></li>
+          <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#careers">Careers</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
+          <li class="nav-item"><a class="nav-link" href="#appointment">Book</a></li>
+          <li class="nav-item"><a class="nav-link" href="#location">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<section id="facilities" class="gallery-section section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Infrastructure & Patient Care</span>
+        <h2 class="heading">Clinic Facilities & Gallery</h2>
+        <p class="section-sub">Take a tour of our modern cardiac clinic, state-of-the-art diagnostic equipment, and patient comfort facilities.</p>
+      </div>
+      <div class="row g-4">
+        <!-- Gallery Item 1 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="gallery-card">
+            <div class="gallery-img-box">
+              <img src="clinic1.jpg" alt="Doctor OPD Consultation Desk" class="img-fluid">
+              <div class="gallery-badge"><i class="fas fa-user-md"></i> OPD Desk</div>
+            </div>
+            <div class="gallery-info">
+              <h4>Doctor OPD Consultation Desk</h4>
+              <p>Personalized 1-on-1 cardiac consultation and comprehensive patient evaluation room.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Gallery Item 2 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="gallery-card">
+            <div class="gallery-img-box">
+              <img src="clinic2.jpg" alt="2D Echo & ECG Diagnostic Unit" class="img-fluid">
+              <div class="gallery-badge"><i class="fas fa-heartbeat"></i> Echo & ECG Lab</div>
+            </div>
+            <div class="gallery-info">
+              <h4>Advanced ECG & 2D Echo Lab</h4>
+              <p>High-precision non-invasive cardiac diagnostic equipment for accurate reporting.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Gallery Item 3 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="gallery-card">
+            <div class="gallery-img-box">
+              <img src="clinic3.jpg" alt="Patient Waiting Lounge" class="img-fluid">
+              <div class="gallery-badge"><i class="fas fa-couch"></i> Waiting Lounge</div>
+            </div>
+            <div class="gallery-info">
+              <h4>Patient Reception & Lounge</h4>
+              <p>Hygienic, comfortable, and air-conditioned environment for patients and families.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Gallery Item 4 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="gallery-card">
+            <div class="gallery-img-box">
+              <img src="clinic4.jpg" alt="Cardiac Monitoring Equipment" class="img-fluid">
+              <div class="gallery-badge"><i class="fas fa-stethoscope"></i> Cardiac Monitoring</div>
+            </div>
+            <div class="gallery-info">
+              <h4>Cardiac Monitoring Setup</h4>
+              <p>Patient vitals monitoring equipment for consultation and evaluation during OPD visits.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Gallery Item 5 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+          <div class="gallery-card">
+            <div class="gallery-img-box">
+              <img src="clinic5.jpg" alt="Affordable Medicine & Guidance Counter" class="img-fluid">
+              <div class="gallery-badge"><i class="fas fa-pills"></i> Care Counter</div>
+            </div>
+            <div class="gallery-info">
+              <h4>Medicine & Health Guidance</h4>
+              <p>Transparent advice on cardiac prescriptions, BP control, and preventive diet plans.</p>
+            </div>
+          </div>
+        </div>
+        <!-- Gallery Item 6 -->
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="600">
+          <div class="gallery-card">
+            <div class="gallery-img-box">
+              <img src="doctor3.jpg" alt="Dr Gurjeet Singh Gill Cardio Physician" class="img-fluid">
+              <div class="gallery-badge"><i class="fas fa-stethoscope"></i> Dr. GS Gill</div>
+            </div>
+            <div class="gallery-info">
+              <h4>Dr. Gurjeet Singh Gill (Dr. GS Gill)</h4>
+              <p>15+ Years experience in clinical cardiology & AI in healthcare (IIT Kanpur).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section><section id="gallery" class="gallery-section section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fas fa-camera"></i> Our Clinic</span>
+        <h2 class="heading">Clinic Gallery</h2>
+        <p class="section-sub">A peek inside Gill Heart Clinic — where care meets compassion.</p>
+      </div>
+      <div class="row g-3">
+        <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+          <a href="clinic1.jpg" target="_blank" class="gallery-item">
+            <img src="clinic1.jpg" alt="Gill Heart Clinic" class="img-fluid rounded shadow-sm" style="width:100%;height:200px;object-fit:cover;border-radius:10px;">
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+          <a href="clinic2.jpg" target="_blank" class="gallery-item">
+            <img src="clinic2.jpg" alt="Gill Heart Clinic Reception" class="img-fluid rounded shadow-sm" style="width:100%;height:200px;object-fit:cover;border-radius:10px;">
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+          <a href="clinic3.jpg" target="_blank" class="gallery-item">
+            <img src="clinic3.jpg" alt="Gill Heart Clinic - Dr GS Gill" class="img-fluid rounded shadow-sm" style="width:100%;height:200px;object-fit:cover;border-radius:10px;">
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
+          <a href="clinic4.jpg" target="_blank" class="gallery-item">
+            <img src="clinic4.jpg" alt="Gill Heart Clinic Consultation Room" class="img-fluid rounded shadow-sm" style="width:100%;height:200px;object-fit:cover;border-radius:10px;">
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="500">
+          <a href="clinic5.jpg" target="_blank" class="gallery-item">
+            <img src="clinic5.jpg" alt="Gill Heart Clinic - ECG Room" class="img-fluid rounded shadow-sm" style="width:100%;height:200px;object-fit:cover;border-radius:10px;">
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3" data-aos="zoom-in" data-aos-delay="600">
+          <a href="hero.jpg" target="_blank" class="gallery-item">
+            <img src="hero.jpg" alt="Dr Gurjeet Singh Gill" class="img-fluid rounded shadow-sm" style="width:100%;height:200px;object-fit:cover;border-radius:10px;">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section><section id="reviews" class="reviews-section section-padding">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag"><i class="fab fa-google"></i> Google Reviews</span>
+        <h2 class="heading">What Google Says</h2>
+        <p class="section-sub">Our patients love us. Here's what they're saying on Google.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="review-card">
+            <div class="review-header">
+              <i class="fas fa-user-circle review-avatar"></i>
+              <div><strong>Rajesh Kumar</strong><div class="review-date">2 months ago</div></div>
+              <div class="review-stars ms-auto"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+            <p class="review-text">"Very humble and experienced doctor. Explained my father's heart condition in simple Hindi. Treatment is very affordable. Highly recommended for heart patients."</p>
+            <div class="review-source"><i class="fab fa-google"></i> Google Review</div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="review-card">
+            <div class="review-header">
+              <i class="fas fa-user-circle review-avatar"></i>
+              <div><strong>Sunita Sharma</strong><div class="review-date">1 month ago</div></div>
+              <div class="review-stars ms-auto"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+            <p class="review-text">"Dr Gill is a blessing for Meerut. He treats poor patients with same respect as rich. My BP is now under control. God bless him and his team."</p>
+            <div class="review-source"><i class="fab fa-google"></i> Google Review</div>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="review-card">
+            <div class="review-header">
+              <i class="fas fa-user-circle review-avatar"></i>
+              <div><strong>Vikram Tyagi</strong><div class="review-date">3 weeks ago</div></div>
+              <div class="review-stars ms-auto"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+            </div>
+            <p class="review-text">"Best heart doctor in Meerut. ECG and 2D Echo done at very low cost. Dr Gill spends 15-20 minutes with every patient — very rare these days. Highly recommend."</p>
+            <div class="review-source"><i class="fab fa-google"></i> Google Review</div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-5" data-aos="fade-up">
+        <p style="font-size:18px;font-weight:600;color:var(--dark);margin-bottom:20px;">😊 Visited Gill Heart Clinic? Your review helps thousands of patients!</p>
+        <a href="https://search.google.com/local/writereview?placeid=ChIJhXPKKcVhDDkRQC5IEfUI2p0" class="btn" target="_blank" style="background:#4285F4;color:#fff;font-weight:700;font-size:18px;padding:16px 40px;border-radius:50px;box-shadow:0 6px 24px rgba(66,133,244,0.45);display:inline-flex;align-items:center;gap:10px;">
+          <i class="fab fa-google fa-lg"></i> Write a Google Review
+        </a>
+        <p style="margin-top:14px;font-size:13px;color:#888;">Takes less than 1 minute &bull; Helps Dr Gill reach more patients</p>
+      </div>
+    </div>
+  </section>
+<footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo"><i class="fas fa-heartbeat"></i> Gill Heart Clinic</div>
+          <p class="footer-desc">Providing ethical, affordable and quality care. Serving Meerut and surrounding areas.</p>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/919258879884" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <a href="index.html"><i class="fas fa-chevron-right"></i> Home</a>
+          <a href="about.html"><i class="fas fa-chevron-right"></i> About Doctor</a>
+          <a href="services.html"><i class="fas fa-chevron-right"></i> Services</a>
+          <a href="health-tools.html"><i class="fas fa-chevron-right"></i> Health Tools</a>
+          <a href="blog.html"><i class="fas fa-chevron-right"></i> Health Blog</a>
+          <a href="gallery.html"><i class="fas fa-chevron-right"></i> Gallery</a>
+          <a href="contact.html"><i class="fas fa-chevron-right"></i> Contact & Booking</a>
+        </div>
+        <div class="footer-col">
+          <h3>Contact Info</h3>
+          <p><i class="fas fa-phone"></i> 9258879884</p>
+          <p><i class="fas fa-clock"></i> 9 AM – 7 PM</p>
+          <p><i class="fas fa-map-marker-alt"></i> Sugar Mill Mohiuddinpur,<br>Meerut</p>
+        </div>
+      </div>
+      <div class="row mt-4"><div class="col-12 text-center">
+        <p style="font-size:13px;opacity:.6;"><i class="fas fa-search"></i> Find us on: &nbsp;
+        <a href="https://www.eka.care/doctor/dr-gurjeet-singh-gill-general-physician-meerut" target="_blank" style="color:#4285F4;">Eka.Care</a> &nbsp;|&nbsp;
+        <a href="https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/" style="color:white;">Gill Heart Clinic</a> &nbsp;|&nbsp;
+        <a href="https://www.google.com/search?q=Gill%20Heart%20Clinic+Meerut" target="_blank" style="color:#4285F4;">Google</a></p>
+      </div></div>
+    </div>
+    <hr>
+    <p class="copyright">© 2026 <strong>Gill Heart Clinic</strong>. All Rights Reserved. Designed with <i class="fas fa-heart" style="color:#d90429;"></i></p>
+</footer>
+<a href="https://wa.me/919258879884" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a href="tel:9258879884" class="call-float d-lg-none" aria-label="Call"><i class="fas fa-phone-alt"></i></a>
+<a href="https://search.google.com/local/writereview?placeid=ChIJhXPKKcVhDDkRQC5IEfUI2p0" class="review-float" target="_blank" aria-label="Write Google Review"><i class="fas fa-star"></i></a>
+<div class="chatbot-widget" id="chatbotWidget">
+    <div class="chatbot-btn" id="chatbotToggle">
+      <i class="fas fa-robot"></i>
+    </div>
+    <div class="chatbot-box" id="chatbotBox">
+      <div class="chatbot-header">
+        <i class="fas fa-robot"></i>
+        <div>
+          <strong>Gill Heart Assistant</strong>
+          <span>Online</span>
+        </div>
+        <button class="chatbot-close" id="chatbotClose">&times;</button>
+      </div>
+      <div class="chatbot-msgs" id="chatbotMsgs">
+        <div class="chat-msg bot">
+          <div class="msg-text">👋 Namaste! I'm Dr Gill's virtual assistant. How can I help you today?</div>
+        </div>
+        <div class="chat-msg bot">
+          <div class="msg-text">Ask me about: <br>🩺 Services &nbsp; 📍 Location &nbsp; ⏰ Timings &nbsp; 📞 Contact</div>
+        </div>
+      </div>
+<button id="darkModeToggle" class="dark-mode-btn" aria-label="Toggle Dark Mode">
+    <i class="fas fa-moon"></i>
+  </button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

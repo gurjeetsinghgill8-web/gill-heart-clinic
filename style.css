@@ -245,6 +245,61 @@ img {
   box-shadow: none !important;
 }
 
+/* Active nav link for multi-page */
+.navbar-nav .nav-link.active-nav {
+  color: var(--primary) !important;
+  background: rgba(217, 4, 41, .08);
+  font-weight: 700 !important;
+}
+
+/* ==============================
+   PAGE HEADER (for sub-pages)
+   ============================== */
+.page-header {
+  background: linear-gradient(135deg, var(--dark), #1e293b);
+  color: white;
+  padding: 120px 0 50px;
+  text-align: center;
+  position: relative;
+}
+
+.page-header h1 {
+  font-size: 38px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.page-header p {
+  font-size: 17px;
+  opacity: .8;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.page-header .breadcrumb-nav {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  font-size: 14px;
+  margin-top: 15px;
+  opacity: .7;
+}
+
+.page-header .breadcrumb-nav a {
+  color: rgba(255,255,255,.8);
+  text-decoration: none;
+  transition: .3s;
+}
+
+.page-header .breadcrumb-nav a:hover {
+  color: white;
+}
+
+.page-header .breadcrumb-nav span {
+  color: rgba(255,255,255,.5);
+}
+
 /* ==============================
    SECTION HEADER
    ============================== */

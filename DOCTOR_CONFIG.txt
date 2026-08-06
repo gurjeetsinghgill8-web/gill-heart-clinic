@@ -1,0 +1,137 @@
+================================================================================
+            DOCTOR CONFIG — Dr. Gurjeet Singh Gill / Gill Heart Clinic
+================================================================================
+
+DOCTOR_FULL_NAME_WITH_SHORT = Dr Gurjeet Singh Gill (Dr. GS Gill)
+DOCTOR_FULL_NAME = Dr Gurjeet Singh Gill
+DOCTOR_FULL_NAME_DOT = Dr. Gurjeet Singh Gill
+DOCTOR_SHORT_NAME = Dr GS Gill
+DOCTOR_SHORT_NAME_SPACE = Dr G S Gill
+DOCTOR_SHORT_NAME_DOT = Dr. G S Gill
+DOCTOR_SHORT_NAME_DOT_SPACE = Dr. G S Gill
+DOCTOR_NAME_NO_TITLE = Gurjeet Singh Gill
+DOCTOR_LAST_NAME = Gill
+DOCTOR_LAST_NAME_DOT = Dr. Gill
+DOCTOR_LAST_NAME_LOWER = gill
+
+DOCTOR_SPECIALTY_TITLE = Cardio-Physician & Non-Invasive Heart Care Specialist
+DOCTOR_SHORT_SPECIALTY = Cardio-Physician
+DOCTOR_SHORT_SPECIALTY_2 = Cardiac Physician
+DOCTOR_TITLE_WITH_AI = Cardio-Physician | AI in Healthcare (IIT Kanpur)
+
+DOCTOR_MBBS = MBBS — Govt Medical College MPSMC
+DOCTOR_MBBS_COLLEGE_SHORT = MPSMC
+DOCTOR_DIPLOMA = Diploma Cardiology — UN Mehta Institute, Ahmedabad
+DOCTOR_DIPLOMA_TITLE = Diploma in Cardiology
+DOCTOR_DIPLOMA_FULL = UN Mehta Institute of Cardiology, Ahmedabad, Gujarat
+DOCTOR_DIPLOMA_INSTITUTE = UN Mehta Institute of Cardiology
+DOCTOR_DIPLOMA_SHORT = UN Mehta Institute, Ahmedabad
+DOCTOR_DIPLOMA_ABBREV = UN Mehta
+DOCTOR_AI_INSTITUTE = IIT Kanpur
+DOCTOR_AI_CERT = AI in Healthcare — IIT Kanpur
+DOCTOR_PGDCCP = PGDCCP (NI) — Clinical Cardiology
+DOCTOR_PGDCCP_FULL = Post Graduate Diploma in Clinical Cardiology & Critical Care
+DOCTOR_EDUCATION_SHORT = MBBS (MPSMC), Diploma Cardiology (UN Mehta Institute), PGDCCP (NI), AI in Healthcare (IIT Kanpur)
+DOCTOR_CERTS_BADGE = MBBS • Diploma Cardiology (UN Mehta) • PGDCCP (NI) • AI in Healthcare (IIT Kanpur)
+DOCTOR_CERTS_SHORT = MBBS, Diploma Cardiology, PGDCCCP (NI)
+
+CLINIC_NAME = Gill Heart Clinic
+CLINIC_SHORT_NAME = Gill Heart
+CLINIC_NAME_URL_ENCODED = Gill%20Heart%20Clinic
+
+CLINIC_FULL_ADDRESS = Sugar Mill, Mohiuddinpur, Meerut 250205
+CLINIC_STREET = Sugar Mill, Mohiuddinpur
+CLINIC_STREET_CITY = Sugar Mill Mohiuddinpur, Meerut
+CLINIC_STREET_SHORT = Sugar Mill Mohiuddinpur
+CLINIC_AREA = Mohiuddinpur
+CLINIC_CITY = Meerut
+CLINIC_CITY_PIN = Meerut 250205
+CLINIC_PINCODE = 250205
+CLINIC_STATE = Uttar Pradesh
+CLINIC_LANDMARK = Metro Pillar No. 1375
+CLINIC_NEARBY_STATION = Meerut South RRTS Station
+CLINIC_HIGHWAY = NH-58 Corridor
+CLINIC_HIGHWAY_FULL = NH-58 Delhi-Meerut Expressway Corridor
+
+CLINIC_LAT = 28.981
+CLINIC_LNG = 77.701
+
+DOCTOR_PHONE = 9258879884
+DOCTOR_PHONE_WITH_SPACE = +91 9258879884
+DOCTOR_PHONE_INTERNATIONAL = +91-9258879884
+DOCTOR_WHATSAPP_NUMBER = 919258879884
+DOCTOR_EMAIL = gurjeetsinghgill8@gmail.com
+
+DOCTOR_GITHUB_URL = gurjeetsinghgill8-web.github.io/gill-heart-clinic/
+DOCTOR_GITHUB_URL_SHORT = gurjeetsinghgill8-web.github.io/gill-heart-clinic
+DOCTOR_GITHUB_URL_ENCODED = gurjeetsinghgill8-web.github.io%2Fgill-heart-clinic
+DOCTOR_DOMAIN = gillheartclinic.com
+DOCTOR_BLOG_URL = gillheartclinic.blogspot.com
+
+GOOGLE_PLACE_ID = ChIJhXPKKcVhDDkRQC5IEfUI2p0
+GOOGLE_MAPS_QUERY = Sugar+Mill+Mohiuddinpur+Meerut
+GOOGLE_MAPS_LINK = https://maps.app.goo.gl/SqhL69uBkRvEeRhD8
+
+GOOGLE_VERIFICATION_CODE = google838c583d645bf1d7
+GOOGLE_VERIFICATION_FILE = google838c583d645bf1d7.html
+GOOGLE_VERIFICATION_FILE_2 = google6f1a3d2b4c5e6f78.html
+BING_VERIFICATION = GillHeartClinic-BING-Verification
+
+EKA_CARE_PROFILE = https://www.eka.care/doctor/dr-gurjeet-singh-gill-general-physician-meerut
+EKA_CARE_PROFILE_SHORT = www.eka.care/doctor/dr-gurjeet-singh-gill-general-physician-meerut
+
+DOCTOR_HOSPITAL_1 = Yashoda Superspeciality Hospital
+DOCTOR_HOSPITAL_1_SHORT = Yashoda Hospital
+DOCTOR_HOSPITAL_1_FULL = Yashoda Superspeciality Hospital, Ghaziabad
+DOCTOR_HOSPITAL_ROLE = Associate Consultant
+
+DOCTOR_EXPERIENCE_YEARS = 15+ Years
+DOCTOR_EXPERIENCE_SHORT = 15+
+DOCTOR_EXPERIENCE_ALT = 12+
+DOCTOR_SINCE_YEAR = Since 2015
+DOCTOR_SINCE_YEAR_ALT = since 2010
+DOCTOR_CERT_YEAR = (2026)
+DOCTOR_COMPANY = McGill Healthcare
+
+STAT_PATIENTS = 50000
+STAT_PATIENTS_FORMATTED = 50,000+
+STAT_ECGS = 25000
+STAT_ECGS_FORMATTED = 25,000+
+STAT_CONSULTATIONS = 10000
+STAT_CONSULTATIONS_FORMATTED = 10,000+
+
+CITY_GHAZIABAD = Ghaziabad
+CITY_MODINAGAR = Modinagar
+CITY_GOVINDPURI = Govindpuri
+CITY_HAPUR = Hapur
+CITY_BAGHPAT = Baghpat
+CITY_MURADNAGAR = Muradnagar
+CITY_SARDHANA = Sardhana
+CITY_PARTAPUR = Partapur
+CITY_KANKERKHERA = Kankerkhera
+CITY_KHATAULI = Khatauli
+
+REGION_DELHI_NCR = Delhi NCR
+REGION_WEST_UP = Western Uttar Pradesh
+
+SEO_KEYWORDS = cardio physician meerut, heart doctor ghaziabad, heart clinic delhi ncr, dr gurjeet singh gill, heart specialist modinagar, heart doctor govindpuri, ecg test hapur, bp doctor baghpat, heart checkup muradnagar, sardhana cardiology
+
+CURRENT_YEAR = 2026
+STORAGE_PREFIX = gill
+CLINIC_SLUG = /gill-heart-clinic/
+
+HERO_IMAGE = hero.jpg
+DOCTOR_IMAGE = doctor.jpg
+DOCTOR_IMAGE_2 = doctor2.jpg
+DOCTOR_IMAGE_3 = doctor3.jpg
+CLINIC_IMAGE_1 = clinic1.jpg
+CLINIC_IMAGE_2 = clinic2.jpg
+CLINIC_IMAGE_3 = clinic3.jpg
+CLINIC_IMAGE_4 = clinic4.jpg
+CLINIC_IMAGE_5 = clinic5.jpg
+OG_IMAGE = og-image.jpg
+
+DOCTOR_IMAGE_ALT = Dr Gurjeet Singh Gill – Cardio-Physician
+DOCTOR_IMAGE_ALT_2 = Dr G S Gill – Cardio Physician
+DOCTOR_IMAGE_ALT_3 = Dr Gurjeet Singh Gill (Dr. GS Gill)
+CLINIC_IMAGE_ALT = Gill Heart Clinic
