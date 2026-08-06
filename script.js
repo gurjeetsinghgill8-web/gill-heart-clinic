@@ -6,6 +6,26 @@
    ========================================== */
 
 /* ==============================
+   AGGRESSIVE SW CLEANUP — Kill old harmful service workers FIRST
+   ============================== */
+(function() {
+  if ('serviceWorker' in navigator) {
+    // Immediately unregister ALL existing service workers
+    navigator.serviceWorker.getRegistrations().then(function(registrations) {
+      for (var i = 0; i < registrations.length; i++) {
+        registrations[i].unregister().catch(function() {});
+      }
+    }).catch(function() {});
+  }
+  // Also clear any stale caches that old SW may have corrupted  
+  if ('caches' in window) {
+    caches.keys().then(function(names) {
+      return Promise.all(names.map(function(name) { return caches.delete(name); }));
+    }).catch(function() {});
+  }
+})();
+
+/* ==============================
    PRELOADER (LEGO Part 58)
    ============================== */
 window.addEventListener('load', () => {
@@ -714,7 +734,12 @@ if (pwaDismiss) {
     if (pwaInstall) pwaInstall.style.display = 'none';
   });
 }
-// Service worker disabled to prevent cache clearing issues
+// Register safe service worker (replaces old destructive version)
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
 
 // ==============================
 // CAREERS — Apply via WhatsApp
