@@ -714,11 +714,7 @@ if (pwaDismiss) {
     if (pwaInstall) pwaInstall.style.display = 'none';
   });
 }
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js').catch(() => {});
-  });
-}
+// Service worker disabled to prevent cache clearing issues
 
 // ==============================
 // CAREERS — Apply via WhatsApp

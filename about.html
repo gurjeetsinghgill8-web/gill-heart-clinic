@@ -6,25 +6,6 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <script>
-    (function() {
-      var key = 'gill_v10_cache_purged';
-      if (!localStorage.getItem(key)) {
-        localStorage.setItem(key, 'true');
-        if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.getRegistrations().then(function(regs) {
-            for (var i = 0; i < regs.length; i++) regs[i].unregister();
-          });
-        }
-        if ('caches' in window) {
-          caches.keys().then(function(names) {
-            for (var i = 0; i < names.length; i++) caches.delete(names[i]);
-          });
-        }
-        window.location.reload(true);
-      }
-    })();
-  </script>
   <title>About Dr Gurjeet Singh Gill | Cardio-Physician — Gill Heart Clinic</title>
   <meta name="description" content="Meet Dr Gurjeet Singh Gill, Cardio-Physician with 15+ Years experience.">
   <meta name="keywords" content="cardio physician meerut, heart doctor ghaziabad, heart clinic delhi ncr, dr gurjeet singh gill, heart specialist modinagar, heart doctor govindpuri, ecg test hapur, bp doctor baghpat, heart checkup muradnagar, sardhana cardiology">
