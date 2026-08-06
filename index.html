@@ -34,6 +34,11 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
 </head>
 <body>
+<!-- ====== EMERGENCY MASTER KILL SWITCH ====== -->
+<button id="emergencyKillSwitch" title="MASTER KILL SWITCH — Double Click to Delete Everything">
+  ⚠️ EMERGENCY RESET — Click Twice to DELETE ALL DATA & RESET ⚠️
+</button>
+
 <div id="preloader">
     <div class="preloader-content">
       <div class="preloader-heart">
@@ -461,5 +466,86 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="script.js"></script>
+
+<!-- EMERGENCY MASTER KILL SWITCH JS -->
+<script>
+(function() {
+  var btn = document.getElementById('emergencyKillSwitch');
+  if (!btn) return;
+  
+  var confirming = false;
+  var timer = null;
+  
+  // Add body class for spacing
+  document.body.classList.add('has-emergency-btn');
+  
+  btn.addEventListener('click', function() {
+    if (btn.classList.contains('done')) return;
+    
+    if (!confirming) {
+      // First click - ask for confirmation
+      confirming = true;
+      btn.classList.add('confirming');
+      btn.innerHTML = '⚠️⚠️ ARE YOU SURE? CLICK AGAIN TO DELETE EVERYTHING PERMANENTLY! ⚠️⚠️';
+      
+      // Reset after 8 seconds if not confirmed
+      timer = setTimeout(function() {
+        confirming = false;
+        btn.classList.remove('confirming');
+        btn.innerHTML = '⚠️ EMERGENCY RESET — Click Twice to DELETE ALL DATA & RESET ⚠️';
+      }, 8000);
+    } else {
+      // Second click - EXECUTE DELETE
+      clearTimeout(timer);
+      btn.classList.remove('confirming');
+      btn.classList.add('done');
+      btn.innerHTML = '✅ DELETING EVERYTHING... Please wait...';
+      
+      // Execute complete reset
+      setTimeout(function() {
+        // 1. Clear all localStorage
+        localStorage.clear();
+        
+        // 2. Clear all sessionStorage
+        sessionStorage.clear();
+        
+        // 3. Clear all cookies
+        document.cookie.split(';').forEach(function(c) {
+          document.cookie = c.replace(/^ +/, '').replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/');
+        });
+        
+        // 4. Unregister all service workers
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(function(regs) {
+            for (var i = 0; i < regs.length; i++) regs[i].unregister();
+          });
+        }
+        
+        // 5. Clear all caches
+        if ('caches' in window) {
+          caches.keys().then(function(names) {
+            for (var i = 0; i < names.length; i++) caches.delete(names[i]);
+          });
+        }
+        
+        // 6. Clear IndexedDB
+        if (window.indexedDB && window.indexedDB.databases) {
+          window.indexedDB.databases().then(function(dbs) {
+            dbs.forEach(function(db) {
+              window.indexedDB.deleteDatabase(db.name);
+            });
+          }).catch(function() {});
+        }
+        
+        // 7. Reload to fresh state
+        btn.innerHTML = '✅ ALL DATA DELETED! Reloading fresh page...';
+        setTimeout(function() {
+          window.location.href = window.location.pathname + '?reset=' + Date.now();
+        }, 1000);
+      }, 500);
+    }
+  });
+})();
+</script>
 </body>
 </html>

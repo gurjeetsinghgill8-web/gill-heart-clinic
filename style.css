@@ -2773,3 +2773,59 @@ body.dark-mode .pwa-content strong { color: #f1f5f9; }
 .gallery-item:hover img {
   transform: scale(1.08);
 }
+
+/* ==============================
+   EMERGENCY MASTER KILL SWITCH
+   ============================== */
+#emergencyKillSwitch {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100000;
+  background: #7f1d1d;
+  color: #fff;
+  text-align: center;
+  padding: 8px 10px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  letter-spacing: 0.5px;
+  transition: all .3s;
+  display: block;
+  font-family: 'Poppins', sans-serif;
+}
+#emergencyKillSwitch:hover {
+  background: #991b1b;
+}
+#emergencyKillSwitch.confirming {
+  background: #ef4444;
+  animation: emergencyPulse .5s ease-in-out infinite;
+  font-size: 16px;
+}
+@keyframes emergencyPulse {
+  0%, 100% { background: #ef4444; }
+  50% { background: #dc2626; }
+}
+#emergencyKillSwitch.done {
+  background: #16a34a;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Push body down to accommodate emergency button */
+body.has-emergency-btn {
+  padding-top: 86px;
+}
+body.has-emergency-btn #navbar {
+  top: 82px;
+}
+@media (max-width: 991.98px) {
+  body.has-emergency-btn {
+    padding-top: 80px;
+  }
+  body.has-emergency-btn #navbar {
+    top: 76px;
+  }
+}
