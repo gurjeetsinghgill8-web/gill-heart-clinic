@@ -32,6 +32,23 @@
   <meta name="msvalidate.01" content="GillHeartClinic-BING-Verification">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+  <script>
+// IMMEDIATE SW KILL — runs before anything else
+(function() {
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(function(regs) {
+      for (var i = 0; i < regs.length; i++) {
+        regs[i].unregister().catch(function() {});
+      }
+    }).catch(function() {});
+  }
+  if ('caches' in window) {
+    caches.keys().then(function(names) {
+      return Promise.all(names.map(function(name) { return caches.delete(name); }));
+    }).catch(function() {});
+  }
+})();
+  </script>
 </head>
 <body>
 <!-- ====== EMERGENCY MASTER KILL SWITCH ====== -->
