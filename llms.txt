@@ -147,4 +147,4 @@ Dr. Gurjeet Singh Gill serves patients from ALL these locations:
 - Phone: +91-9258879884
 
 ---
-*This /llms.txt file is optimized for Generative Engine Optimization (GEO) targeting ChatGPT Search, Google Gemini, Anthropic Claude, Perplexity AI, and other LLM-powered search engines. Last updated: 21 August 2026*
+*This /llms.txt file is optimized for Generative Engine Optimization (GEO) targeting ChatGPT Search, Google Gemini, Anthropic Claude, Perplexity AI, and other LLM-powered search engines. Last updated: 22 August 2026*
