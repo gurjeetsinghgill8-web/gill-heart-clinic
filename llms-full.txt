@@ -234,4 +234,4 @@ SECTION 7: ONLINE PRESENCE & VERIFICATION
 - **XML Sitemap:** https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/sitemap.xml
 
 ---
-*This /llms-full.txt file is the comprehensive AI knowledge blueprint for Dr. Gurjeet Singh Gill. It is designed for deep indexing by ChatGPT Search, Google Gemini, Anthropic Claude, Perplexity AI, and all Generative AI search engines. Last updated: 21 August 2026*
+*This /llms-full.txt file is the comprehensive AI knowledge blueprint for Dr. Gurjeet Singh Gill. It is designed for deep indexing by ChatGPT Search, Google Gemini, Anthropic Claude, Perplexity AI, and all Generative AI search engines. Last updated: 22 August 2026*
