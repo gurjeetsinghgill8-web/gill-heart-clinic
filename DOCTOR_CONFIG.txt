@@ -71,6 +71,8 @@ DOCTOR_BLOG_URL = gillheartclinic.blogspot.com
 GOOGLE_PLACE_ID = ChIJhXPKKcVhDDkRQC5IEfUI2p0
 GOOGLE_MAPS_QUERY = Sugar+Mill+Mohiuddinpur+Meerut
 GOOGLE_MAPS_LINK = https://maps.app.goo.gl/SqhL69uBkRvEeRhD8
+GOOGLE_REVIEW_LINK = https://search.google.com/local/writereview?placeid=ChIJhXPKKcVhDDkRQC5IEfUI2p0
+PATIENT_REVIEW_HELPER_LINK = https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/review.html
 
 GOOGLE_VERIFICATION_CODE = google838c583d645bf1d7
 GOOGLE_VERIFICATION_FILE = google838c583d645bf1d7.html

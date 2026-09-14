@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Share Your Review | Gill Heart Clinic — Dr. G. S. Gill</title>
+  <meta name="description" content="Share your genuine patient experience with Dr. Gurjeet Singh Gill at Gill Heart Clinic, Mohiuddinpur, Meerut (Near Modinagar RRTS).">
+  
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary: #c1121f;
+      --primary-dark: #780000;
+      --primary-light: #fdf0d5;
+      --navy: #003049;
+      --gold: #f4a261;
+      --gold-star: #fbbf24;
+      --gray-bg: #f8fafc;
+      --card-border: #e2e8f0;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --success: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Poppins', 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, #fff7ed 0%, #f8fafc 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 480px;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 48, 73, 0.08), 0 1px 3px rgba(0,0,0,0.05);
+      border: 1px solid var(--card-border);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    /* Header */
+    .clinic-header {
+      background: linear-gradient(135deg, var(--navy) 0%, #0d1b2a 100%);
+      color: #ffffff;
+      padding: 24px 20px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .clinic-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--gold), var(--primary));
+    }
+
+    .badge-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      font-size: 24px;
+      color: #ff6b6b;
+    }
+
+    .clinic-header h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    .doctor-title {
+      font-size: 0.88rem;
+      color: #94a3b8;
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+
+    .clinic-location-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.12);
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      color: #e2e8f0;
+    }
+
+    /* Language Switcher */
+    .lang-switcher {
+      display: flex;
+      background: #f1f5f9;
+      border-radius: 12px;
+      padding: 4px;
+      margin: 16px 20px 0;
+      border: 1px solid var(--card-border);
+    }
+
+    .lang-btn {
+      flex: 1;
+      border: none;
+      background: transparent;
+      padding: 8px 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn.active {
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    /* Card Body */
+    .card-body {
+      padding: 20px;
+    }
+
+    .star-rating-box {
+      text-align: center;
+      padding: 12px;
+      background: #fffbeb;
+      border: 1px dashed #fde68a;
+      border-radius: 14px;
+      margin-bottom: 20px;
+    }
+
+    .star-rating-box h3 {
+      font-size: 0.95rem;
+      color: #92400e;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .stars-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      font-size: 28px;
+      color: var(--gold-star);
+    }
+
+    .stars-row i {
+      animation: pulseStar 1.8s infinite ease-in-out;
+    }
+    .stars-row i:nth-child(2) { animation-delay: 0.2s; }
+    .stars-row i:nth-child(3) { animation-delay: 0.4s; }
+    .stars-row i:nth-child(4) { animation-delay: 0.6s; }
+    .stars-row i:nth-child(5) { animation-delay: 0.8s; }
+
+    @keyframes pulseStar {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    /* Step Section */
+    .step-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .step-badge {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background: var(--navy);
+      color: #fff;
+      font-size: 11px;
+      line-height: 20px;
+      text-align: center;
+      border-radius: 50%;
+    }
+
+    /* Reason Chips */
+    .chips-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .reason-chip {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 100px;
+      padding: 8px 14px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-main);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .reason-chip:hover, .reason-chip.active {
+      border-color: var(--primary);
+      background: #fef2f2;
+      color: var(--primary-dark);
+      font-weight: 600;
+      transform: translateY(-1px);
+    }
+
+    /* Review Text Area */
+    .review-box {
+      margin-bottom: 20px;
+    }
+
+    .review-textarea {
+      width: 100%;
+      height: 110px;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1.5px solid #cbd5e1;
+      font-family: inherit;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--text-main);
+      background: #ffffff;
+      resize: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .review-textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(193, 18, 31, 0.1);
+    }
+
+    .char-count {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: right;
+      margin-top: 4px;
+    }
+
+    /* Actions */
+    .action-btn-primary {
+      width: 100%;
+      background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+      color: #ffffff;
+      border: none;
+      border-radius: 14px;
+      padding: 16px 20px;
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 0 6px 16px rgba(22, 163, 74, 0.3);
+      transition: all 0.2s ease;
+      margin-bottom: 12px;
+    }
+
+    .action-btn-primary:active {
+      transform: scale(0.98);
+      box-shadow: 0 2px 8px rgba(22, 163, 74, 0.2);
+    }
+
+    .action-btn-secondary {
+      width: 100%;
+      background: #f1f5f9;
+      color: var(--text-main);
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .action-btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0f172a;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 999;
+      pointer-events: none;
+    }
+
+    .toast-msg.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Clinic Footer */
+    .clinic-footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .clinic-footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Clinic Header -->
+    <header class="clinic-header">
+      <div class="badge-icon">
+        <i class="fas fa-heartbeat"></i>
+      </div>
+      <h1 id="headerTitle">Gill Heart Clinic</h1>
+      <p class="doctor-title" id="doctorSubtitle">Dr. Gurjeet Singh Gill &bull; Clinical Cardio-Physician</p>
+      <div class="clinic-location-pill">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Pillar 1375, Mohiuddinpur (Near Modinagar RRTS)</span>
+      </div>
+    </header>
+
+    <!-- Language Selector -->
+    <div class="lang-switcher">
+      <button class="lang-btn active" id="btnHi" onclick="setLanguage('hi')">🇮🇳 हिंदी (Hindi)</button>
+      <button class="lang-btn" id="btnEn" onclick="setLanguage('en')">🇬🇧 English</button>
+    </div>
+
+    <!-- Body -->
+    <div class="card-body">
+      <!-- 5-Star Visual Banner -->
+      <div class="star-rating-box">
+        <h3 id="ratingTitle">⭐⭐⭐⭐⭐ 5-Star Patient Experience</h3>
+        <div class="stars-row">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+      </div>
+
+      <!-- Step 1: Select Topic -->
+      <div class="step-title">
+        <span class="step-badge">1</span>
+        <span id="step1Label">परामर्श का विषय चुनें (Tap to Select)</span>
+      </div>
+
+      <div class="chips-grid" id="chipsContainer">
+        <!-- Injected via JS -->
+      </div>
+
+      <!-- Step 2: Review Preview / Edit -->
+      <div class="step-title">
+        <span class="step-badge">2</span>
+        <span id="step2Label">आपका रिव्यू (आवश्यकतानुसार बदलाव कर सकते हैं)</span>
+      </div>
+
+      <div class="review-box">
+        <textarea id="reviewText" class="review-textarea" placeholder="यहाँ आपका अनुभव दिखाई देगा..."></textarea>
+        <div class="char-count" id="charCount">0 characters</div>
+      </div>
+
+      <!-- Step 3: Copy & Open Google -->
+      <button class="action-btn-primary" id="btnSubmitReview" onclick="copyAndOpenGoogle()">
+        <i class="fab fa-google"></i>
+        <span id="btnText">कॉपी करें और Google पर रिव्यू दें</span>
+      </button>
+
+      <a href="https://search.google.com/local/writereview?placeid=ChIJhXPKKcVhDDkRQC5IEfUI2p0" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="action-btn-secondary"
+         id="btnDirectGoogle">
+        <i class="fas fa-external-link-alt"></i>
+        <span id="directLinkText">सीधे Google पर अपना रिव्यू लिखें</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="clinic-footer">
+    <p><strong>गिल हार्ट क्लिनिक</strong> — डॉ. गुरजीत सिंह गिल</p>
+    <p>MBBS (MPSMC), Diploma Cardiology (UN Mehta Institute), PGDCCP (NI)</p>
+    <p>सुलभ हृदय स्वास्थ्य ओपीडी परामर्श — ₹300 | समय: 9 AM – 7 PM</p>
+    <p style="margin-top: 6px;"><a href="index.html">&larr; क्लिनिक की मुख्य वेबसाइट पर जाएं</a></p>
+  </footer>
+
+  <!-- Toast Message -->
+  <div class="toast-msg" id="toastMsg">
+    <i class="fas fa-check-circle" style="color: #4ade80;"></i>
+    <span id="toastText">रिव्यू कॉपी हो गया! Google खोला जा रहा है...</span>
+  </div>
+
+  <script>
+    const GOOGLE_REVIEW_URL = "https://search.google.com/local/writereview?placeid=ChIJhXPKKcVhDDkRQC5IEfUI2p0";
+
+    const PROMPTS = {
+      hi: [
+        {
+          id: 'bp',
+          label: '🩺 हाई बीपी परामर्श (Hypertension)',
+          text: 'गिल हार्ट क्लिनिक मोहिउद्दीनपुर में डॉ. जी. एस. गिल से हाई बीपी के लिए परामर्श लिया। डॉक्टर साहब बहुत तसल्ली से सुनते हैं और सटीक दवाएं व खानपान की सलाह देते हैं। मोदीनगर-मेरठ क्षेत्र में बहुत बेहतरीन और सुलभ क्लिनिक है।'
+        },
+        {
+          id: 'ecg_review',
+          label: '📄 ईसीजी व रिपोर्ट सेकंड ओपिनियन',
+          text: 'डॉ. गुरजीत सिंह गिल से अपनी पुरानी ईसीजी और टेस्ट रिपोर्ट्स की दूसरी राय ली। उन्होंने हर रिपोर्ट को बहुत विस्तार से और बिना किसी घबराहट के समझाया। गैर-आक्रामक हृदय परामर्श (Non-invasive cardiology) के लिए highly recommended।'
+        },
+        {
+          id: 'routine_checkup',
+          label: '❤️ सामान्य हृदय चेकअप (Routine Check-up)',
+          text: 'मेट्रो पिलर 1375 के पास गिल हार्ट क्लिनिक में नियमित हार्ट चेकअप कराया। मात्र ₹300 में बहुत संतोषजनक और समय देकर परामर्श मिला। डॉक्टर गिल का 15+ वर्षों का अनुभव साफ झलकता है।'
+        },
+        {
+          id: 'lifestyle_care',
+          label: '🥗 जीवनशैली व खान-पान मार्गदर्शन',
+          text: 'डॉ. गिल ने दिल को स्वस्थ रखने के लिए जीवनशैली, व्यायाम और डाइट पर बहुत व्यवहारिक मार्गदर्शन दिया। अनावश्यक टेस्ट के बिना केवल जरूरी परामर्श देते हैं। मोहिउद्दीनपुर व मोदीनगर के लोगों के लिए बहुत सुविधाजनक स्थान।'
+        }
+      ],
+      en: [
+        {
+          id: 'bp',
+          label: '🩺 Blood Pressure & Cardiac Care',
+          text: 'Consulted Dr. G. S. Gill at Gill Heart Clinic near Mohiuddinpur for high blood pressure management. The doctor listens very patiently and provides clear, evidence-based guidance. Excellent non-invasive cardio-physician near Modinagar RRTS corridor.'
+        },
+        {
+          id: 'ecg_review',
+          label: '📄 ECG & Test Report Second Opinion',
+          text: 'Visited Dr. Gurjeet Singh Gill for a second opinion on outside ECG and cardiac reports. He thoroughly explained every parameter with zero panic. Very reassuring and humble clinical doctor.'
+        },
+        {
+          id: 'routine_checkup',
+          label: '❤️ Heart Health & OPD Consultation',
+          text: 'Had a routine heart checkup at Gill Heart Clinic near Metro Pillar 1375, Mohiuddinpur. Genuine care with an affordable ₹300 OPD fee. Highly recommended for non-invasive heart consultation.'
+        },
+        {
+          id: 'lifestyle_care',
+          label: '🥗 Preventive & Lifestyle Guidance',
+          text: 'Dr. Gill provided practical dietary and lifestyle advice for cardiovascular health. Clean clinic setup, timely appointment, and ethical medical care.'
+        }
+      ]
+    };
+
+    let currentLang = 'hi';
+    let selectedChipId = 'bp';
+
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.getElementById('btnHi').classList.toggle('active', lang === 'hi');
+      document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+      
+      // Update UI Strings
+      if (lang === 'hi') {
+        document.getElementById('headerTitle').innerText = 'गिल हार्ट क्लिनिक';
+        document.getElementById('doctorSubtitle').innerText = 'डॉ. गुरजीत सिंह गिल • क्लिनिकल कार्डियो-फिजिशियन';
+        document.getElementById('ratingTitle').innerText = '⭐⭐⭐⭐⭐ 5-स्टार मरीज अनुभव';
+        document.getElementById('step1Label').innerText = 'परामर्श का विषय चुनें (Tap to Select)';
+        document.getElementById('step2Label').innerText = 'आपका रिव्यू (आवश्यकतानुसार बदलाव कर सकते हैं)';
+        document.getElementById('btnText').innerText = 'कॉपी करें और Google पर रिव्यू दें';
+        document.getElementById('directLinkText').innerText = 'सीधे Google पर अपना रिव्यू लिखें';
+        document.getElementById('toastText').innerText = 'रिव्यू कॉपी हो गया! Google खोला जा रहा है...';
+      } else {
+        document.getElementById('headerTitle').innerText = 'Gill Heart Clinic';
+        document.getElementById('doctorSubtitle').innerText = 'Dr. Gurjeet Singh Gill • Clinical Cardio-Physician';
+        document.getElementById('ratingTitle').innerText = '⭐⭐⭐⭐⭐ 5-Star Patient Experience';
+        document.getElementById('step1Label').innerText = 'Select Consultation Reason';
+        document.getElementById('step2Label').innerText = 'Your Review (You can edit freely)';
+        document.getElementById('btnText').innerText = 'Copy & Post Review on Google';
+        document.getElementById('directLinkText').innerText = 'Write directly on Google';
+        document.getElementById('toastText').innerText = 'Review Copied! Opening Google Review...';
+      }
+
+      renderChips();
+    }
+
+    function renderChips() {
+      const container = document.getElementById('chipsContainer');
+      container.innerHTML = '';
+      const list = PROMPTS[currentLang];
+
+      list.forEach(item => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = `reason-chip ${item.id === selectedChipId ? 'active' : ''}`;
+        btn.innerHTML = item.label;
+        btn.onclick = () => selectPrompt(item.id);
+        container.appendChild(btn);
+      });
+
+      // Update textarea with the active prompt
+      const currentItem = list.find(x => x.id === selectedChipId) || list[0];
+      if (currentItem) {
+        document.getElementById('reviewText').value = currentItem.text;
+        updateCharCount();
+      }
+    }
+
+    function selectPrompt(id) {
+      selectedChipId = id;
+      const list = PROMPTS[currentLang];
+      const match = list.find(x => x.id === id);
+      if (match) {
+        document.getElementById('reviewText').value = match.text;
+        updateCharCount();
+      }
+      // Re-render chips active class
+      document.querySelectorAll('.reason-chip').forEach((el, index) => {
+        el.classList.toggle('active', list[index].id === id);
+      });
+    }
+
+    function updateCharCount() {
+      const len = document.getElementById('reviewText').value.length;
+      document.getElementById('charCount').innerText = `${len} characters`;
+    }
+
+    document.getElementById('reviewText').addEventListener('input', updateCharCount);
+
+    function copyAndOpenGoogle() {
+      const text = document.getElementById('reviewText').value.trim();
+      
+      // Copy to clipboard
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(showToastAndRedirect).catch(() => {
+          fallbackCopy(text);
+        });
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+      } catch (e) {}
+      document.body.removeChild(ta);
+      showToastAndRedirect();
+    }
+
+    function showToastAndRedirect() {
+      const toast = document.getElementById('toastMsg');
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+        // Open Google Review box
+        window.open(GOOGLE_REVIEW_URL, '_blank');
+      }, 900);
+    }
+
+    // Initialize
+    window.onload = () => {
+      setLanguage('hi');
+    };
+  </script>
+</body>
+</html>
