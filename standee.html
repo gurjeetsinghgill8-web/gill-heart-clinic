@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clinic Reception QR Standee — Gill Heart Clinic</title>
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&family=Noto+Sans+Devanagari:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+      background: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px;
+    }
+
+    /* Print Controls Header (Hidden during Print) */
+    .controls-panel {
+      background: #ffffff;
+      padding: 16px 24px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      max-width: 650px;
+      width: 100%;
+    }
+
+    .btn-print {
+      background: #c1121f;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+
+    .btn-print:hover {
+      background: #780000;
+    }
+
+    .qr-selector {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+    }
+
+    /* A5 Standee Container */
+    .standee-card {
+      width: 148mm;
+      height: 210mm;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 15px 35px rgba(0, 48, 73, 0.15);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 12mm 12mm 10mm;
+      border: 2px solid #cbd5e1;
+    }
+
+    /* Top Decorative Border */
+    .top-accent {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 10px;
+      background: linear-gradient(90deg, #c1121f, #fbbf24, #003049);
+    }
+
+    /* Header */
+    .standee-header {
+      text-align: center;
+    }
+
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fef2f2;
+      border: 1.5px solid #fee2e2;
+      padding: 5px 16px;
+      border-radius: 50px;
+      margin-bottom: 8px;
+    }
+
+    .brand-pill i {
+      color: #c1121f;
+      font-size: 16px;
+    }
+
+    .brand-pill span {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #780000;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .clinic-title {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #003049;
+      line-height: 1.15;
+      margin-bottom: 3px;
+    }
+
+    .clinic-title-hi {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #c1121f;
+      margin-bottom: 6px;
+    }
+
+    .doctor-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-bottom: 2px;
+    }
+
+    .doctor-creds {
+      font-size: 0.78rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    /* Star Banner */
+    .star-banner {
+      background: #fffbeb;
+      border: 1.5px dashed #fbbf24;
+      border-radius: 12px;
+      padding: 8px;
+      margin: 10px 0;
+      text-align: center;
+    }
+
+    .stars {
+      color: #f59e0b;
+      font-size: 20px;
+      margin-bottom: 2px;
+    }
+
+    .star-banner-text {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #92400e;
+    }
+
+    /* QR Code Box */
+    .qr-section {
+      text-align: center;
+      margin: 4px 0;
+    }
+
+    .qr-wrapper {
+      width: 145px;
+      height: 145px;
+      background: #ffffff;
+      padding: 10px;
+      border: 2px solid #003049;
+      border-radius: 16px;
+      margin: 0 auto 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .qr-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .scan-label {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #003049;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .scan-sub {
+      font-size: 0.75rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    /* Steps */
+    .steps-container {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 10px 14px;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 8px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+      font-size: 0.78rem;
+    }
+
+    .step-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-num {
+      width: 20px;
+      height: 20px;
+      background: #003049;
+      color: #ffffff;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step-text {
+      color: #1e293b;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .step-text-hi {
+      color: #64748b;
+      font-size: 0.72rem;
+      font-weight: 500;
+    }
+
+    /* Standee Footer */
+    .standee-footer {
+      border-top: 1.5px solid #e2e8f0;
+      padding-top: 8px;
+      text-align: center;
+    }
+
+    .location-text {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #003049;
+      margin-bottom: 2px;
+    }
+
+    .consultation-badge {
+      display: inline-block;
+      background: #16a34a;
+      color: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin-bottom: 4px;
+    }
+
+    .contact-line {
+      font-size: 0.72rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    /* Print Media Styling */
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+
+      .controls-panel {
+        display: none !important;
+      }
+
+      .standee-card {
+        border: none !important;
+        box-shadow: none !important;
+        width: 148mm !important;
+        height: 210mm !important;
+        page-break-after: always;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Controls Panel (Screen Only) -->
+  <div class="controls-panel">
+    <button class="btn-print" onclick="window.print()">
+      <i class="fas fa-print"></i> Print Standee (A5 / Ctrl+P)
+    </button>
+    <div class="qr-selector">
+      <label for="targetSelect"><strong>QR Destination:</strong></label>
+      <select id="targetSelect" onchange="updateQR()" style="padding: 6px 10px; border-radius: 6px; border: 1px solid #cbd5e1;">
+        <option value="helper" selected>1-Tap Review Helper (review.html) [Recommended]</option>
+        <option value="direct">Direct Google Review Popup</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- A5 Standee Art -->
+  <div class="standee-card">
+    <div class="top-accent"></div>
+
+    <!-- Header -->
+    <div class="standee-header">
+      <div class="brand-pill">
+        <i class="fas fa-heartbeat"></i>
+        <span>Non-Invasive Heart Care &bull; गैर-आक्रामक हृदय परामर्श</span>
+      </div>
+      <h1 class="clinic-title">GILL HEART CLINIC</h1>
+      <h2 class="clinic-title-hi">गिल हार्ट क्लिनिक</h2>
+      <div class="doctor-name">Dr. Gurjeet Singh Gill (डॉ. जी. एस. गिल)</div>
+      <div class="doctor-creds">MBBS &bull; Diploma Cardiology (UN Mehta) &bull; PGDCCP &bull; 15+ Years Exp.</div>
+    </div>
+
+    <!-- Star Callout Banner -->
+    <div class="star-banner">
+      <div class="stars">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </div>
+      <div class="star-banner-text">
+        आपका 1 मिनट अन्य मरीजों के मार्गदर्शन में मदद करेगा!
+      </div>
+    </div>
+
+    <!-- QR Section -->
+    <div class="qr-section">
+      <div class="qr-wrapper">
+        <img id="qrImage" 
+             class="qr-img" 
+             src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fgurjeetsinghgill8-web.github.io%2Fgill-heart-clinic%2Freview.html&color=003049" 
+             alt="Scan to Review Gill Heart Clinic on Google">
+      </div>
+      <div class="scan-label">
+        <i class="fas fa-camera"></i> Scan with Phone Camera
+      </div>
+      <div class="scan-sub">कैमरा या Google Lens से स्कैन करें</div>
+    </div>
+
+    <!-- 3 Easy Steps -->
+    <div class="steps-container">
+      <div class="step-item">
+        <span class="step-num">1</span>
+        <div>
+          <div class="step-text">Scan QR Code with Mobile</div>
+          <div class="step-text-hi">फोन के कैमरा से कोड स्कैन करें</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <span class="step-num">2</span>
+        <div>
+          <div class="step-text">Choose 5-Star Rating ⭐⭐⭐⭐⭐</div>
+          <div class="step-text-hi">5-Star रेटिंग का चयन करें</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <span class="step-num">3</span>
+        <div>
+          <div class="step-text">Share 1-Line Experience &amp; Submit</div>
+          <div class="step-text-hi">डॉक्टर साहब के परामर्श पर अपना अनुभव लिखें</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="standee-footer">
+      <div class="consultation-badge">सुलभ हृदय स्वास्थ्य परामर्श — मात्र ₹300 OPD</div>
+      <div class="location-text">
+        <i class="fas fa-map-marker-alt" style="color: #c1121f;"></i> Near Metro Pillar 1375, Sugar Mill, Mohiuddinpur (Near Modinagar RRTS)
+      </div>
+      <div class="contact-line">
+        हेल्पलाइन: +91 9258879884 &bull; समय: 9:00 AM &ndash; 7:00 PM (सोमवार से रविवार)
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const HELPER_URL = "https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/review.html";
+    const DIRECT_URL = "https://search.google.com/local/writereview?placeid=ChIJhXPKKcVhDDkRQC5IEfUI2p0";
+
+    function updateQR() {
+      const mode = document.getElementById('targetSelect').value;
+      const targetUrl = mode === 'direct' ? DIRECT_URL : HELPER_URL;
+      const encoded = encodeURIComponent(targetUrl);
+      document.getElementById('qrImage').src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encoded}&color=003049`;
+    }
+  </script>
+</body>
+</html>
