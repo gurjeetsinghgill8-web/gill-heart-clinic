@@ -33,7 +33,7 @@ DOCTOR_PGDCCP = PGDCCP (NI) — Clinical Cardiology
 DOCTOR_PGDCCP_FULL = Post Graduate Diploma in Clinical Cardiology & Critical Care
 DOCTOR_EDUCATION_SHORT = MBBS (MPSMC), Diploma Cardiology (UN Mehta Institute), PGDCCP (NI), AI in Healthcare (IIT Kanpur)
 DOCTOR_CERTS_BADGE = MBBS • Diploma Cardiology (UN Mehta) • PGDCCP (NI) • AI in Healthcare (IIT Kanpur)
-DOCTOR_CERTS_SHORT = MBBS, Diploma Cardiology, PGDCCCP (NI)
+DOCTOR_CERTS_SHORT = MBBS, Diploma Cardiology, PGDCCP (NI)
 
 CLINIC_NAME = Gill Heart Clinic
 CLINIC_SHORT_NAME = Gill Heart

@@ -1,21 +1,21 @@
 {
-  "name": "Sharma Heart & General Clinic",
-  "short_name": "Sharma Clinic",
-  "description": "Affordable & Ethical Care by Dr R K Sharma, Meerut",
-  "start_url": "/sharma-clinic/",
+  "name": "Gill Heart Clinic — Dr Gurjeet Singh Gill",
+  "short_name": "Gill Heart",
+  "description": "Cardiac consultation, second opinion on ECG/2D Echo/TMT/Holter reports, general medicine, preventive & respiratory care, diabetes management, digestive health & heart check-ups by Dr Gurjeet Singh Gill, Cardio-Physician, Mohiuddinpur, Meerut",
+  "start_url": "/gill-heart-clinic/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#d90429",
+  "theme_color": "#c1121f",
   "orientation": "portrait",
   "icons": [
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='20' fill='%23d90429'/><text x='96' y='130' font-size='100' text-anchor='middle' fill='white'>❤️</text></svg>",
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' rx='20' fill='%23c1121f'/><text x='96' y='130' font-size='100' text-anchor='middle' fill='white'>❤️</text></svg>",
       "sizes": "192x192",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
-      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='40' fill='%23d90429'/><text x='256' y='340' font-size='200' text-anchor='middle' fill='white'>❤️</text></svg>",
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' rx='40' fill='%23c1121f'/><text x='256' y='340' font-size='200' text-anchor='middle' fill='white'>❤️</text></svg>",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"

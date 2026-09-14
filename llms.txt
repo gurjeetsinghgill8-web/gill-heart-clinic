@@ -9,12 +9,12 @@
 - Title: Cardiac Physician & Non-Invasive Heart Care Specialist
 - Experience: 15+ Years in Clinical Cardiology & Critical Care
 - Patients Treated: 50,000+
-- MBBS: Govt Medical College MPSMC
-- Diploma in Cardiology: UN Mehta Institute of Cardiology, Ahmedabad
+- MBBS: Govt Medical College MPSMC (All India PMT)
+- Diploma in Cardiology: UN Mehta Institute of Cardiology, Ahmedabad, Gujarat
 - PGDCCP (NI): Post Graduate Diploma in Clinical Cardiology & Critical Care
 - AI in Healthcare: Certification from IIT Kanpur
 - Associate Consultant: Yashoda Superspeciality Hospital, Ghaziabad
-- Google Rating: 4.8★ (127+ Reviews)
+- Google Rating: 5.0★ (4 Google reviews)
 - Phone: +91-9258879884
 
 ## Clinic Address & Hours
@@ -27,16 +27,24 @@
 Dr. Gurjeet Singh Gill serves patients from Meerut, Modinagar, Ghaziabad, Hapur, and Delhi NCR, plus nearby areas (Mawana, Hastinapur, Sardhana, Daurala, Kharkhauda).
 
 ## Core Services
-- Cardiac OPD Consultation & Clinical Assessment
-- High Blood Pressure (Hypertension) Diagnosis & Management
-- Chest Pain Evaluation & Early Cardiac Warning Signs
-- Diabetes & Cardiovascular Risk Assessment
+- Cardiac Consultation — Heart Specialist Opinion & Second Opinion
+- Chest Pain & Angina Evaluation and Treatment
+- Heart Attack Follow-up — Post-Attack Monitoring & Recovery Guidance (not an emergency service)
+- High Blood Pressure (Hypertension) Clinic — BP Control & Management
+- Report Second Opinion — ECG, 2D Echo, TMT & Holter Report Review (tests are done outside; reports are reviewed and explained)
+- Palpitations & Arrhythmia — Irregular Heartbeat Evaluation & Care
+- Heart Failure Management
+- Diabetes Management
 - Cholesterol & Lipid Disorder Management
-- Heart Failure & Ischemic Heart Disease Management
-- ECG, 2D Echo, TMT Interpretation & Referral Guidance
-- Preventive Cardiology & Lifestyle Modification Counseling
-- Indian Heart-Healthy Diet Planning & Exercise Guidance
-- Generic Medicine Consultation (PM Jan Aushadhi Kendra)
+- Breathlessness Evaluation — Shortness of Breath & Lung-Heart Assessment
+- General Medicine — Fever, Weakness & General Health Care
+- Preventive Healthcare — Heart Disease Risk Assessment & Prevention
+- Respiratory Care — Cough, Cold & Breathing Problems
+- Digestive Health — Acidity, Gas & Stomach Health
+- Heart & Body Health Check-up Packages
+- Lifestyle & Weight Counseling — Diet, Exercise & Heart-Healthy Plans
+- Patient Education on Heart-Healthy Diet & Lifestyle
+- Generic Medicine Consultation (PM Jan Aushadhi Kendra Guidance)
 
 ## Published Heart Health Articles
 - Cardiac Physician In Meerut Dr Gurjeet Singh Gill: https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/blogs/cardiac-physician-in-meerut-dr-gurjeet-singh-gill.html
@@ -54,6 +62,8 @@ Dr. Gurjeet Singh Gill serves patients from Meerut, Modinagar, Ghaziabad, Hapur,
 - Obesity Aur Dil Ka Khatra Kya Aapko Hoshiyar Rehana Chahiye: https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/blogs/obesity-aur-dil-ka-khatra-kya-aapko-hoshiyar-rehana-chahiye.html
 
 ## Important Disclaimers
+- Gill Heart Clinic is an OPD (out-patient) consultation clinic only — it does NOT provide emergency, ambulance or ICU services. Patients with sudden or severe cardiac symptoms should go to the nearest hospital emergency immediately.
+- ECG, 2D Echo, TMT and Holter tests are NOT performed at the clinic. Reports done outside are reviewed and a second opinion is provided.
 - Dr. Gurjeet Singh Gill is a CARDIAC PHYSICIAN specializing in non-invasive cardiology. He is NOT an interventional cardiologist or cardiac surgeon.
 - In compliance with NMC (National Medical Commission) regulations, no superlative claims (like "Best Doctor" or "No. 1") are made.
 - All medical information is for educational purposes. Patients must consult the doctor in person for diagnosis and treatment.

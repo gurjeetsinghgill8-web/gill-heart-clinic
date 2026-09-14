@@ -47,7 +47,7 @@ To become the most trusted digital healthcare platform in Western UP, starting w
 | FR-06 | Statistics counters (experience, patients) | P1 (High) | ✅ |
 | FR-07 | Patient testimonials slider | P1 (High) | ✅ |
 | FR-08 | Contact section with phone, address, timings | P0 (Critical) | ✅ |
-| FR-09 | Emergency banner with helpline | P1 (High) | ✅ |
+| FR-09 | Clinic helpline banner (OPD only, by appointment) | P1 (High) | ✅ |
 | FR-10 | WhatsApp & Call floating buttons | P1 (High) | ✅ |
 | FR-11 | BMI Calculator | P1 (High) | ⚪ |
 | FR-12 | Heart Risk Calculator | P1 (High) | ⚪ |
@@ -124,13 +124,13 @@ Hosting:       GitHub Pages / Netlify / Vercel
 /* CSS variables in :root for theming */
 
 :root {
-  --primary: #d90429;      /* Main brand red */
-  --primary-dark: #b50020;  /* Darker variant */
-  --secondary: #0b5ed7;     /* Blue accent */
-  --success: #16a34a;       /* Green for success */
-  --dark: #0f172a;          /* Dark text */
-  --darker: #04111f;        /* Footer background */
-  --light: #f0f7ff;         /* Light section bg */
+  --primary: #c1121f;      /* Deep cardiac crimson */
+  --primary-dark: #9d0208; /* Darker crimson variant */
+  --secondary: #0f766e;    /* Teal accent (trust/health) */
+  --success: #15803d;      /* Green for success */
+  --dark: #0f172a;         /* Dark text */
+  --darker: #04111f;       /* Footer background */
+  --light: #f8fafc;        /* Neutral off-white section bg */
 }
 ```
 
@@ -218,7 +218,7 @@ So that I can prevent heart disease.
 - ✅ Testimonials slider
 - ✅ Appointment form
 - ✅ Doctor profile
-- ✅ Emergency section
+- ✅ Urgent symptoms guidance (OPD-only, directs to hospital emergency)
 - ✅ Google Maps integration
 - ✅ Premium footer
 
@@ -231,7 +231,7 @@ So that I can prevent heart disease.
 
 ### Phase 4 — Content & Education (Weeks 7-8)
 - ⚪ Blog system
-- ⚪ Disease pages (ECG, Echo, TMT, BP, Diabetes)
+- ⚪ Disease pages & report second-opinion pages (ECG/Echo/TMT review, BP, Diabetes)
 - ⚪ Heart tips & diet plans
 - ⚪ Video gallery
 
@@ -254,7 +254,7 @@ So that I can prevent heart disease.
 ### Colors
 
 ```css
---primary:    #d90429   /* Heart red — primary CTA */
+--primary:    #c1121f   /* Cardiac crimson — primary CTA */
 --secondary:  #0b5ed7   /* Trust blue — secondary CTAs */
 --success:    #16a34a   /* Health green — WhatsApp, success */
 --dark:       #0f172a   /* Text headings */
@@ -274,7 +274,7 @@ So that I can prevent heart disease.
 - Professional yet warm
 - Simple Hindi-English mix for local audience
 - Short sentences, bullet points, clear CTAs
-- Emergency info should feel urgent but not panic-inducing
+- Urgent-symptom info must clearly state the clinic is OPD-only and direct patients to hospital emergency (no emergency-service claims)
 
 ---
 
