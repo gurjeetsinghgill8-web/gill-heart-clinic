@@ -102,10 +102,11 @@ app.post('/api/patient-records', (req, res) => {
       }
     }
 
-    // Editable medical vitals & complaints
+    // Editable medical vitals & complaints & weekly goal
     if (age) existing.age = age;
     if (gender) existing.gender = gender;
     if (complaints) existing.complaints = complaints;
+    if (req.body.weeklyGoal) existing.weeklyGoal = req.body.weeklyGoal;
 
     // Append vital reading if BP provided
     if (sys && dia) {
@@ -158,6 +159,33 @@ app.post('/api/patient-records/verify', (req, res) => {
     return res.json({ success: true, patient });
   } catch (err) {
     console.error('Error verifying patient PIN:', err);
+    return res.status(500).json({ error: err.message });
+  }
+});
+
+// API: Update Patient Weekly Health Goal
+app.post('/api/patient-records/goal', (req, res) => {
+  try {
+    const { phone, pin, weeklyGoal } = req.body;
+    const cleanPhone = normalizeIndianPhone(phone);
+    if (!cleanPhone || cleanPhone.length !== 10) {
+      return res.status(400).json({ error: 'कृपया 10 अंकों का वैध मोबाइल नंबर दर्ज करें।' });
+    }
+    const db = getPatientDb();
+    const patient = db[cleanPhone];
+    if (!patient) {
+      return res.status(404).json({ error: 'मरीज़ रिकॉर्ड नहीं मिला।' });
+    }
+    if (patient.pin && pin && String(patient.pin).trim() !== String(pin).trim()) {
+      return res.status(401).json({ error: 'अमान्य पिन।' });
+    }
+    patient.weeklyGoal = weeklyGoal;
+    patient.updatedAt = new Date().toISOString();
+    db[cleanPhone] = patient;
+    savePatientDb(db);
+    return res.json({ success: true, patient, weeklyGoal: patient.weeklyGoal });
+  } catch (err) {
+    console.error('Error saving patient weekly goal:', err);
     return res.status(500).json({ error: err.message });
   }
 });

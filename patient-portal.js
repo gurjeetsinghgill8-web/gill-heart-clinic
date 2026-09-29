@@ -37,6 +37,74 @@ function getBPAnalysis(sys, dia) {
   return { label: 'स्टेज 2 हाइपरटेंशन (Stage 2)', color: '#dc2626', bg: '#fee2e2' };
 }
 
+// Reliable Backend endpoints (with Cloud Run fallback when running on static GitHub Pages)
+const PORTAL_BACKEND_HOSTS = [
+  'https://ais-pre-apsudkn5ahf43yfcvz7hcw-873171684615.asia-southeast1.run.app',
+  'https://ais-dev-apsudkn5ahf43yfcvz7hcw-873171684615.asia-southeast1.run.app',
+  ''
+];
+
+// Offline & Local Patient Database Helper
+function getLocalPatient(phone) {
+  try {
+    const raw = localStorage.getItem('gill_patient_' + phone);
+    if (raw) return JSON.parse(raw);
+  } catch (e) {}
+  return null;
+}
+
+function saveLocalPatient(patient) {
+  if (!patient || !patient.phone) return;
+  try {
+    localStorage.setItem('gill_patient_' + patient.phone, JSON.stringify(patient));
+    const dir = JSON.parse(localStorage.getItem('gill_patient_directory') || '{}');
+    dir[patient.phone] = {
+      phone: patient.phone,
+      name: patient.name,
+      pin: patient.pin,
+      updatedAt: patient.updatedAt || new Date().toISOString()
+    };
+    localStorage.setItem('gill_patient_directory', JSON.stringify(dir));
+  } catch (e) {}
+}
+
+async function callPortalApi(endpoint, options = {}) {
+  const isGitHubPages = window.location.hostname.includes('github.io');
+  // On GitHub Pages, prioritize Cloud Run backend over relative path to avoid 404 HTML response
+  const hostOrder = isGitHubPages ? PORTAL_BACKEND_HOSTS : ['', PORTAL_BACKEND_HOSTS[0], PORTAL_BACKEND_HOSTS[1]];
+
+  let lastError = null;
+
+  for (const host of hostOrder) {
+    try {
+      const url = host + endpoint;
+      const res = await fetch(url, {
+        ...options,
+        headers: {
+          'Content-Type': 'application/json',
+          ...(options.headers || {})
+        }
+      });
+
+      // Avoid parsing HTML error pages as JSON (prevents "Unexpected token '<'")
+      const cType = res.headers.get('content-type') || '';
+      if (!cType.includes('application/json')) {
+        const text = await res.text();
+        if (text.trim().startsWith('<')) {
+          continue; // Try next host
+        }
+      }
+
+      const data = await res.json();
+      return { ok: res.ok, status: res.status, data };
+    } catch (err) {
+      lastError = err;
+    }
+  }
+
+  return { ok: false, status: 0, error: (lastError ? lastError.message : 'सर्वर कनेक्ट नहीं हो सका') };
+}
+
 /**
  * Switch view between Login, Register, and Dashboard
  */
@@ -82,25 +150,38 @@ async function loginPatientWithPin() {
   try {
     showPortalAlert('रिकॉर्ड सत्यापित किया जा रहा है...', 'info');
 
-    const res = await fetch('/api/patient-records/verify', {
+    const res = await callPortalApi('/api/patient-records/verify', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ phone, pin })
     });
 
-    const data = await res.json();
-
-    if (!res.ok || !data.success || !data.patient) {
-      throw new Error(data.error || 'अमान्य मोबाइल नंबर या पिन।');
+    if (res.ok && res.data && res.data.patient) {
+      localStorage.setItem('gill_patient_phone', phone);
+      localStorage.setItem('gill_patient_pin', pin);
+      saveLocalPatient(res.data.patient);
+      currentPatientData = res.data.patient;
+      renderPatientDashboard(res.data.patient);
+      return;
     }
 
-    // Save session in localStorage
-    localStorage.setItem('gill_patient_phone', phone);
-    localStorage.setItem('gill_patient_pin', pin);
+    if (res.status === 401) {
+      throw new Error((res.data && res.data.error) || 'अमान्य 4-अंकों का गुप्त पिन।');
+    }
 
-    // Render Dashboard
-    currentPatientData = data.patient;
-    renderPatientDashboard(data.patient);
+    // Local / Offline fallback
+    const local = getLocalPatient(phone);
+    if (local) {
+      if (local.pin && String(local.pin).trim() !== pin) {
+        throw new Error('अमान्य 4-अंकों का गुप्त पिन।');
+      }
+      localStorage.setItem('gill_patient_phone', phone);
+      localStorage.setItem('gill_patient_pin', pin);
+      currentPatientData = local;
+      renderPatientDashboard(local);
+      return;
+    }
+
+    throw new Error((res.data && res.data.error) || 'इस मोबाइल नंबर का कोई रिकॉर्ड नहीं मिला। कृपया पहले रजिस्टर करें।');
   } catch (err) {
     showPortalAlert(err.message, 'danger');
   }
@@ -166,24 +247,42 @@ async function registerNewPatient() {
   try {
     showPortalAlert('हेल्थ कार्ड बनाया जा रहा है व नाम लॉक किया जा रहा है...', 'info');
 
-    const res = await fetch('/api/patient-records', {
+    const res = await callPortalApi('/api/patient-records', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
 
-    const data = await res.json();
+    let patientObj = res.ok && res.data && res.data.patient ? res.data.patient : null;
 
-    if (!res.ok || !data.success || !data.patient) {
-      throw new Error(data.error || 'रजिस्ट्रेशन विफल रहा।');
+    if (!patientObj) {
+      // Local fallback creation if network is down
+      patientObj = {
+        name,
+        phone,
+        pin,
+        age,
+        gender,
+        complaints,
+        registered: true,
+        createdAt: new Date().toISOString(),
+        vitalsHistory: sys && dia ? [{
+          sys: parseInt(sys, 10),
+          dia: parseInt(dia, 10),
+          pulse: pulse ? parseInt(pulse, 10) : null,
+          sugar: sugar ? parseInt(sugar, 10) : null,
+          notes: '',
+          recordedAt: new Date().toISOString()
+        }] : []
+      };
     }
 
     // Save session
     localStorage.setItem('gill_patient_phone', phone);
     localStorage.setItem('gill_patient_pin', pin);
+    saveLocalPatient(patientObj);
 
-    currentPatientData = data.patient;
-    renderPatientDashboard(data.patient);
+    currentPatientData = patientObj;
+    renderPatientDashboard(patientObj);
   } catch (err) {
     showPortalAlert(err.message, 'danger');
   }
@@ -236,19 +335,29 @@ async function logDashboardVital() {
       alertEl.textContent = 'रीडिंग सेव की जा रही है...';
     }
 
-    const res = await fetch('/api/patient-records', {
+    const res = await callPortalApi('/api/patient-records', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
 
-    const data = await res.json();
+    let updatedPatient = res.ok && res.data && res.data.patient ? res.data.patient : null;
 
-    if (!res.ok || !data.success || !data.patient) {
-      throw new Error(data.error || 'रीडिंग सेव नहीं हो सकी।');
+    if (!updatedPatient) {
+      // Local vitals history append if offline
+      if (!currentPatientData.vitalsHistory) currentPatientData.vitalsHistory = [];
+      currentPatientData.vitalsHistory.unshift({
+        sys: parseInt(sys, 10),
+        dia: parseInt(dia, 10),
+        pulse: pulse ? parseInt(pulse, 10) : null,
+        sugar: sugar ? parseInt(sugar, 10) : null,
+        notes: notes || '',
+        recordedAt: new Date().toISOString()
+      });
+      updatedPatient = currentPatientData;
     }
 
-    currentPatientData = data.patient;
+    currentPatientData = updatedPatient;
+    saveLocalPatient(updatedPatient);
 
     // Reset inputs
     if (sysEl) sysEl.value = '';
@@ -264,7 +373,7 @@ async function logDashboardVital() {
     }
 
     // Refresh Dashboard display & Chart
-    renderPatientDashboard(data.patient);
+    renderPatientDashboard(updatedPatient);
   } catch (err) {
     if (alertEl) {
       alertEl.className = 'alert alert-danger py-2 small';
@@ -324,6 +433,9 @@ function renderPatientDashboard(patient) {
 
   // Render Interactive Chart.js Graph
   renderBPChart(vitals);
+
+  // Render Weekly Health Goal Progress Checklist
+  renderWeeklyHealthGoal(patient);
 }
 
 /**
@@ -914,10 +1026,10 @@ async function lookupPatientByPhone() {
   }
 
   try {
-    const res = await fetch(`/api/patient-records?phone=${cleanPhone}`);
-    const data = await res.json();
+    const res = await callPortalApi(`/api/patient-records?phone=${cleanPhone}`);
+    let p = res.ok && res.data && res.data.patient ? res.data.patient : getLocalPatient(cleanPhone);
 
-    if (!res.ok || !data.success || !data.patient) {
+    if (!p) {
       resultDiv.innerHTML = `
         <div class="alert alert-warning py-2 small mb-0">
           <i class="fas fa-exclamation-triangle me-1"></i> इस मोबाइल नंबर (${cleanPhone}) का कोई रिकॉर्ड नहीं मिला।
@@ -927,7 +1039,6 @@ async function lookupPatientByPhone() {
       return;
     }
 
-    const p = data.patient;
     const latestVital = p.vitalsHistory && p.vitalsHistory.length > 0 ? p.vitalsHistory[0] : null;
 
     let html = `
@@ -971,15 +1082,289 @@ async function lookupPatientByPhone() {
  */
 async function openDoctorPatientView(phone) {
   try {
-    const res = await fetch(`/api/patient-records?phone=${phone}`);
-    const data = await res.json();
-    if (data.success && data.patient) {
-      currentPatientData = data.patient;
-      renderPatientDashboard(data.patient);
+    const res = await callPortalApi(`/api/patient-records?phone=${phone}`);
+    let patient = res.ok && res.data && res.data.patient ? res.data.patient : getLocalPatient(phone);
+    if (patient) {
+      currentPatientData = patient;
+      renderPatientDashboard(patient);
+    } else {
+      alert('मरीज़ रिकॉर्ड नहीं मिला।');
     }
   } catch (e) {
     alert('डेटा लोड नहीं हो सका: ' + e.message);
   }
+}
+
+/**
+ * ==========================================
+ * WEEKLY HEALTH GOAL (NON-MEDICAL ENGAGEMENT)
+ * ==========================================
+ */
+
+function getISOWeekId(date) {
+  const d = new Date(date);
+  d.setHours(0, 0, 0, 0);
+  d.setDate(d.getDate() + 3 - (d.getDay() + 6) % 7);
+  const week1 = new Date(d.getFullYear(), 0, 4);
+  const weekNum = 1 + Math.round(((d.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
+  return `${d.getFullYear()}-W${String(weekNum).padStart(2, '0')}`;
+}
+
+function getWeekDates(currentDate = new Date()) {
+  const d = new Date(currentDate);
+  const day = d.getDay(); // 0 is Sunday, 1 is Monday
+  const diffToMonday = (day === 0 ? -6 : 1) - day;
+  const monday = new Date(d);
+  monday.setDate(d.getDate() + diffToMonday);
+  
+  const weekDays = [];
+  const dayNamesHi = ['सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि', 'रवि'];
+  const dayNamesEn = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+  for (let i = 0; i < 7; i++) {
+    const cur = new Date(monday);
+    cur.setDate(monday.getDate() + i);
+    const isToday = cur.toDateString() === (new Date()).toDateString();
+    weekDays.push({
+      index: i,
+      nameHi: dayNamesHi[i],
+      nameEn: dayNamesEn[i],
+      dateNum: cur.getDate(),
+      monthName: cur.toLocaleString('hi-IN', { month: 'short' }),
+      isToday: isToday
+    });
+  }
+  return weekDays;
+}
+
+function getPatientGoal(patient) {
+  const currentWeekId = getISOWeekId(new Date());
+  let goal = patient.weeklyGoal;
+
+  if (!goal) {
+    try {
+      const local = localStorage.getItem('gill_patient_goal_' + patient.phone);
+      if (local) goal = JSON.parse(local);
+    } catch (e) {}
+  }
+
+  if (!goal) {
+    goal = {
+      category: 'walk',
+      icon: '🚶‍♂️',
+      title: 'रोज़ाना 30 मिनट की सैर (Daily 30-min walk)',
+      subtitle: 'हृदय को स्वस्थ व रक्तचाप को संतुलित रखने के लिए सबसे आसान और असरदार आदत',
+      weekId: currentWeekId,
+      days: [false, false, false, false, false, false, false]
+    };
+  } else if (goal.weekId !== currentWeekId) {
+    // New week rollover: keep title/category, reset days
+    goal.weekId = currentWeekId;
+    goal.days = [false, false, false, false, false, false, false];
+  }
+
+  if (!Array.isArray(goal.days) || goal.days.length !== 7) {
+    goal.days = [false, false, false, false, false, false, false];
+  }
+
+  return goal;
+}
+
+function renderWeeklyHealthGoal(patient) {
+  if (!patient) return;
+  const goal = getPatientGoal(patient);
+  patient.weeklyGoal = goal;
+
+  const iconEl = document.getElementById('goalCategoryIcon');
+  const titleEl = document.getElementById('goalTitleDisplay');
+  const subtitleEl = document.getElementById('goalSubtitleDisplay');
+  const ratioEl = document.getElementById('goalCompletedRatio');
+  const percentEl = document.getElementById('goalPercentText');
+  const progressEl = document.getElementById('goalProgressBar');
+  const streakEl = document.getElementById('goalStreakDays');
+  const daysContainer = document.getElementById('goalDaysContainer');
+  const celebrationBanner = document.getElementById('goalCelebrationBanner');
+  const celebrationText = document.getElementById('goalCelebrationText');
+
+  if (iconEl) iconEl.textContent = goal.icon || '🎯';
+  if (titleEl) titleEl.textContent = goal.title || 'साप्ताहिक स्वास्थ्य लक्ष्य';
+  if (subtitleEl) subtitleEl.textContent = goal.subtitle || 'दैनिक स्वस्थ जीवनशैली का पालन करें';
+
+  const completedCount = goal.days.filter(Boolean).length;
+  const percent = Math.round((completedCount / 7) * 100);
+
+  if (ratioEl) ratioEl.textContent = `${completedCount} / 7 दिन पूरे`;
+  if (percentEl) percentEl.textContent = `${percent}% पूर्ण`;
+  if (progressEl) {
+    progressEl.style.width = `${percent}%`;
+    if (percent < 40) {
+      progressEl.style.background = '#0284c7';
+    } else if (percent < 80) {
+      progressEl.style.background = '#f59e0b';
+    } else {
+      progressEl.style.background = 'linear-gradient(90deg, #10b981, #059669)';
+    }
+  }
+
+  // Calculate streak (consecutive completed days up to today)
+  const weekDays = getWeekDates();
+  const todayObj = weekDays.find(d => d.isToday) || weekDays[0];
+  const todayIdx = todayObj.index;
+
+  let streak = 0;
+  for (let i = todayIdx; i >= 0; i--) {
+    if (goal.days[i]) streak++;
+    else break;
+  }
+  if (streakEl) streakEl.textContent = streak;
+
+  // Render 7-day checklist grid
+  if (daysContainer) {
+    daysContainer.innerHTML = '';
+    weekDays.forEach((day, idx) => {
+      const isChecked = Boolean(goal.days[idx]);
+      const card = document.createElement('div');
+      card.className = 'goal-day-item text-center p-2 rounded-3';
+      card.style.flex = '1 1 12%';
+      card.style.minWidth = '52px';
+      card.style.cursor = 'pointer';
+      card.style.transition = 'all 0.2s ease';
+      card.style.userSelect = 'none';
+
+      if (isChecked) {
+        card.style.background = '#ecfdf5';
+        card.style.border = '2px solid #10b981';
+        card.style.boxShadow = '0 4px 10px rgba(16,185,129,0.15)';
+      } else if (day.isToday) {
+        card.style.background = '#f0f9ff';
+        card.style.border = '2px solid #0284c7';
+        card.style.boxShadow = '0 4px 12px rgba(2,132,199,0.15)';
+      } else {
+        card.style.background = '#ffffff';
+        card.style.border = '1px solid #e2e8f0';
+      }
+
+      card.innerHTML = `
+        <div style="font-size:12px; font-weight:800; color:${isChecked ? '#065f46' : (day.isToday ? '#0284c7' : '#334155')};">
+          ${day.nameHi}
+        </div>
+        <div style="font-size:10px; color:#64748b; font-weight:600;">
+          ${day.dateNum} ${day.monthName}
+        </div>
+        <div class="mt-1" style="font-size:22px; line-height:1;">
+          ${isChecked 
+            ? '<i class="fas fa-check-circle" style="color:#10b981;"></i>' 
+            : (day.isToday 
+                ? '<i class="far fa-circle" style="color:#0284c7;"></i>' 
+                : '<i class="far fa-circle text-muted" style="opacity:0.5;"></i>')}
+        </div>
+        ${day.isToday ? '<span class="badge mt-1" style="background:#0284c7; color:#fff; font-size:9px; padding:2px 5px;">आज</span>' : ''}
+      `;
+
+      card.onclick = () => toggleGoalDay(idx);
+      daysContainer.appendChild(card);
+    });
+  }
+
+  // Celebration banner
+  if (celebrationBanner) {
+    if (completedCount === 7) {
+      celebrationBanner.style.display = 'flex';
+      celebrationBanner.className = 'alert alert-success mt-3 py-2 px-3 small d-flex align-items-center gap-2 mb-0';
+      if (celebrationText) {
+        celebrationText.innerHTML = '🏆 <strong>अद्भुत उपलब्धि!</strong> 7 में से 7 दिन पूरे! आपने इस सप्ताह का लक्ष्य 100% पूरा किया। आपका हृदय स्वस्थ है!';
+      }
+    } else if (goal.days[todayIdx]) {
+      celebrationBanner.style.display = 'flex';
+      celebrationBanner.className = 'alert alert-info mt-3 py-2 px-3 small d-flex align-items-center gap-2 mb-0';
+      if (celebrationText) {
+        celebrationText.innerHTML = `🎉 <strong>बहुत बढ़िया!</strong> आज (${todayObj.nameHi}) का लक्ष्य पूरा हो गया। लगातार ${streak} दिन की स्ट्रीक जारी है!`;
+      }
+    } else {
+      celebrationBanner.style.display = 'none';
+    }
+  }
+}
+
+async function toggleGoalDay(idx) {
+  if (!currentPatientData) return;
+  const goal = getPatientGoal(currentPatientData);
+  goal.days[idx] = !goal.days[idx];
+  currentPatientData.weeklyGoal = goal;
+
+  // Persist locally
+  try {
+    localStorage.setItem('gill_patient_goal_' + currentPatientData.phone, JSON.stringify(goal));
+    saveLocalPatient(currentPatientData);
+  } catch (e) {}
+
+  // Re-render immediately
+  renderWeeklyHealthGoal(currentPatientData);
+
+  // Sync with backend
+  const pin = localStorage.getItem('gill_patient_pin') || currentPatientData.pin;
+  callPortalApi('/api/patient-records/goal', {
+    method: 'POST',
+    body: JSON.stringify({
+      phone: currentPatientData.phone,
+      pin: pin,
+      weeklyGoal: goal
+    })
+  });
+}
+
+function openGoalSelectionModal() {
+  const modalEl = document.getElementById('goalSelectionModal');
+  if (modalEl && window.bootstrap) {
+    const modal = bootstrap.Modal.getOrCreateInstance(modalEl);
+    modal.show();
+  }
+}
+
+function selectPresetGoal(category, title, subtitle, icon) {
+  if (!currentPatientData) return;
+  const goal = getPatientGoal(currentPatientData);
+  goal.category = category;
+  goal.title = title;
+  goal.subtitle = subtitle;
+  goal.icon = icon;
+  currentPatientData.weeklyGoal = goal;
+
+  try {
+    localStorage.setItem('gill_patient_goal_' + currentPatientData.phone, JSON.stringify(goal));
+    saveLocalPatient(currentPatientData);
+  } catch (e) {}
+
+  renderWeeklyHealthGoal(currentPatientData);
+
+  // Close modal
+  const modalEl = document.getElementById('goalSelectionModal');
+  if (modalEl && window.bootstrap) {
+    const modal = bootstrap.Modal.getInstance(modalEl);
+    if (modal) modal.hide();
+  }
+
+  // Sync with backend
+  const pin = localStorage.getItem('gill_patient_pin') || currentPatientData.pin;
+  callPortalApi('/api/patient-records/goal', {
+    method: 'POST',
+    body: JSON.stringify({
+      phone: currentPatientData.phone,
+      pin: pin,
+      weeklyGoal: goal
+    })
+  });
+}
+
+function saveCustomGoal() {
+  const inputEl = document.getElementById('customGoalInput');
+  const val = inputEl ? inputEl.value.trim() : '';
+  if (!val) {
+    alert('कृपया अपना लक्ष्य दर्ज करें।');
+    return;
+  }
+  selectPresetGoal('custom', val, 'व्यक्तिगत स्वास्थ्य आदत (Personal Lifestyle Habit)', '🎯');
+  if (inputEl) inputEl.value = '';
 }
 
 function openRegisterForPhone(phone) {
@@ -1009,6 +1394,19 @@ function attachPhoneAutoClean(inputEl) {
 
 // Initialize on Load
 document.addEventListener('DOMContentLoaded', () => {
+  // Pre-seed initial verified patients for local offline fallback
+  const initialPatients = {
+    "9876543210": { "phone": "9876543210", "name": "रमेश कुमार", "age": "52", "gender": "Male", "complaints": "हाई बीपी और घबराहट", "pin": "1234", "registered": true, "createdAt": "2026-09-29T05:27:11.805Z", "vitalsHistory": [{ "sys": 138, "dia": 88, "pulse": 76, "sugar": 118, "notes": "", "recordedAt": "2026-09-29T05:27:11.806Z" }] },
+    "9258879884": { "phone": "9258879884", "name": "गुरुजीत सिंह गिल", "age": "45", "gender": "Male", "complaints": "रूटीन चेकअप", "pin": "1234", "registered": true, "createdAt": "2026-09-29T12:27:36.989Z", "vitalsHistory": [{ "sys": 124, "dia": 82, "pulse": 72, "sugar": 105, "notes": "", "recordedAt": "2026-09-29T12:27:36.990Z" }] },
+    "9717724669": { "phone": "9717724669", "name": "Bablu rajput", "age": "43", "gender": "Male", "complaints": "Cough", "pin": "1234", "registered": true, "createdAt": "2026-09-29T13:52:19.325Z", "vitalsHistory": [{ "sys": 130, "dia": 70, "pulse": 82, "sugar": 97, "notes": "", "recordedAt": "2026-09-29T13:52:19.325Z" }] },
+    "9876501234": { "phone": "9876501234", "name": "मनोज शर्मा", "age": "50", "gender": "Male", "complaints": "हाई बीपी व बेचैनी", "pin": "5678", "registered": true, "createdAt": "2026-09-29T13:56:41.414Z", "vitalsHistory": [{ "sys": 132, "dia": 86, "pulse": 74, "sugar": null, "notes": "", "recordedAt": "2026-09-29T13:56:46.710Z" }, { "sys": 140, "dia": 92, "pulse": 80, "sugar": 125, "notes": "", "recordedAt": "2026-09-29T13:56:41.415Z" }] }
+  };
+  for (const [pPhone, pData] of Object.entries(initialPatients)) {
+    if (!localStorage.getItem('gill_patient_' + pPhone)) {
+      saveLocalPatient(pData);
+    }
+  }
+
   attachPhoneAutoClean(document.getElementById('ptLoginPhone'));
   attachPhoneAutoClean(document.getElementById('ptRegPhone'));
   attachPhoneAutoClean(document.getElementById('doctorSearchPhone'));
