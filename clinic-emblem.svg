@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <defs>
+    <linearGradient id="crestBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="heartRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+  </defs>
+  <!-- Medical Heart Pulse Crest -->
+  <g transform="translate(10, 6)">
+    <rect width="48" height="48" rx="14" fill="#f0f9ff" stroke="#bae6fd" stroke-width="1.5"/>
+    <path d="M24 16 C20 12, 14 14, 14 20 C14 26, 24 34, 24 34 C24 34, 34 26, 34 20 C34 14, 28 12, 24 16 Z" fill="url(#heartRed)"/>
+    <!-- ECG pulse line -->
+    <path d="M12 24 H18 L21 19 L24 29 L27 21 L30 24 H36" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- Typography -->
+  <text x="68" y="28" font-family="'Poppins', sans-serif" font-weight="800" font-size="18" fill="#0f172a" letter-spacing="-0.3">
+    Gill Heart Clinic
+  </text>
+  <text x="68" y="44" font-family="'Poppins', sans-serif" font-weight="600" font-size="10" fill="#0284c7" letter-spacing="0.4">
+    DR. G. S. GILL • CARDIO-PHYSICIAN
+  </text>
+</svg>

@@ -1,0 +1,8 @@
+{
+  "name": "Gill Heart Clinic",
+  "description": "Dr. Gurjeet Singh Gill, Clinical Cardio-Physician (Non-Invasive) at Gill Heart Clinic near Modinagar RRTS & Mohiuddinpur (Metro Pillar 1375). Consultation for high BP, hypertension, cardiac risk assessment, and second opinion on outside ECG, 2D Echo, and TMT reports.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
