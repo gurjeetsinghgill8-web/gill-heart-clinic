@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
+import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,6 +10,15 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 const HOST = '0.0.0.0';
+
+// Enable CORS so upload from GitHub Pages (or any origin) works seamlessly
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  if (req.method === 'OPTIONS') return res.sendStatus(200);
+  next();
+});
 
 // Enable large JSON payloads for base64 photo uploads and patient data
 app.use(express.json({ limit: '50mb' }));
@@ -184,20 +194,63 @@ app.post('/api/upload-photo', (req, res) => {
     const cleanBase64 = base64.replace(/^data:image\/\w+;base64,/, '');
     const buffer = Buffer.from(cleanBase64, 'base64');
     
-    // Whitelist allowed target files
-    const allowed = ['doctor-portrait.jpg', 'doctor-opd.jpg', 'doctor-real.jpg'];
-    const safeName = allowed.includes(filename) ? filename : 'doctor-portrait.jpg';
-    
-    fs.writeFileSync(path.join(__dirname, safeName), buffer);
-    console.log(`Successfully saved doctor photo: ${safeName} (${buffer.length} bytes)`);
-    
-    // Also copy to doctor.jpg and hero.jpg if it is the primary portrait
-    if (safeName === 'doctor-portrait.jpg') {
+    console.log(`Processing upload for filename: ${filename} (${buffer.length} bytes)`);
+
+    // Determine target based on filename or photo type
+    const fnLower = (filename || '').toLowerCase();
+    const isPortrait = fnLower.includes('164346') || fnLower.includes('portrait') || fnLower.includes('suit') || fnLower.includes('blazer') || fnLower.includes('court');
+    const isOpd = fnLower.includes('125939') || fnLower.includes('172901') || fnLower.includes('opd') || fnLower.includes('scrub');
+
+    let savedFiles = [];
+
+    if (isPortrait || (!isOpd && fnLower.includes('doctor-portrait'))) {
+      // 1. Doctor in Navy Suit / Blazer at Desk
+      fs.writeFileSync(path.join(__dirname, 'doctor-portrait.jpg'), buffer);
       fs.writeFileSync(path.join(__dirname, 'doctor.jpg'), buffer);
       fs.writeFileSync(path.join(__dirname, 'hero.jpg'), buffer);
+      savedFiles.push('doctor-portrait.jpg', 'doctor.jpg', 'hero.jpg');
+    } else {
+      // 2. Doctor in Scrubs with Stethoscope
+      fs.writeFileSync(path.join(__dirname, 'doctor-opd.jpg'), buffer);
+      fs.writeFileSync(path.join(__dirname, 'doctor2.jpg'), buffer);
+      fs.writeFileSync(path.join(__dirname, 'doctor3.jpg'), buffer);
+      savedFiles.push('doctor-opd.jpg', 'doctor2.jpg', 'doctor3.jpg');
     }
-    
-    return res.json({ success: true, filename: safeName, bytes: buffer.length });
+
+    console.log(`Successfully saved files locally: ${savedFiles.join(', ')}`);
+
+    // Automatically push updated photo files to GitHub if token configured
+    let gitPushSuccess = false;
+    let gitPushMessage = '';
+    try {
+      let gitToken = process.env.GITHUB_PAT;
+      const tokenFile = path.join(__dirname, '.git_token');
+      if (!gitToken && fs.existsSync(tokenFile)) {
+        gitToken = fs.readFileSync(tokenFile, 'utf8').trim();
+      }
+
+      if (gitToken) {
+        const repoUrl = `https://gurjeetsinghgill8-web:${gitToken}@github.com/gurjeetsinghgill8-web/gill-heart-clinic.git`;
+        execSync(`git add doctor* hero* && git commit -m "Update doctor real clinic photos [auto-upload]" && git push ${repoUrl} gh-pages:gh-pages && git push ${repoUrl} gh-pages:master`, {
+          cwd: __dirname,
+          timeout: 20000
+        });
+        gitPushSuccess = true;
+        gitPushMessage = 'Live on GitHub Pages!';
+        console.log('Successfully auto-pushed photos to GitHub gh-pages & master!');
+      }
+    } catch (gitErr) {
+      console.warn('Auto git push notice (may retry or token changed):', gitErr.message);
+      gitPushMessage = gitErr.message;
+    }
+
+    return res.json({
+      success: true,
+      files: savedFiles,
+      bytes: buffer.length,
+      gitPush: gitPushSuccess,
+      message: gitPushSuccess ? 'फ़ोटो वेबसाइट व GitHub दोनों पर सफलतापूर्वक लाइव हो गई है!' : 'फ़ोटो सर्वर पर सेव हो गई है!'
+    });
   } catch (err) {
     console.error('Error saving uploaded photo:', err);
     return res.status(500).json({ error: err.message });

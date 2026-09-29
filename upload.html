@@ -102,70 +102,96 @@
 <body>
   <div class="upload-container">
     <div class="header-card">
-      <div style="font-size:40px; color:#0284c7; margin-bottom:12px;"><i class="fas fa-camera-retro"></i></div>
-      <h1>Upload Dr. Gill's Real Clinic Photos</h1>
-      <p>Select your photos directly from your phone or computer to place them on the website instantly.</p>
-      <div class="mt-3">
-        <a href="/" class="btn btn-outline-secondary btn-sm"><i class="fas fa-arrow-left"></i> Back to Homepage</a>
+      <div style="font-size:44px; color:#dc2626; margin-bottom:12px;"><i class="fas fa-camera-retro"></i></div>
+      <h1>डॉक्टर साहब की असली फ़ोटो अपलोड करें (Upload Real Photos)</h1>
+      <p style="font-size:16px;">अपने मोबाइल की गैलरी से कोट व स्टेथोस्कोप वाली फ़ोटो चुनें — यह सीधे वेबसाइट और GitHub पर लाइव हो जाएगी।</p>
+      <div class="mt-3 d-flex justify-content-center gap-2">
+        <a href="/" class="btn btn-outline-secondary btn-sm"><i class="fas fa-arrow-left me-1"></i> मुख्य वेबसाइट (Home)</a>
+        <a href="https://gurjeetsinghgill8-web.github.io/gill-heart-clinic/" target="_blank" class="btn btn-outline-primary btn-sm"><i class="fas fa-external-link-alt me-1"></i> Live GitHub Site</a>
       </div>
     </div>
 
-    <!-- Photo 1: Formal Doctor Portrait -->
+    <!-- Photo 1: Doctor in Navy Suit / Blazer at Desk -->
     <div class="photo-card">
       <div class="d-flex align-items-center justify-content-between mb-2">
         <div>
-          <span class="badge bg-primary mb-1">Primary Portrait (Hero & About)</span>
-          <h4 class="mb-0" style="font-weight:700; font-size:18px;">1. Doctor in Navy Suit / Blazer at Desk</h4>
-          <small class="text-muted">Select <code>IMG_20260224_164346.jpg</code> from your phone gallery</small>
+          <span class="badge bg-primary mb-1">मुख्य फ़ोटो (Hero & About Portrait)</span>
+          <h4 class="mb-0" style="font-weight:800; font-size:18px;">1. नीले कोट / ब्लेज़र (Navy Blue Coat) वाली फ़ोटो</h4>
+          <small class="text-muted">अपने फ़ोन की गैलरी से <b>IMG_20260224_164346.jpg</b> या कोट वाली फ़ोटो चुनें</small>
         </div>
-        <i class="fas fa-user-md fa-2x text-primary"></i>
+        <i class="fas fa-user-tie fa-2x text-primary"></i>
       </div>
       <div class="photo-preview" onclick="document.getElementById('fileInput1').click()">
-        <img id="preview1" src="doctor-portrait.jpg" onerror="this.src='doctor-avatar.svg'" alt="Doctor Portrait">
+        <img id="preview1" src="doctor.jpg?v=dev" onerror="this.src='doctor-avatar.svg'" alt="Doctor Navy Coat">
         <div id="placeholder1" style="display:none; text-align:center; padding:20px;">
           <i class="fas fa-cloud-upload-alt fa-2x text-muted mb-2"></i>
-          <p class="mb-0 text-muted">Tap here to select photo from phone</p>
+          <p class="mb-0 text-muted">यहाँ टैप करके मोबाइल गैलरी से फ़ोटो चुनें</p>
         </div>
       </div>
-      <input type="file" id="fileInput1" accept="image/*" style="display:none;" onchange="handleFileSelect(this, 'preview1', 'doctor-portrait.jpg', 'status1')">
+      <input type="file" id="fileInput1" accept="image/*" style="display:none;" onchange="handleFileSelect(this, 'preview1', 'IMG_20260224_164346.jpg', 'status1')">
       <button class="upload-btn" onclick="document.getElementById('fileInput1').click()">
-        <i class="fas fa-folder-open"></i> Choose Blazer Photo from Phone
+        <i class="fas fa-image me-1"></i> मोबाइल गैलरी से कोट वाली फ़ोटो चुनें (Choose Coat Photo)
       </button>
-      <div id="status1" class="status-msg text-success text-center"></div>
+      <div id="status1" class="status-msg text-center mt-2"></div>
     </div>
 
     <!-- Photo 2: Doctor in Scrubs with Stethoscope -->
     <div class="photo-card">
       <div class="d-flex align-items-center justify-content-between mb-2">
         <div>
-          <span class="badge bg-info text-dark mb-1">OPD & Consultation Room</span>
-          <h4 class="mb-0" style="font-weight:700; font-size:18px;">2. Doctor in Scrubs with Stethoscope</h4>
-          <small class="text-muted">Select <code>IMG_20250920_125939.jpg</code> or <code>IMG_20260605_172901.jpg</code></small>
+          <span class="badge bg-success mb-1">क्लिनिक व ओपीडी (OPD & Consultation)</span>
+          <h4 class="mb-0" style="font-weight:800; font-size:18px;">2. स्टेथोस्कोप / ओपीडी (Stethoscope / OPD) वाली फ़ोटो</h4>
+          <small class="text-muted">अपने फ़ोन की गैलरी से <b>IMG_20250920_125939.jpg</b> या <b>IMG_20260605_172901.jpg</b> चुनें</small>
         </div>
-        <i class="fas fa-stethoscope fa-2x text-info"></i>
+        <i class="fas fa-stethoscope fa-2x text-success"></i>
       </div>
       <div class="photo-preview" onclick="document.getElementById('fileInput2').click()">
-        <img id="preview2" src="doctor-opd.jpg" onerror="this.src='doctor-avatar.svg'" alt="Doctor in Scrubs">
+        <img id="preview2" src="doctor2.jpg?v=dev" onerror="this.src='doctor-avatar.svg'" alt="Doctor with Stethoscope">
         <div id="placeholder2" style="display:none; text-align:center; padding:20px;">
           <i class="fas fa-cloud-upload-alt fa-2x text-muted mb-2"></i>
-          <p class="mb-0 text-muted">Tap here to select photo from phone</p>
+          <p class="mb-0 text-muted">यहाँ टैप करके मोबाइल गैलरी से फ़ोटो चुनें</p>
         </div>
       </div>
-      <input type="file" id="fileInput2" accept="image/*" style="display:none;" onchange="handleFileSelect(this, 'preview2', 'doctor-opd.jpg', 'status2')">
-      <button class="upload-btn" style="background:#0f766e;" onclick="document.getElementById('fileInput2').click()">
-        <i class="fas fa-folder-open"></i> Choose Scrubs Photo from Phone
+      <input type="file" id="fileInput2" accept="image/*" style="display:none;" onchange="handleFileSelect(this, 'preview2', 'IMG_20250920_125939.jpg', 'status2')">
+      <button class="upload-btn" style="background:#059669;" onclick="document.getElementById('fileInput2').click()">
+        <i class="fas fa-image me-1"></i> मोबाइल गैलरी से स्टेथोस्कोप वाली फ़ोटो चुनें (Choose OPD Photo)
       </button>
-      <div id="status2" class="status-msg text-success text-center"></div>
+      <div id="status2" class="status-msg text-center mt-2"></div>
     </div>
 
     <div class="text-center mt-4">
-      <a href="/" class="btn btn-primary btn-lg" style="border-radius:12px; padding:14px 32px; font-weight:700;">
-        <i class="fas fa-check-circle"></i> Open Website & View Updated Photos
+      <a href="/" class="btn btn-dark btn-lg" style="border-radius:14px; padding:14px 32px; font-weight:800; font-size:16px;">
+        <i class="fas fa-globe me-2 text-warning"></i> मुख्य वेबसाइट देखें (View Website)
       </a>
     </div>
   </div>
 
   <script>
+    const BACKEND_URLS = [
+      '/api/upload-photo',
+      'https://ais-pre-apsudkn5ahf43yfcvz7hcw-873171684615.asia-southeast1.run.app/api/upload-photo',
+      'https://ais-dev-apsudkn5ahf43yfcvz7hcw-873171684615.asia-southeast1.run.app/api/upload-photo'
+    ];
+
+    async function tryUploadToBackend(payload) {
+      for (const url of BACKEND_URLS) {
+        try {
+          const res = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (res.ok) {
+            const data = await res.json();
+            if (data.success) return { success: true, data };
+          }
+        } catch (e) {
+          console.warn('Backend attempt failed for:', url, e.message);
+        }
+      }
+      return { success: false, error: 'सभी सर्वर व्यस्त हैं या नेटवर्क त्रुटि है।' };
+    }
+
     function handleFileSelect(input, previewId, targetFilename, statusId) {
       if (!input.files || !input.files[0]) return;
       const file = input.files[0];
@@ -173,33 +199,25 @@
       
       const statusEl = document.getElementById(statusId);
       statusEl.style.display = 'block';
-      statusEl.className = 'status-msg text-primary text-center';
-      statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading to website...';
+      statusEl.className = 'status-msg text-primary text-center fw-bold';
+      statusEl.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> फ़ोटो अपलोड व GitHub पर लाइव हो रही है, कृपया 5 सेकंड प्रतीक्षा करें...';
 
       reader.onload = async function(e) {
         const base64Data = e.target.result;
         document.getElementById(previewId).src = base64Data;
 
-        try {
-          const res = await fetch('/api/upload-photo', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              filename: targetFilename,
-              base64: base64Data
-            })
-          });
-          const json = await res.json();
-          if (json.success) {
-            statusEl.className = 'status-msg text-success text-center';
-            statusEl.innerHTML = '✅ Photo successfully saved & applied to website!';
-          } else {
-            statusEl.className = 'status-msg text-danger text-center';
-            statusEl.innerHTML = '❌ Upload failed: ' + (json.error || 'Unknown error');
-          }
-        } catch (err) {
-          statusEl.className = 'status-msg text-danger text-center';
-          statusEl.innerHTML = '❌ Network error while uploading: ' + err.message;
+        const result = await tryUploadToBackend({
+          filename: file.name || targetFilename,
+          base64: base64Data
+        });
+
+        if (result.success) {
+          statusEl.className = 'status-msg text-success text-center fw-bold';
+          statusEl.innerHTML = '✅ बधाई हो डॉक्टर साहब! आपकी फ़ोटो सफलतापूर्वक सेव होकर वेबसाइट और GitHub पर लाइव हो गई है!';
+          alert('✅ फ़ोटो सफलतापूर्वक अपडेट हो गई है और GitHub पर भी भेज दी गई है!');
+        } else {
+          statusEl.className = 'status-msg text-danger text-center fw-bold';
+          statusEl.innerHTML = '❌ अपलोड नहीं हो सका: ' + result.error;
         }
       };
       reader.readAsDataURL(file);

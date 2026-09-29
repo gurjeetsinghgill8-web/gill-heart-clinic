@@ -13,3 +13,4 @@ Desktop.ini
 # Logs
 *.log
 node_modules/
+.git_token
