@@ -560,6 +560,325 @@ function copyDashboardPatientLink() {
 }
 
 /**
+ * Download Patient Vitals History & BP/Heart Rate Trend Chart as Formatted PDF Report
+ */
+async function downloadVitalsReportPDF() {
+  if (!currentPatientData) {
+    alert('कृपया पहले अपना हेल्थ कार्ड खोलें।');
+    return;
+  }
+
+  const btn = document.getElementById('dashDownloadPdfBtn');
+  const originalBtnHtml = btn ? btn.innerHTML : '';
+  if (btn) {
+    btn.disabled = true;
+    btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>PDF रिपोर्ट तैयार हो रही है...';
+  }
+
+  try {
+    // 1. Ensure jsPDF is loaded
+    if (typeof window.jspdf === 'undefined') {
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js');
+    }
+    if (typeof window.jspdf === 'undefined' || !window.jspdf.jsPDF) {
+      throw new Error('PDF लाइब्रेरी लोड नहीं हो सकी। कृपया इंटरनेट कनेक्शन जांचें।');
+    }
+
+    // 2. Ensure autoTable plugin is loaded
+    if (typeof window.jspdf.jsPDF.prototype.autoTable === 'undefined') {
+      await loadScript('https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js');
+    }
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({
+      orientation: 'portrait',
+      unit: 'mm',
+      format: 'a4'
+    });
+
+    const patient = currentPatientData;
+    const vitals = patient.vitalsHistory || [];
+
+    // Calculate Summary Statistics
+    let avgSys = 0;
+    let avgDia = 0;
+    let avgPulse = 0;
+    let validBpCount = 0;
+    let validPulseCount = 0;
+
+    vitals.forEach(v => {
+      if (v.sys && v.dia) {
+        avgSys += v.sys;
+        avgDia += v.dia;
+        validBpCount++;
+      }
+      if (v.pulse) {
+        avgPulse += v.pulse;
+        validPulseCount++;
+      }
+    });
+
+    avgSys = validBpCount > 0 ? Math.round(avgSys / validBpCount) : '-';
+    avgDia = validBpCount > 0 ? Math.round(avgDia / validBpCount) : '-';
+    avgPulse = validPulseCount > 0 ? Math.round(avgPulse / validPulseCount) : '-';
+
+    const latest = vitals.length > 0 ? vitals[0] : null;
+    const latestBpText = latest && latest.sys && latest.dia ? `${latest.sys}/${latest.dia} mmHg` : 'N/A';
+    const latestAnalysis = latest && latest.sys && latest.dia ? getBPAnalysis(latest.sys, latest.dia) : { label: 'N/A' };
+
+    // ==========================================
+    // 1. CLINIC HEADER (Branded Top Banner)
+    // ==========================================
+    doc.setFillColor(15, 23, 42); // Navy slate-900
+    doc.rect(0, 0, 210, 32, 'F');
+
+    doc.setFillColor(220, 38, 38); // Crimson accent line
+    doc.rect(0, 32, 210, 2, 'F');
+
+    doc.setTextColor(255, 255, 255);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(15);
+    doc.text('GILL HEART CLINIC & CARDIOLOGY CENTRE', 14, 11);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(226, 232, 240);
+    doc.text('Dr. Gurjeet Singh Gill | MBBS, MD, PGDCC (Cardiology)', 14, 17);
+    doc.text('Opp. Primary School, Meerut-Delhi Road, Mohiuddinpur, Meerut, U.P.', 14, 22);
+    doc.text('Helpline / WhatsApp: +91 9258879884 | OPD Timing: 09:00 AM - 08:00 PM', 14, 27);
+
+    // Right-side badge
+    doc.setFillColor(220, 38, 38);
+    doc.roundedRect(146, 7, 50, 18, 2, 2, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(8.5);
+    doc.text('PATIENT VITALS REPORT', 148, 14);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7);
+    doc.text('Clinical Record / History', 148, 19);
+
+    // ==========================================
+    // 2. PATIENT INFORMATION CARD
+    // ==========================================
+    let currentY = 39;
+    doc.setFillColor(248, 250, 252);
+    doc.setDrawColor(203, 213, 225);
+    doc.setLineWidth(0.4);
+    doc.roundedRect(14, currentY, 182, 25, 3, 3, 'FD');
+
+    doc.setTextColor(15, 23, 42);
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10.5);
+    doc.text(`Patient: ${patient.name || 'Anonymous'} [Locked Identity]`, 18, currentY + 6.5);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(71, 85, 105);
+    doc.text(`Mobile: +91 ${patient.phone || '-'}`, 18, currentY + 13.5);
+    doc.text(`Age/Gender: ${patient.age ? patient.age + ' Yrs' : '-'} / ${patient.gender || '-'}`, 18, currentY + 20);
+
+    const printDate = new Date().toLocaleString('en-IN', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+    doc.text(`Report Date: ${printDate}`, 110, currentY + 6.5);
+    doc.text(`Chief Complaints: ${(patient.complaints || 'Routine Vitals Monitoring').slice(0, 40)}`, 110, currentY + 13.5);
+    doc.text(`Total Records: ${vitals.length} logged reading(s)`, 110, currentY + 20);
+
+    // ==========================================
+    // 3. STATISTICAL SUMMARY METRICS
+    // ==========================================
+    currentY += 30;
+    const boxWidth = 43;
+    const boxHeight = 15;
+    const gap = 3.3;
+
+    drawStatBox(doc, 14, currentY, boxWidth, boxHeight, 'Latest BP', latestBpText, latestAnalysis.label.split('(')[0].trim(), '#dc2626');
+    const avgBpText = validBpCount > 0 ? `${avgSys}/${avgDia} mmHg` : 'N/A';
+    drawStatBox(doc, 14 + (boxWidth + gap), currentY, boxWidth, boxHeight, 'Average BP', avgBpText, `Over ${validBpCount} entries`, '#2563eb');
+    const avgPulseText = validPulseCount > 0 ? `${avgPulse} bpm` : 'N/A';
+    drawStatBox(doc, 14 + (boxWidth + gap) * 2, currentY, boxWidth, boxHeight, 'Avg Heart Rate', avgPulseText, 'Pulse resting rate', '#16a34a');
+    const sugarText = latest && latest.sugar ? `${latest.sugar} mg/dL` : 'Not tested';
+    drawStatBox(doc, 14 + (boxWidth + gap) * 3, currentY, boxWidth, boxHeight, 'Latest Blood Sugar', sugarText, 'Random Blood Sugar', '#0284c7');
+
+    // ==========================================
+    // 4. EMBED BP & HEART RATE VISUAL CHART
+    // ==========================================
+    currentY += 20;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.setTextColor(15, 23, 42);
+    doc.text('Blood Pressure & Pulse Visual Trend Analysis (Chart)', 15, currentY);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.setTextColor(100, 116, 139);
+    doc.text('Red Line: Systolic BP | Blue Line: Diastolic BP | Green Line: Heart Rate (bpm)', 15, currentY + 4);
+
+    currentY += 6;
+
+    const chartCanvas = document.getElementById('patientBPChart');
+    if (chartCanvas && bpChartInstance && vitals.length > 0) {
+      try {
+        const chartImgData = chartCanvas.toDataURL('image/png', 1.0);
+        doc.setDrawColor(226, 232, 240);
+        doc.setFillColor(255, 255, 255);
+        doc.roundedRect(14, currentY, 182, 54, 2, 2, 'FD');
+        doc.addImage(chartImgData, 'PNG', 16, currentY + 2, 178, 50, undefined, 'FAST');
+        currentY += 57;
+      } catch (e) {
+        console.warn('Chart image export error:', e);
+        doc.setFontSize(8);
+        doc.text('Visual chart preview unavailable.', 16, currentY + 8);
+        currentY += 12;
+      }
+    } else {
+      doc.setFillColor(248, 250, 252);
+      doc.roundedRect(14, currentY, 182, 15, 2, 2, 'FD');
+      doc.setTextColor(100, 116, 139);
+      doc.setFontSize(8);
+      doc.text('No historical readings logged yet for graph display.', 20, currentY + 9);
+      currentY += 18;
+    }
+
+    // ==========================================
+    // 5. DETAILED VITALS HISTORY TABLE
+    // ==========================================
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.setTextColor(15, 23, 42);
+    doc.text('Recorded Vitals Log History', 15, currentY + 2);
+
+    const tableRows = vitals.map((v, idx) => {
+      const d = new Date(v.recordedAt);
+      const dateFormatted = `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+      const analysis = v.sys && v.dia ? getBPAnalysis(v.sys, v.dia) : { label: '-' };
+      return [
+        idx + 1,
+        dateFormatted,
+        v.sys && v.dia ? `${v.sys}/${v.dia} mmHg` : '-',
+        v.pulse ? `${v.pulse} bpm` : '-',
+        v.sugar ? `${v.sugar} mg/dL` : '-',
+        analysis.label.split('(')[0].trim(),
+        (v.notes || '-').slice(0, 32)
+      ];
+    });
+
+    if (tableRows.length === 0) {
+      tableRows.push(['-', 'No records found', '-', '-', '-', '-', '-']);
+    }
+
+    doc.autoTable({
+      startY: currentY + 4,
+      head: [['#', 'Date & Time', 'Blood Pressure', 'Pulse', 'Sugar', 'Classification', 'Clinical Notes']],
+      body: tableRows,
+      margin: { left: 14, right: 14, bottom: 20 },
+      theme: 'grid',
+      headStyles: {
+        fillColor: [15, 23, 42],
+        textColor: [255, 255, 255],
+        fontSize: 7.5,
+        fontStyle: 'bold',
+        halign: 'center'
+      },
+      bodyStyles: {
+        fontSize: 7.5,
+        textColor: [30, 41, 59]
+      },
+      columnStyles: {
+        0: { halign: 'center', cellWidth: 8 },
+        1: { halign: 'center', cellWidth: 32 },
+        2: { halign: 'center', fontStyle: 'bold', cellWidth: 28 },
+        3: { halign: 'center', cellWidth: 20 },
+        4: { halign: 'center', cellWidth: 22 },
+        5: { halign: 'center', cellWidth: 32 },
+        6: { halign: 'left', cellWidth: 'auto' }
+      },
+      didDrawPage: function (data) {
+        const pageCount = doc.internal.getNumberOfPages();
+        const pageCurrent = data.pageNumber;
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(7);
+        doc.setTextColor(148, 163, 184);
+        doc.text(
+          'Gill Heart Clinic | Verified Digital Medical Document | Dr. Gurjeet Singh Gill (+91 9258879884)',
+          14,
+          290
+        );
+        doc.text(`Page ${pageCurrent} of ${pageCount}`, 186, 290);
+      }
+    });
+
+    // Save and trigger browser download
+    const cleanName = (patient.name || 'Patient').replace(/[^a-zA-Z0-9]/g, '_');
+    const filename = `Gill_Heart_Clinic_Report_${cleanName}_${patient.phone}.pdf`;
+    doc.save(filename);
+
+    if (btn) {
+      btn.innerHTML = '<i class="fas fa-check-circle me-1"></i> PDF डाउनलोड हो गई!';
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = originalBtnHtml;
+      }, 3000);
+    }
+  } catch (err) {
+    console.error('Error generating PDF:', err);
+    alert('PDF बनाते समय त्रुटि: ' + err.message + '\nआप स्क्रीन का प्रिंट/स्क्रीनशॉट भी ले सकते हैं।');
+    if (btn) {
+      btn.disabled = false;
+      btn.innerHTML = originalBtnHtml;
+    }
+  }
+}
+
+/**
+ * Helper to dynamically load external JS if needed
+ */
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    const existing = document.querySelector(`script[src="${src}"]`);
+    if (existing) {
+      resolve();
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = () => resolve();
+    script.onerror = () => reject(new Error(`Failed to load ${src}`));
+    document.head.appendChild(script);
+  });
+}
+
+function drawStatBox(doc, x, y, w, h, label, value, subtext, colorHex) {
+  doc.setFillColor(255, 255, 255);
+  doc.setDrawColor(226, 232, 240);
+  doc.setLineWidth(0.3);
+  doc.roundedRect(x, y, w, h, 2, 2, 'FD');
+
+  doc.setFillColor(colorHex);
+  doc.roundedRect(x, y, 1.8, h, 1, 1, 'F');
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(6.5);
+  doc.setTextColor(100, 116, 139);
+  doc.text(label, x + 3.5, y + 4);
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9);
+  doc.setTextColor(15, 23, 42);
+  doc.text(String(value), x + 3.5, y + 9);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(6);
+  doc.setTextColor(100, 116, 139);
+  doc.text(String(subtext), x + 3.5, y + 13);
+}
+
+/**
  * Patient Logout from Dashboard
  */
 function logoutPatient() {
